@@ -41,11 +41,22 @@
     <Compile Include="RequestTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCredentials.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="RequestTestsUsa.cs" />
+    <Compile Include="TestCredentialsUsa.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">
+      <Project>{d8305b1e-809e-4f64-ae7d-fe3c3efae985}</Project>
+      <Name>PaymentsSdk.Moneris.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PaymentsSdk.Moneris\PaymentsSdk.Moneris.csproj">
       <Project>{9803ca1e-74f8-4e25-8db0-7e7e2adb3a7e}</Project>
       <Name>PaymentsSdk.Moneris</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PaymentsSdk.USMoneris\PaymentsSdk.USMoneris.csproj">
+      <Project>{373efd44-a7d5-41fb-85a6-a955baa7882f}</Project>
+      <Name>PaymentsSdk.USMoneris</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

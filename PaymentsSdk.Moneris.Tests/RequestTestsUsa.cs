@@ -2,15 +2,15 @@
 {
     using System;
     using NUnit.Framework;
-    using Request;
+    using USMoneris.Request;
 
     [TestFixture]
-    public class RequestTests
+    public class RequestTestsUsa
     {
         [Test]
         public void CanSendPurchaseBasicRequest()
         {
-            var request = new PurchaseBasic(new TestCredentials());
+            var request = new USPurchaseBasic(new TestCredentialsUsa());
             var response = request.Send(TestHelper.GetOrderId(), "5.00");
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreNotEqual("null", response.TxnNumber);

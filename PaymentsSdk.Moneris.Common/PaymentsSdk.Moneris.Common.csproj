@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9803CA1E-74F8-4E25-8DB0-7E7E2ADB3A7E}</ProjectGuid>
+    <ProjectGuid>{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rootzid.PaymentsSdk.Moneris</RootNamespace>
-    <AssemblyName>Rootzid.PaymentsSdk.Moneris</AssemblyName>
+    <RootNamespace>Rootzid.PaymentsSdk.Moneris.Common</RootNamespace>
+    <AssemblyName>Rootzid.PaymentsSdk.Moneris.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,21 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="eSELECTplus_dotNet_API">
-      <HintPath>..\External\EselectPlus\eSELECTplus_dotNet_API.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMonerisCredentials.cs" />
+    <Compile Include="IMonerisResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request\PurchaseBasic.cs" />
-    <Compile Include="Response\Response.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">
-      <Project>{d8305b1e-809e-4f64-ae7d-fe3c3efae985}</Project>
-      <Name>PaymentsSdk.Moneris.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
