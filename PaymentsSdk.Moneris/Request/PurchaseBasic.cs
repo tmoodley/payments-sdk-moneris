@@ -13,9 +13,9 @@
             this.credentials = credentials;
         }
 
-        public IMonerisResponse Send(string orderId, string amount)
+        public IMonerisResponse Send(ICreditCard card, IOrder order)
         {
-            var purchase = new Purchase(orderId, amount, "4242424242424242", "0812", "7");
+            var purchase = new Purchase(order.OrderId, order.Amount, card.Pan, card.ExpDate, "7");
             var request = new HttpsPostRequest(credentials.Host, credentials.StoreId, credentials.ApiToken, purchase);
 
             try

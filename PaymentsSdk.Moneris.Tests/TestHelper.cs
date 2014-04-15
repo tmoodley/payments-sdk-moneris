@@ -1,12 +1,9 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
-    using System;
     using System.Text;
 
     internal static class TestHelper
     {
-        private static readonly Random rnd = new Random();
-
         public static string DumpResponse(IMonerisResponse r)
         {
             var sb = new StringBuilder();
@@ -29,11 +26,6 @@
             sb.AppendFormat("CvdResultCode={0}\n", r.CvdResultCode);
             sb.AppendFormat("CavvResultCode={0}\n", r.CavvResultCode);
             return sb.ToString();
-        }
-
-        public static string GetOrderId()
-        {
-            return string.Format("Test_P_{0}", rnd.Next());
         }
     }
 }

@@ -10,8 +10,12 @@
         [Test]
         public void CanSendPurchaseBasicRequest()
         {
-            var request = new USPurchaseBasic(new TestCredentialsUsa());
-            var response = request.Send(TestHelper.GetOrderId(), "5.00");
+            var order = new Order();
+            var card = new CreditCard();
+
+            var request = new USPurchaseBasic(new CredentialsUsa());
+            var response = request.Send(card, order);
+
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreNotEqual("null", response.TxnNumber);
         }

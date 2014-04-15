@@ -2,7 +2,7 @@
 {
     using Moneris;
 
-    internal class TestCredentialsUsa : IMonerisCredentials
+    internal class CredentialsUsa : IMonerisCredentials
     {
         public string Host
         {
@@ -11,7 +11,6 @@
                 return "esplusqa.moneris.com";
             }
         }
-
         public string StoreId
         {
             get
@@ -19,7 +18,6 @@
                 return "monusqa002";
             }
         }
-
         public string ApiToken
         {
             get
