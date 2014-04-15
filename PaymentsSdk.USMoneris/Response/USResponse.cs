@@ -3,7 +3,7 @@
     using global::USMoneris;
     using Moneris;
 
-    internal class USResponse : IMonerisResponse
+    internal class USResponse : IResponse
     {
         public string ReceiptId { get; private set; }
         public string ReferenceNum { get; private set; }

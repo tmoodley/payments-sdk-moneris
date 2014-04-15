@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
-    internal class Credentials : IMonerisCredentials
+    internal class Credentials : ICredentials
     {
         public string Host
         {

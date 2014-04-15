@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
-    public interface IMonerisResponse
+    public interface IResponse
     {
         string ReceiptId { get; }
         string ReferenceNum { get; }

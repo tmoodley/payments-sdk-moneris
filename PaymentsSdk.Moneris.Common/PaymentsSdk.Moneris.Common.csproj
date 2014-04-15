@@ -34,8 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICreditCard.cs" />
-    <Compile Include="IMonerisCredentials.cs" />
-    <Compile Include="IMonerisResponse.cs" />
+    <Compile Include="ICredentials.cs" />
+    <Compile Include="IResponse.cs" />
     <Compile Include="IOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

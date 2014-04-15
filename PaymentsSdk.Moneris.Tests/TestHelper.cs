@@ -4,7 +4,7 @@
 
     internal static class TestHelper
     {
-        public static string DumpResponse(IMonerisResponse r)
+        public static string DumpResponse(IResponse r)
         {
             var sb = new StringBuilder();
             sb.AppendFormat("ReceiptId={0}\n", r.ReceiptId);

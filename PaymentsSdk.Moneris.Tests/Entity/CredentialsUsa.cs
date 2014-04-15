@@ -2,7 +2,7 @@
 {
     using Moneris;
 
-    internal class CredentialsUsa : IMonerisCredentials
+    internal class CredentialsUsa : ICredentials
     {
         public string Host
         {

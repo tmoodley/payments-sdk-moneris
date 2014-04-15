@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
-    public interface IMonerisCredentials
+    public interface ICredentials
     {
         string Host { get; }
         string StoreId { get; }

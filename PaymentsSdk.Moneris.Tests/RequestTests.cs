@@ -2,7 +2,7 @@
 {
     using System;
     using NUnit.Framework;
-    using Request;
+    using Transactions;
 
     [TestFixture]
     public class RequestTests
@@ -12,9 +12,10 @@
         {
             var order = new Order();
             var card = new CreditCard();
+            var request = new Request(new Credentials());
 
-            var request = new PurchaseBasic(new Credentials());
-            var response = request.Send(card, order);
+            var purchase = new Purchase(card, order);
+            var response = request.Send(purchase);
 
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreNotEqual("null", response.TxnNumber);

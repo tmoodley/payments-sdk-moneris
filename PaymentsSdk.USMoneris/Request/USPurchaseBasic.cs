@@ -7,14 +7,14 @@
 
     public class USPurchaseBasic
     {
-        private readonly IMonerisCredentials credentials;
+        private readonly ICredentials credentials;
 
-        public USPurchaseBasic(IMonerisCredentials credentials)
+        public USPurchaseBasic(ICredentials credentials)
         {
             this.credentials = credentials;
         }
 
-        public IMonerisResponse Send(ICreditCard card, IOrder order)
+        public IResponse Send(ICreditCard card, IOrder order)
         {
             var purchase = new USPurchase(order.OrderId, order.Amount, card.Pan, card.ExpDate, "7", "INVC090", "1.00");
             var request = new HttpsPostRequest(credentials.Host, credentials.StoreId, credentials.ApiToken, purchase);

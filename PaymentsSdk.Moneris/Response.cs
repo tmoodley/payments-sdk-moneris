@@ -1,8 +1,8 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Response
+﻿namespace Rootzid.PaymentsSdk.Moneris
 {
     using global::Moneris;
 
-    internal class Response : IMonerisResponse
+    internal class Response : IResponse
     {
         public string ReceiptId { get; private set; }
         public string ReferenceNum { get; private set; }
