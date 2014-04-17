@@ -39,9 +39,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Response.cs" />
+    <Compile Include="Transactions\Capture.cs" />
+    <Compile Include="Transactions\IndependedRefund.cs" />
     <Compile Include="Transactions\PreAuth.cs" />
     <Compile Include="Transactions\Purchase.cs" />
+    <Compile Include="Transactions\ReAuth.cs" />
+    <Compile Include="Transactions\Refund.cs" />
     <Compile Include="Transactions\Transaction.cs" />
+    <Compile Include="Transactions\VoidTransaction.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">

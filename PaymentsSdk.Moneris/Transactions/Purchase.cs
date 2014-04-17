@@ -4,8 +4,13 @@
     {
         private const string CONST_Crypt = "7";
 
-        public Purchase(ICreditCard creditCard, IOrder order) : base(creditCard, order)
+        protected ICreditCard CreditCard { get; private set; }
+        protected IOrder Order { get; private set; }
+
+        public Purchase(ICreditCard creditCard, IOrder order)
         {
+            this.CreditCard = creditCard;
+            this.Order = order;
         }
 
         public override global::Moneris.Transaction GetInnerTransaction()

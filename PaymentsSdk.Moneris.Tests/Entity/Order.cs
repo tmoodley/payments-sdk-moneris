@@ -6,19 +6,13 @@
     {
         private static readonly Random rnd = new Random();
 
-        public string OrderId
+        public string OrderId { get; set; }
+        public string Amount { get; set; }
+
+        public Order()
         {
-            get
-            {
-                return string.Format("Test_P_{0}", rnd.Next());
-            }
-        }
-        public string Amount
-        {
-            get
-            {
-                return "5.00";
-            }
+            this.Amount = "5.00";
+            this.OrderId = string.Format("Test_P_{0}", rnd.Next());
         }
     }
 }
