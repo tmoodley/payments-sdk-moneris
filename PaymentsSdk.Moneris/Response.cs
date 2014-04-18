@@ -1,9 +1,19 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Common.OpenTotals;
     using global::Moneris;
+    using OpenTotals;
 
     internal class Response : IResponse
     {
+        private const string CONST_ErrorReceiptId = "Global Error Receipt";
+
+        private IList<ITerminalTotal> openTotals = null;
+        private readonly Receipt receipt;
+
         public string ReceiptId { get; private set; }
         public string ReferenceNum { get; private set; }
         public string ResponseCode { get; private set; }
@@ -23,9 +33,18 @@
         public string CvdResultCode { get; private set; }
         public string CavvResultCode { get; private set; }
 
+        public bool HasErrorReceiptId
+        {
+            get
+            {
+                return string.Compare(this.ReceiptId, CONST_ErrorReceiptId, StringComparison.InvariantCultureIgnoreCase) == 0;
+            }
+        }
+
         public Response(Receipt receipt)
         {
             this.Initialize(receipt);
+            this.receipt = receipt;
         }
 
         private void Initialize(Receipt r)
@@ -48,6 +67,25 @@
             this.AvsResultCode = r.GetAvsResultCode();
             this.CvdResultCode = r.GetCvdResultCode();
             this.CavvResultCode = r.GetCavvResultCode();
+        }
+
+        public IList<ITerminalTotal> GetOpenTotals()
+        {
+            return this.openTotals ?? (this.openTotals = this.InitOpenTotals(this.receipt));
+        }
+
+        private IList<ITerminalTotal> InitOpenTotals(Receipt receipt)
+        {
+            var res = new List<ITerminalTotal>();
+
+            if (this.HasErrorReceiptId)
+            {
+                return res;
+            }
+
+            res.AddRange(receipt.GetTerminalIDs().Select(terminalId => new TerminalTotal(receipt, terminalId)).Cast<ITerminalTotal>());
+
+            return res;
         }
     }
 }

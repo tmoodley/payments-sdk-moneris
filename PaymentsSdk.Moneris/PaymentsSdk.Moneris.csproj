@@ -36,11 +36,15 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OpenTotals\CreditCardTotal.cs" />
+    <Compile Include="OpenTotals\TerminalTotal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Response.cs" />
+    <Compile Include="Transactions\BatchClose.cs" />
     <Compile Include="Transactions\Capture.cs" />
     <Compile Include="Transactions\IndependedRefund.cs" />
+    <Compile Include="Transactions\OpenTotals.cs" />
     <Compile Include="Transactions\PreAuth.cs" />
     <Compile Include="Transactions\Purchase.cs" />
     <Compile Include="Transactions\ReAuth.cs" />
@@ -54,6 +58,7 @@
       <Name>PaymentsSdk.Moneris.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

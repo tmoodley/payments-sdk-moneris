@@ -1,5 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
+    using System.Collections.Generic;
+    using Common.OpenTotals;
+
     public interface IResponse
     {
         string ReceiptId { get; }
@@ -20,5 +23,7 @@
         string AvsResultCode { get; }
         string CvdResultCode { get; }
         string CavvResultCode { get; }
+
+        IList<ITerminalTotal> GetOpenTotals();
     }
 }

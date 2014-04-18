@@ -37,6 +37,8 @@
     <Compile Include="ICredentials.cs" />
     <Compile Include="IResponse.cs" />
     <Compile Include="IOrder.cs" />
+    <Compile Include="OpenTotals\ICreditCardTotal.cs" />
+    <Compile Include="OpenTotals\ITerminalTotal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -82,6 +82,28 @@
             this.CheckTransaction(indepRefund);
         }
 
+        [Test]
+        public void CanGetOpenTotals()
+        {
+            var openTotals = new OpenTotals("66005372");
+            var request = new Request(new Credentials());
+            var response = request.Send(openTotals);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            Console.WriteLine("Open Totals: ");
+            Console.WriteLine(TestHelper.DumpOpenTotals(response));
+        }
+
+        [Test]
+        public void CanCloseBatch()
+        {
+            var batchClose = new BatchClose("66005372");
+            var request = new Request(new Credentials());
+            var response = request.Send(batchClose);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            Console.WriteLine("Open Totals: ");
+            Console.WriteLine(TestHelper.DumpOpenTotals(response));
+        }
+
         private void CheckTransaction(Transaction txn)
         {
             var request = new Request(new Credentials());

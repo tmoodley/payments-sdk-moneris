@@ -1,7 +1,9 @@
 ﻿namespace Rootzid.PaymentsSdk.USMoneris.Response
 {
+    using System.Collections.Generic;
     using global::USMoneris;
     using Moneris;
+    using Moneris.Common.OpenTotals;
 
     internal class USResponse : IResponse
     {
@@ -23,6 +25,11 @@
         public string AvsResultCode { get; private set; }
         public string CvdResultCode { get; private set; }
         public string CavvResultCode { get; private set; }
+
+        public IList<ITerminalTotal> GetOpenTotals()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public USResponse(Receipt receipt)
         {
