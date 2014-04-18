@@ -1,6 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using System;
+    using Entity;
     using NUnit.Framework;
     using Transactions;
 
@@ -102,6 +103,35 @@
             Console.WriteLine(TestHelper.DumpResponse(response));
             Console.WriteLine("Open Totals: ");
             Console.WriteLine(TestHelper.DumpOpenTotals(response));
+        }
+        [Test]
+        public void CanVerifyCardNoAvsNoCvd()
+        {
+            var order = new Order();
+            var card = new CreditCard();
+            var verify = new CardVerification(card, order);
+            this.CheckTransaction(verify);
+        }
+        [Test]
+        public void CanVerifyCardAvsNoCvd()
+        {
+            var order = new Order();
+            var card = new CreditCard();
+            var avsInfo = new AddressVerification();
+
+            var verify = new CardVerification(card, order, null, avsInfo);
+            this.CheckTransaction(verify);
+        }
+        [Test]
+        public void CanVerifyCardAvsCvd()
+        {
+            var order = new Order();
+            var card = new CreditCard();
+            var avsInfo = new AddressVerification();
+            var cvd = new CvdCheck();
+
+            var verify = new CardVerification(card, order, cvd, avsInfo);
+            this.CheckTransaction(verify);
         }
 
         private void CheckTransaction(Transaction txn)

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Common.OpenTotals;
     using global::Moneris;
     using OpenTotals;
 
@@ -74,7 +73,7 @@
             return this.openTotals ?? (this.openTotals = this.InitOpenTotals(this.receipt));
         }
 
-        private IList<ITerminalTotal> InitOpenTotals(Receipt receipt)
+        private IList<ITerminalTotal> InitOpenTotals(Receipt rc)
         {
             var res = new List<ITerminalTotal>();
 
@@ -83,7 +82,7 @@
                 return res;
             }
 
-            res.AddRange(receipt.GetTerminalIDs().Select(terminalId => new TerminalTotal(receipt, terminalId)).Cast<ITerminalTotal>());
+            res.AddRange(rc.GetTerminalIDs().Select(terminalId => new TerminalTotal(rc, terminalId)).Cast<ITerminalTotal>());
 
             return res;
         }

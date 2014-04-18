@@ -43,6 +43,7 @@
     <Compile Include="Response.cs" />
     <Compile Include="Transactions\BatchClose.cs" />
     <Compile Include="Transactions\Capture.cs" />
+    <Compile Include="Transactions\CardVerification.cs" />
     <Compile Include="Transactions\IndependedRefund.cs" />
     <Compile Include="Transactions\OpenTotals.cs" />
     <Compile Include="Transactions\PreAuth.cs" />

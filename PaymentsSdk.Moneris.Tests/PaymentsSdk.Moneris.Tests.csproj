@@ -38,7 +38,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\AddressVerification.cs" />
     <Compile Include="Entity\CreditCard.cs" />
+    <Compile Include="Entity\CvdCheck.cs" />
     <Compile Include="Entity\Order.cs" />
     <Compile Include="TransactionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

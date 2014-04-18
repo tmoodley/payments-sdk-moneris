@@ -1,6 +1,5 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.OpenTotals
 {
-    using Common.OpenTotals;
     using global::Moneris;
 
     internal class CreditCardTotal : ICreditCardTotal

@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using global::USMoneris;
     using Moneris;
-    using Moneris.Common.OpenTotals;
 
     internal class USResponse : IResponse
     {

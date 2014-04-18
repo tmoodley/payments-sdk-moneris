@@ -33,8 +33,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAddressVerification.cs" />
     <Compile Include="ICreditCard.cs" />
     <Compile Include="ICredentials.cs" />
+    <Compile Include="ICvdVerification.cs" />
     <Compile Include="IResponse.cs" />
     <Compile Include="IOrder.cs" />
     <Compile Include="OpenTotals\ICreditCardTotal.cs" />

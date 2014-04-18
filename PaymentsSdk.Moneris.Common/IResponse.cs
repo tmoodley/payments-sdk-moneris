@@ -1,7 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
     using System.Collections.Generic;
-    using Common.OpenTotals;
 
     public interface IResponse
     {

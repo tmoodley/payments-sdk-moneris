@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Common.OpenTotals;
     using global::Moneris;
 
     internal class TerminalTotal : ITerminalTotal
