@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Entity
+﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     internal class AddressVerification : IAddressVerification
     {

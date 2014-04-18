@@ -4,5 +4,6 @@
     {
         string OrderId { get; }
         string Amount { get; }
+        ICustomerInfo Customer { get; }
     }
 }

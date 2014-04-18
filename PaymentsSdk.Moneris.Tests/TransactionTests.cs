@@ -1,7 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using System;
-    using Entity;
     using NUnit.Framework;
     using Transactions;
 
@@ -19,9 +18,10 @@
         [Test]
         public void CanSendPurchaseBasic()
         {
-            var order = new Order();
+            var order = new Order { Customer = null };
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
+            
             this.CheckTransaction(purchase);
         }
         [Test]
@@ -82,7 +82,6 @@
             var indepRefund = new IndependedRefund(card, order);
             this.CheckTransaction(indepRefund);
         }
-
         [Test]
         public void CanGetOpenTotals()
         {
@@ -93,7 +92,6 @@
             Console.WriteLine("Open Totals: ");
             Console.WriteLine(TestHelper.DumpOpenTotals(response));
         }
-
         [Test]
         public void CanCloseBatch()
         {
@@ -132,6 +130,27 @@
 
             var verify = new CardVerification(card, order, cvd, avsInfo);
             this.CheckTransaction(verify);
+        }
+
+        [Test]
+        public void CanSendPurchaseWithCustomer()
+        {
+            var order = new Order() ;
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
+
+            this.CheckTransaction(purchase);
+        }
+
+        [Test]
+        public void CanSendPurchaseWithCustomerNoOrderDetails()
+        {
+            var order = new Order() ;
+            // ? order.Customer.OrderDetails = null;
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
+
+            this.CheckTransaction(purchase);
         }
 
         private void CheckTransaction(Transaction txn)
