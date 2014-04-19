@@ -10,11 +10,15 @@
         public string Amount { get; set; }
         public ICustomerInfo Customer { get; set; }
 
-        public Order()
+        public Order(ICustomerInfo customer)
         {
             this.Amount = "5.00";
             this.OrderId = string.Format("Test_P_{0}", rnd.Next());
-            this.Customer = new Customer();
+            this.Customer = customer;
+        }
+
+        public Order() : this(null)
+        {
         }
     }
 }

@@ -131,7 +131,6 @@
             var verify = new CardVerification(card, order, cvd, avsInfo);
             this.CheckTransaction(verify);
         }
-
         [Test]
         public void CanSendPurchaseWithCustomer()
         {
@@ -141,12 +140,31 @@
 
             this.CheckTransaction(purchase);
         }
-
         [Test]
         public void CanSendPurchaseWithCustomerNoOrderDetails()
         {
-            var order = new Order() ;
-            // ? order.Customer.OrderDetails = null;
+            var customer = new Customer(new BillingInfo(), new BillingInfo(), null);
+            var order = new Order(customer) ;
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
+
+            this.CheckTransaction(purchase);
+        }
+        [Test]
+        public void CanSendPurchaseWithEmptyShipping()
+        {
+            var customer = new Customer(new BillingInfo(), null, null);
+            var order = new Order(customer);
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
+
+            this.CheckTransaction(purchase);
+        }
+        [Test]
+        public void CanSendPurchaseWithEmptyCustomer()
+        {
+            var customer = new Customer(null, null, null);
+            var order = new Order(customer);
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
 

@@ -91,7 +91,7 @@
                 res.SetEmail(cinfo.Email);
             }
 
-            if (string.IsNullOrEmpty(cinfo.Instructions))
+            if (!string.IsNullOrEmpty(cinfo.Instructions))
             {
                 res.SetInstructions(cinfo.Instructions);
             }
