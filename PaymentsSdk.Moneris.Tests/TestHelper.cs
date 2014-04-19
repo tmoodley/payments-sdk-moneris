@@ -50,6 +50,8 @@
             sb.AppendFormat("AvsResultCode={0}\n", r.AvsResultCode);
             sb.AppendFormat("CvdResultCode={0}\n", r.CvdResultCode);
             sb.AppendFormat("CavvResultCode={0}\n", r.CavvResultCode);
+            sb.AppendFormat("StatusCode={0}\n", r.StatusCode);
+            sb.AppendFormat("StatusMessage={0}\n", r.StatusMessage);
             return sb.ToString();
         }
         public static string DumpOpenTotals(IResponse r)

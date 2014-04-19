@@ -22,6 +22,8 @@
         string AvsResultCode { get; }
         string CvdResultCode { get; }
         string CavvResultCode { get; }
+        string StatusCode { get; }
+        string StatusMessage { get; }
 
         IList<ITerminalTotal> GetOpenTotals();
     }

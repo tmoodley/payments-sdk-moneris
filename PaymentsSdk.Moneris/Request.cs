@@ -1,6 +1,5 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
-    using System;
     using global::Moneris;
 
     public class Request
@@ -12,20 +11,13 @@
             this.Credentials = credentials;
         }
 
-        public IResponse Send(Transactions.Transaction transaction)
+        public IResponse Send(Transactions.Transaction transaction, bool statusCheck = false)
         {
             var txn = transaction.GetInnerTransaction();
-            var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, txn);
-
-            try
-            {
-                var receipt = request.GetReceipt();
-                return new Response(receipt);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            var status = statusCheck.ToString().ToLower();
+            var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, status, txn);
+            var receipt = request.GetReceipt();
+            return new Response(receipt);
         }
     }
 }

@@ -24,6 +24,8 @@
         public string AvsResultCode { get; private set; }
         public string CvdResultCode { get; private set; }
         public string CavvResultCode { get; private set; }
+        public string StatusCode { get; private set; }
+        public string StatusMessage { get; private set; }
 
         public IList<ITerminalTotal> GetOpenTotals()
         {
@@ -55,6 +57,8 @@
             this.AvsResultCode = r.GetAvsResultCode();
             this.CvdResultCode = r.GetCvdResultCode();
             this.CavvResultCode = r.GetCavvResultCode();
+            this.StatusCode = r.GetStatusCode();
+            this.StatusMessage = r.GetStatusMessage();
         }
     }
 }

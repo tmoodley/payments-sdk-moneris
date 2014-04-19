@@ -197,18 +197,42 @@
             var recurUpdate = new RecurUpdate(updateInfo);
             this.CheckTransaction(recurUpdate);
         }
+        [Test]
+        public void CanSendPurchaseBasicWithStatusCheck()
+        {
+            var order = new Order { Customer = null };
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
+            var request = new Request(new Credentials());
+            
+            var response = request.Send(purchase);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            var statusResponse = request.Send(purchase, true);
+            Console.WriteLine("=== STATUS CHECK ====");
+            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
+        }
+        [Test]
+        public void CanSendStatusCheckWithoutPurchase()
+        {
+            var order = new Order { Customer = null };
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
+            var request = new Request(new Credentials());
+            var statusResponse = request.Send(purchase, true);
+            Console.WriteLine("=== STATUS CHECK ====");
+            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
+        }
 
         // TODO: UpdateRecur: Add tests for EmptyCard, Variuos filds in RecurringUpdateInfo
         // TODO: Purchase, PreAuth: Add tests for Cvd & Avs Verification 
 
-        private void CheckTransaction(Transaction txn)
+        private void CheckTransaction(Transaction txn, bool statusCheck = false)
         {
             var request = new Request(new Credentials());
             var response = request.Send(txn);
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreNotEqual("null", response.TxnNumber);
         }
-
         private Tuple<string, string> DoPreAuth(string amount)
         {
             var order = new Order { Amount = amount };
