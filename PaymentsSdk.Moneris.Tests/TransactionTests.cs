@@ -191,6 +191,15 @@
             var purchase = new Purchase(card, order);
             this.CheckTransaction(purchase);
         }
+        [Test]
+        // TODO: Add tests for EmptyCard, Variuos filds in RecurringUpdateInfo
+        public void CanSendRecurringUpdate()
+        {
+            var purchaseResult = this.DoPurchase("5.00", new RecurringBilling());
+            var updateInfo = new RecurringUpdateInfo(purchaseResult.Item1);
+            var recurUpdate = new RecurUpdate(updateInfo);
+            this.CheckTransaction(recurUpdate);
+        }
 
         private void CheckTransaction(Transaction txn)
         {
@@ -211,9 +220,9 @@
 
             return new Tuple<string, string>(order.OrderId, response.TxnNumber);
         }
-        private Tuple<string, string> DoPurchase(string amount)
+        private Tuple<string, string> DoPurchase(string amount, IRecurringBilling rb = null)
         {
-            var order = new Order { Amount = amount };
+            var order = new Order (null, rb) { Amount = amount };
             var card = new CreditCard();
             var request = new Request(new Credentials());
 

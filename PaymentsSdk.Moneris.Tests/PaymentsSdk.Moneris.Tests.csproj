@@ -45,6 +45,7 @@
     <Compile Include="Entity\CvdCheck.cs" />
     <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\RecurringBilling.cs" />
+    <Compile Include="Entity\RecurringUpdateInfo.cs" />
     <Compile Include="Entity\SalesItem.cs" />
     <Compile Include="TransactionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

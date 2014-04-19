@@ -49,6 +49,7 @@
     <Compile Include="Transactions\PreAuth.cs" />
     <Compile Include="Transactions\Purchase.cs" />
     <Compile Include="Transactions\ReAuth.cs" />
+    <Compile Include="Transactions\RecurUpdate.cs" />
     <Compile Include="Transactions\Refund.cs" />
     <Compile Include="Transactions\Transaction.cs" />
     <Compile Include="Transactions\VoidTransaction.cs" />
