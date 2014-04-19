@@ -4,5 +4,8 @@
     {
         string Pan { get; }
         string ExpDate { get; }
+
+        IAddressVerification Address { get; }
+        ICvdVerification CvdVerification { get; }
     }
 }

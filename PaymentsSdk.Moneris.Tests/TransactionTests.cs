@@ -115,21 +115,19 @@
         public void CanVerifyCardAvsNoCvd()
         {
             var order = new Order();
-            var card = new CreditCard();
             var avsInfo = new AddressVerification();
-
-            var verify = new CardVerification(card, order, null, avsInfo);
+            var card = new CreditCard(avsInfo);
+            var verify = new CardVerification(card, order);
             this.CheckTransaction(verify);
         }
         [Test]
         public void CanVerifyCardAvsCvd()
         {
             var order = new Order();
-            var card = new CreditCard();
             var avsInfo = new AddressVerification();
             var cvd = new CvdCheck();
-
-            var verify = new CardVerification(card, order, cvd, avsInfo);
+            var card = new CreditCard(avsInfo, cvd);
+            var verify = new CardVerification(card, order);
             this.CheckTransaction(verify);
         }
         [Test]
@@ -192,7 +190,6 @@
             this.CheckTransaction(purchase);
         }
         [Test]
-        // TODO: Add tests for EmptyCard, Variuos filds in RecurringUpdateInfo
         public void CanSendRecurringUpdate()
         {
             var purchaseResult = this.DoPurchase("5.00", new RecurringBilling());
@@ -200,6 +197,9 @@
             var recurUpdate = new RecurUpdate(updateInfo);
             this.CheckTransaction(recurUpdate);
         }
+
+        // TODO: UpdateRecur: Add tests for EmptyCard, Variuos filds in RecurringUpdateInfo
+        // TODO: Purchase, PreAuth: Add tests for Cvd & Avs Verification 
 
         private void CheckTransaction(Transaction txn)
         {

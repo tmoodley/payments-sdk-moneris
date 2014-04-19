@@ -17,12 +17,19 @@
 
         public override global::Moneris.Transaction GetInnerTransaction()
         {
-            return new global::Moneris.ReAuth(
+            var res = new global::Moneris.ReAuth(
                 this.Order.OrderId,
                 this.OriginalOrderId,
                 this.TransactionNumber,
                 this.Order.Amount,
                 CONST_Crypt);
+
+            if (this.Order.Customer != null)
+            {
+                res.SetCustInfo(this.CreateCustomerInfo(this.Order.Customer));
+            }
+
+            return res;
         }
     }
 }

@@ -2,19 +2,23 @@
 {
     internal class CreditCard : ICreditCard
     {
-        public string Pan
+        public string Pan { get; set; }
+        public string ExpDate { get; set; }
+        public IAddressVerification Address { get; private set; }
+        public ICvdVerification CvdVerification { get; private set; }
+
+        public CreditCard(IAddressVerification address, ICvdVerification cvdVerification)
         {
-            get
-            {
-                return "4242424242424242";
-            }
+            this.Address = address;
+            this.CvdVerification = cvdVerification;
+            this.Pan = "4242424242424242";
+            this.ExpDate = "1812";
         }
-        public string ExpDate
+        public CreditCard(IAddressVerification address) : this(address, null)
         {
-            get
-            {
-                return "1812";
-            }
+        }
+        public CreditCard() : this(null)
+        {
         }
     }
 }

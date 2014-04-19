@@ -15,12 +15,14 @@
 
         public override global::Moneris.Transaction GetInnerTransaction()
         {
-            return new global::Moneris.IndependentRefund(
+            var res =  new global::Moneris.IndependentRefund(
                 this.Order.OrderId,
                 this.Order.Amount,
                 this.CreditCard.Pan,
                 this.CreditCard.ExpDate,
                 CONST_Crypt);
+
+            return res;
         }
     }
 }
