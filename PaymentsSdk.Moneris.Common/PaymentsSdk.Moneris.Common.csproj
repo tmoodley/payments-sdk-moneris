@@ -40,6 +40,7 @@
     <Compile Include="IBillingInfo.cs" />
     <Compile Include="ICustomerInfo.cs" />
     <Compile Include="ICvdVerification.cs" />
+    <Compile Include="IRecurringBilling.cs" />
     <Compile Include="IResponse.cs" />
     <Compile Include="IOrder.cs" />
     <Compile Include="ISalesItem.cs" />

@@ -9,12 +9,18 @@
         public string OrderId { get; set; }
         public string Amount { get; set; }
         public ICustomerInfo Customer { get; set; }
-
-        public Order(ICustomerInfo customer)
+        public IRecurringBilling RecurringBilling { get; private set; }
+        
+        public Order(ICustomerInfo customer, IRecurringBilling recurring)
         {
             this.Amount = "5.00";
             this.OrderId = string.Format("Test_P_{0}", rnd.Next());
             this.Customer = customer;
+            this.RecurringBilling = recurring;
+        }
+
+        public Order(ICustomerInfo customer) : this(customer, null)
+        {
         }
 
         public Order() : this(null)

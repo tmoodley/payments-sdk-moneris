@@ -29,6 +29,11 @@
                 res.SetCustInfo(this.PopulateCustomerInfo(this.Order.Customer));
             }
 
+            if (this.Order.RecurringBilling != null)
+            {
+                res.SetRecur(this.PopulateRecurringBilling(this.Order.RecurringBilling));
+            }
+
             return res;
         }
 
@@ -97,6 +102,11 @@
             }
 
             return res;
+        }
+
+        private Recur PopulateRecurringBilling(IRecurringBilling rb)
+        {
+            return new Recur(rb.RecurUnit, rb.StartNow, rb.StartDate, rb.NumRecurs, rb.Period, rb.RecurAmount);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using System;
+    using Entity;
     using NUnit.Framework;
     using Transactions;
 
@@ -134,7 +135,8 @@
         [Test]
         public void CanSendPurchaseWithCustomer()
         {
-            var order = new Order() ;
+            var customer = new Customer(new BillingInfo(), new BillingInfo(), TestHelper.PopulateSalesItems());
+            var order = new Order(customer);
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
 
@@ -168,6 +170,25 @@
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
 
+            this.CheckTransaction(purchase);
+        }
+        [Test]
+        public void CanSendPurchaseWithRecurringNoCustomer()
+        {
+            var rb = new RecurringBilling();
+            var order = new Order(null, rb);
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
+            this.CheckTransaction(purchase);
+        }
+        [Test]
+        public void CanSendPurchaseWithRecurringWithCustomer()
+        {
+            var customer = new Customer(new BillingInfo(), new BillingInfo(), TestHelper.PopulateSalesItems());
+            var rb = new RecurringBilling();
+            var order = new Order(customer, rb);
+            var card = new CreditCard();
+            var purchase = new Purchase(card, order);
             this.CheckTransaction(purchase);
         }
 
