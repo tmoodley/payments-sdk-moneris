@@ -16,7 +16,6 @@
             var profile = new ResAddCreditCard(card, cust);
             this.CheckTransaction(profile);
         }
-
         [Test]
         public void CanTokenizeCreditCard()
         {
@@ -26,15 +25,13 @@
             var profile = new ResTokenizeCreditCard(res.Item1, res.Item2, cust, avs);
             this.CheckTransaction(profile);
         }
-
         [Test]
-        public void CanDeleteProfile()
+        public void CanDeleteCreditCard()
         {
             var dataKey = this.CreateProfile();
-            var resDelete = new ResDeleteProfile(dataKey);
+            var resDelete = new ResDeleteCreditCard(dataKey);
             this.CheckTransaction(resDelete);
         }
-
         [Test]
         public void CanUpdateCreditCard()
         {
@@ -45,6 +42,7 @@
             var resUpdate = new ResUpdateCreditCard(dataKey, card, cust);
             this.CheckTransaction(resUpdate);
         }
+
 
         protected void CheckTransaction(Transaction txn)
         {

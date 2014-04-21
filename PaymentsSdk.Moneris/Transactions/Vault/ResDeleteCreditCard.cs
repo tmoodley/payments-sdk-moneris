@@ -2,11 +2,11 @@
 {
     using global::Moneris;
 
-    public class ResDeleteProfile : Transaction
+    public class ResDeleteCreditCard : Transaction
     {
         protected string DataKey { get; private set; }
 
-        public ResDeleteProfile(string dataKey)
+        public ResDeleteCreditCard(string dataKey)
         {
             this.DataKey = dataKey;
         }
