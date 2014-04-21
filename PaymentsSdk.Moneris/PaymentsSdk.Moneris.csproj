@@ -53,8 +53,9 @@
     <Compile Include="Transactions\Refund.cs" />
     <Compile Include="Transactions\Transaction.cs" />
     <Compile Include="Transactions\Vault\ResAddCreditCard.cs" />
-    <Compile Include="Transactions\Vault\ResDelete.cs" />
+    <Compile Include="Transactions\Vault\ResDeleteProfile.cs" />
     <Compile Include="Transactions\Vault\ResTokenizeCreditCard.cs" />
+    <Compile Include="Transactions\Vault\ResUpdateCreditCard.cs" />
     <Compile Include="Transactions\VoidTransaction.cs" />
   </ItemGroup>
   <ItemGroup>

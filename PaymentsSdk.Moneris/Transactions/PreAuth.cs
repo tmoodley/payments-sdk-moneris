@@ -22,9 +22,9 @@
                 this.CreditCard.ExpDate, 
                 CONST_Crypt);
 
-            if (this.CreditCard.Address != null)
+            if (this.CreditCard.AddressVerification != null)
             {
-                res.SetAvsInfo(this.CreateAvsInfo(this.CreditCard.Address));
+                res.SetAvsInfo(this.CreateAvsInfo(this.CreditCard.AddressVerification));
             }
 
             if (this.CreditCard.CvdVerification != null)

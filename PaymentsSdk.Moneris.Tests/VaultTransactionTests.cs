@@ -27,6 +27,25 @@
             this.CheckTransaction(profile);
         }
 
+        [Test]
+        public void CanDeleteProfile()
+        {
+            var dataKey = this.CreateProfile();
+            var resDelete = new ResDeleteProfile(dataKey);
+            this.CheckTransaction(resDelete);
+        }
+
+        [Test]
+        public void CanUpdateCreditCard()
+        {
+            var dataKey = this.CreateProfile();
+            var avs = new AddressVerification();
+            var card = new CreditCard(avs);
+            var cust = new Customer(new BillingInfo(), null, null);
+            var resUpdate = new ResUpdateCreditCard(dataKey, card, cust);
+            this.CheckTransaction(resUpdate);
+        }
+
         protected void CheckTransaction(Transaction txn)
         {
             var response = this.Send(txn);

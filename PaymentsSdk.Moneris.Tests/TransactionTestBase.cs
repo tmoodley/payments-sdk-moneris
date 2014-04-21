@@ -40,5 +40,15 @@
 
             return new Tuple<string, string>(order.OrderId, response.TxnNumber);
         }
+
+        protected string CreateProfile()
+        {
+            var avs = new AddressVerification();
+            var card = new CreditCard(avs);
+            var cust = new Customer(new BillingInfo(), null, null);
+            var profile = new ResAddCreditCard(card, cust);
+            var response = this.Send(profile);
+            return response.DataKey;
+        }
     }
 }
