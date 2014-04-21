@@ -47,12 +47,14 @@
     <Compile Include="Entity\RecurringBilling.cs" />
     <Compile Include="Entity\RecurringUpdateInfo.cs" />
     <Compile Include="Entity\SalesItem.cs" />
+    <Compile Include="TransactionTestBase.cs" />
     <Compile Include="TransactionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\Credentials.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="RequestTestsUsa.cs" />
     <Compile Include="Entity\CredentialsUsa.cs" />
+    <Compile Include="VaultTransactionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">

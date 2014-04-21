@@ -6,16 +6,8 @@
     using Transactions;
 
     [TestFixture]
-    public class TransactionTests
+    public class TransactionTests : TransactionTestBase
     {
-        private string OriginalAmount
-        {
-            get
-            {
-                return "100.00";
-            }
-        }
-
         [Test]
         public void CanSendPurchaseBasic()
         {
@@ -226,34 +218,11 @@
         // TODO: UpdateRecur: Add tests for EmptyCard, Variuos filds in RecurringUpdateInfo
         // TODO: Purchase, PreAuth: Add tests for Cvd & Avs Verification 
 
-        private void CheckTransaction(Transaction txn, bool statusCheck = false)
+        protected void CheckTransaction(Transaction txn)
         {
-            var request = new Request(new Credentials());
-            var response = request.Send(txn);
+            var response = this.Send(txn);
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreNotEqual("null", response.TxnNumber);
-        }
-        private Tuple<string, string> DoPreAuth(string amount)
-        {
-            var order = new Order { Amount = amount };
-            var card = new CreditCard();
-            var request = new Request(new Credentials());
-
-            var purchase = new PreAuth(card, order);
-            var response = request.Send(purchase);
-
-            return new Tuple<string, string>(order.OrderId, response.TxnNumber);
-        }
-        private Tuple<string, string> DoPurchase(string amount, IRecurringBilling rb = null)
-        {
-            var order = new Order (null, rb) { Amount = amount };
-            var card = new CreditCard();
-            var request = new Request(new Credentials());
-
-            var purchase = new Purchase(card, order);
-            var response = request.Send(purchase);
-
-            return new Tuple<string, string>(order.OrderId, response.TxnNumber);
         }
     }
 }

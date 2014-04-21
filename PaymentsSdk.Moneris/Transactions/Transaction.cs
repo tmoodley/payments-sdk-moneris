@@ -82,9 +82,9 @@
                 res.SetEmail(cinfo.Email);
             }
 
-            if (!string.IsNullOrEmpty(cinfo.Instructions))
+            if (!string.IsNullOrEmpty(cinfo.Note))
             {
-                res.SetInstructions(cinfo.Instructions);
+                res.SetInstructions(cinfo.Note);
             }
 
             return res;

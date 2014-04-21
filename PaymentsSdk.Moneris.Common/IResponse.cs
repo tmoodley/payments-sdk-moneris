@@ -25,6 +25,24 @@
         string StatusCode { get; }
         string StatusMessage { get; }
 
+        // Vault
+        string DataKey { get; }
+        string ResSuccsess { get; }
+        string PaymentType { get; }
+
+        // ResolveData
+        string CustomerId { get; }
+        string Phone { get; }
+        string Email { get; }
+        string Note { get; }
+        string MaskedPan { get; }
+        string ExpDate { get; }
+        string CryptType { get; }
+        string AvsStreetNumber { get; }
+        string AvsStreetName { get; }
+        string AvsZipCode { get; }
+
+
         IList<ITerminalTotal> GetOpenTotals();
     }
 }

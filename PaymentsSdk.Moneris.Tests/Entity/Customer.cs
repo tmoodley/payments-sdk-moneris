@@ -9,7 +9,8 @@
         public IBillingInfo BillingInfo { get; set; }
         public IBillingInfo ShippingInfo { get; set; }
         public string Email { get; private set; }
-        public string Instructions { get; set; }
+        public string Note { get; set; }
+        public string Id { get; private set; }
 
         public Customer(IBillingInfo billing, IBillingInfo shipping, IList<ISalesItem> orderDetails)
         {
@@ -17,7 +18,8 @@
             this.BillingInfo = billing ?? new EmptyBillingInfo();
             this.ShippingInfo = shipping ?? new EmptyBillingInfo();
             this.Email = "rootzid@gmail.com";
-            this.Instructions = "Make it fast!";
+            this.Note = "Make it fast!";
+            this.Id = "customer1";
         }
     }
 }

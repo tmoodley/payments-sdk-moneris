@@ -4,10 +4,13 @@
 
     public interface ICustomerInfo
     {
-        IList<ISalesItem> OrderDetails { get; }
+        string Id { get; }
+        string Email { get; }
+        string Note { get; }
+
         IBillingInfo BillingInfo { get; }
         IBillingInfo ShippingInfo { get; }
-        string Email { get; }
-        string Instructions { get; }
+
+        IList<ISalesItem> OrderDetails { get; }
     }
 }

@@ -52,6 +52,22 @@
             sb.AppendFormat("CavvResultCode={0}\n", r.CavvResultCode);
             sb.AppendFormat("StatusCode={0}\n", r.StatusCode);
             sb.AppendFormat("StatusMessage={0}\n", r.StatusMessage);
+            sb.AppendFormat("====== Vault ======\n");
+            sb.AppendFormat("DataKey={0}\n", r.DataKey);
+            sb.AppendFormat("ResSuccsess={0}\n", r.ResSuccsess);
+            sb.AppendFormat("PaymentType={0}\n", r.PaymentType);
+            sb.AppendFormat("====== ResolveData ======\n");
+            sb.AppendFormat("CustomerId={0}\n", r.CustomerId);
+            sb.AppendFormat("Phone={0}\n", r.Phone);
+            sb.AppendFormat("Email={0}\n", r.Email);
+            sb.AppendFormat("Note={0}\n", r.Note);
+            sb.AppendFormat("MaskedPan={0}\n", r.MaskedPan);
+            sb.AppendFormat("ExpDate={0}\n", r.ExpDate);
+            sb.AppendFormat("CryptType={0}\n", r.CryptType);
+            sb.AppendFormat("AvsStreetNumber={0}\n", r.AvsStreetNumber);
+            sb.AppendFormat("AvsStreetName={0}\n", r.AvsStreetName);
+            sb.AppendFormat("AvsZipCode={0}\n", r.AvsZipCode);
+
             return sb.ToString();
         }
         public static string DumpOpenTotals(IResponse r)

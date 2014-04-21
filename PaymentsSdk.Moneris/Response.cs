@@ -34,6 +34,23 @@
         public string StatusCode { get; private set; }
         public string StatusMessage { get; private set; }
 
+        // Vault
+        public string DataKey { get; private set; }
+        public string ResSuccsess { get; private set; }
+        public string PaymentType { get; private set; }
+
+        // ResolveData
+        public string CustomerId { get; private set; }
+        public string Phone { get; private set; }
+        public string Email { get; private set; }
+        public string Note { get; private set; }
+        public string MaskedPan { get; private set; }
+        public string ExpDate { get; private set; }
+        public string CryptType { get; private set; }
+        public string AvsStreetNumber { get; private set; }
+        public string AvsStreetName { get; private set; }
+        public string AvsZipCode { get; private set; }
+
         public bool HasErrorReceiptId
         {
             get
@@ -44,8 +61,9 @@
 
         public Response(Receipt receipt)
         {
-            this.Initialize(receipt);
             this.receipt = receipt;
+            this.Initialize(receipt);
+            this.InitResData(receipt);
         }
 
         private void Initialize(Receipt r)
@@ -70,6 +88,23 @@
             this.CavvResultCode = r.GetCavvResultCode();
             this.StatusCode = r.GetStatusCode();
             this.StatusMessage = r.GetStatusMessage();
+            this.DataKey = r.GetDataKey();
+            this.ResSuccsess = r.GetResSuccess();
+            this.PaymentType = r.GetPaymentType();
+        }
+
+        private void InitResData(Receipt r)
+        {
+            this.CustomerId = r.GetResDataCustId();
+            this.Phone = r.GetResDataPhone();
+            this.Email = r.GetResDataEmail();
+            this.Note = r.GetResDataNote();
+            this.MaskedPan = r.GetResDataMaskedPan();
+            this.ExpDate = r.GetResDataExpdate();
+            this.CryptType = r.GetResDataCryptType();
+            this.AvsStreetNumber = r.GetResDataAvsStreetNumber();
+            this.AvsStreetName = r.GetResDataAvsStreetName();
+            this.AvsZipCode = r.GetResDataAvsZipcode();
         }
 
         public IList<ITerminalTotal> GetOpenTotals()
