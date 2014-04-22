@@ -1,6 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using System;
+    using NUnit.Framework;
     using Transactions;
 
     public class TransactionTestBase
@@ -49,6 +50,20 @@
             var profile = new ResAddCreditCard(card, cust);
             var response = this.Send(profile);
             return response.DataKey;
+        }
+
+        protected void CheckTransactionTxnNumber(Transaction txn)
+        {
+            var response = this.Send(txn);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            Assert.AreNotEqual("null", response.TxnNumber);
+        }
+
+        protected void CheckTransactionResSuccsess(Transaction txn)
+        {
+            var response = this.Send(txn);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            Assert.AreEqual("true", response.ResSuccsess);
         }
     }
 }

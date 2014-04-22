@@ -53,6 +53,9 @@
     <Compile Include="Transactions\RecurUpdate.cs" />
     <Compile Include="Transactions\Refund.cs" />
     <Compile Include="Transactions\Transaction.cs" />
+    <Compile Include="Transactions\Vault\Financial\ResIndependedRefund.cs" />
+    <Compile Include="Transactions\Vault\Financial\ResPreAuth.cs" />
+    <Compile Include="Transactions\Vault\Financial\ResPurchase.cs" />
     <Compile Include="Transactions\Vault\ResAddCreditCard.cs" />
     <Compile Include="Transactions\Vault\ResDeleteCreditCard.cs" />
     <Compile Include="Transactions\Vault\ResGetExpiring.cs" />

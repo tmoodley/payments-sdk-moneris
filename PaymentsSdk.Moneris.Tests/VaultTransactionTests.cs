@@ -14,7 +14,7 @@
             var card = new CreditCard(avs);
             var cust = new Customer(new BillingInfo(), null, null);
             var profile = new ResAddCreditCard(card, cust);
-            this.CheckTransaction(profile);
+            this.CheckTransactionResSuccsess(profile);
         }
         [Test]
         public void CanTokenizeCreditCard()
@@ -23,14 +23,14 @@
             var avs = new AddressVerification();
             var cust = new Customer(new BillingInfo(), null, null);
             var profile = new ResTokenizeCreditCard(res.Item1, res.Item2, cust, avs);
-            this.CheckTransaction(profile);
+            this.CheckTransactionResSuccsess(profile);
         }
         [Test]
         public void CanDeleteCreditCard()
         {
             var dataKey = this.CreateProfile();
             var resDelete = new ResDeleteCreditCard(dataKey);
-            this.CheckTransaction(resDelete);
+            this.CheckTransactionResSuccsess(resDelete);
         }
         [Test]
         public void CanUpdateCreditCard()
@@ -40,17 +40,15 @@
             var card = new CreditCard(avs);
             var cust = new Customer(new BillingInfo(), null, null);
             var resUpdate = new ResUpdateCreditCard(dataKey, card, cust);
-            this.CheckTransaction(resUpdate);
+            this.CheckTransactionResSuccsess(resUpdate);
         }
-
         [Test]
         public void CanLookupMasked()
         {
             var dataKey = this.CreateProfile();
             var lookup = new ResLookupMasked(dataKey);
-            this.CheckTransaction(lookup);
+            this.CheckTransactionResSuccsess(lookup);
         }
-
         [Test]
         public void CanLookupFull()
         {
@@ -61,7 +59,6 @@
             Assert.AreEqual("true", response.ResSuccsess);
             Console.WriteLine("Full PAN={0}", response.GetFullPan());
         }
-
         [Test]
         public void CanGetExpiringProfiles()
         {
@@ -71,14 +68,6 @@
             Assert.AreEqual("true", response.ResSuccsess);
             Console.WriteLine("===== Expiring profiles =====");
             Console.WriteLine(TestHelper.DumpExpiringProfiles(response));
-        }
-
-
-        protected void CheckTransaction(Transaction txn)
-        {
-            var response = this.Send(txn);
-            Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("true", response.ResSuccsess);
         }
     }
 }

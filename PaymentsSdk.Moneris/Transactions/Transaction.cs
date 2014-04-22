@@ -93,5 +93,20 @@
         {
             return new Recur(rb.RecurUnit, rb.StartNow, rb.StartDate, rb.NumRecurs, rb.Period, rb.RecurAmount);
         }
+
+        protected string GetCustomerId(IOrder order)
+        {
+            if (order == null)
+            {
+                return string.Empty;
+            }
+
+            if (order.Customer == null)
+            {
+                return string.Empty;
+            }
+
+            return order.Customer.Id ?? string.Empty;
+        }
     }
 }

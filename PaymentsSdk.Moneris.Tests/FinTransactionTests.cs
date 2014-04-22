@@ -6,7 +6,7 @@
     using Transactions;
 
     [TestFixture]
-    public class TransactionTests : TransactionTestBase
+    public class FinTransactionTests : TransactionTestBase
     {
         [Test]
         public void CanSendPurchaseBasic()
@@ -14,8 +14,7 @@
             var order = new Order { Customer = null };
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
-            
-            this.CheckTransaction(purchase);
+            this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPreAuth()
@@ -23,49 +22,49 @@
             var order = new Order();
             var card = new CreditCard();
             var preAuth = new PreAuth(card, order);
-            this.CheckTransaction(preAuth);
+            this.CheckTransactionTxnNumber(preAuth);
         }
         [Test]
         public void CanSendReAuth()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
             var reAuth = new ReAuth(new Order(), orig.Item1, orig.Item2);
-            this.CheckTransaction(reAuth);
+            this.CheckTransactionTxnNumber(reAuth);
         }
         [Test]
         public void CanSendCapture()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
             var capture = new Capture(orig.Item1, orig.Item2, this.OriginalAmount);
-            this.CheckTransaction(capture);
+            this.CheckTransactionTxnNumber(capture);
         }
         [Test]
         public void CanReverseAmount()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
             var capture = new Capture(orig.Item1, orig.Item2, "0.00");
-            this.CheckTransaction(capture);
+            this.CheckTransactionTxnNumber(capture);
         }
         [Test]
         public void CanVoidTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
             var voidTxn = new VoidTransaction(orig.Item1, orig.Item2);
-            this.CheckTransaction(voidTxn);
+            this.CheckTransactionTxnNumber(voidTxn);
         }
         [Test]
         public void CanPartialRefundTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
             var voidTxn = new Refund(orig.Item1, orig.Item2, "20.00");
-            this.CheckTransaction(voidTxn);
+            this.CheckTransactionTxnNumber(voidTxn);
         }
         [Test]
         public void CanFullRefundTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
             var voidTxn = new Refund(orig.Item1, orig.Item2, this.OriginalAmount);
-            this.CheckTransaction(voidTxn);
+            this.CheckTransactionTxnNumber(voidTxn);
         }
         [Test]
         public void CanDoIndependedRefund()
@@ -73,7 +72,7 @@
             var order = new Order();
             var card = new CreditCard();
             var indepRefund = new IndependedRefund(card, order);
-            this.CheckTransaction(indepRefund);
+            this.CheckTransactionTxnNumber(indepRefund);
         }
         [Test]
         public void CanGetOpenTotals()
@@ -101,7 +100,7 @@
             var order = new Order();
             var card = new CreditCard();
             var verify = new CardVerification(card, order);
-            this.CheckTransaction(verify);
+            this.CheckTransactionTxnNumber(verify);
         }
         [Test]
         public void CanVerifyCardAvsNoCvd()
@@ -110,7 +109,7 @@
             var avsInfo = new AddressVerification();
             var card = new CreditCard(avsInfo);
             var verify = new CardVerification(card, order);
-            this.CheckTransaction(verify);
+            this.CheckTransactionTxnNumber(verify);
         }
         [Test]
         public void CanVerifyCardAvsCvd()
@@ -120,7 +119,7 @@
             var cvd = new CvdCheck();
             var card = new CreditCard(avsInfo, cvd);
             var verify = new CardVerification(card, order);
-            this.CheckTransaction(verify);
+            this.CheckTransactionTxnNumber(verify);
         }
         [Test]
         public void CanSendPurchaseWithCustomer()
@@ -129,8 +128,7 @@
             var order = new Order(customer);
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
-
-            this.CheckTransaction(purchase);
+            this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithCustomerNoOrderDetails()
@@ -139,8 +137,7 @@
             var order = new Order(customer) ;
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
-
-            this.CheckTransaction(purchase);
+            this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithEmptyShipping()
@@ -149,8 +146,7 @@
             var order = new Order(customer);
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
-
-            this.CheckTransaction(purchase);
+            this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithEmptyCustomer()
@@ -159,8 +155,7 @@
             var order = new Order(customer);
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
-
-            this.CheckTransaction(purchase);
+            this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithRecurringNoCustomer()
@@ -169,7 +164,7 @@
             var order = new Order(null, rb);
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
-            this.CheckTransaction(purchase);
+            this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithRecurringWithCustomer()
@@ -179,7 +174,7 @@
             var order = new Order(customer, rb);
             var card = new CreditCard();
             var purchase = new Purchase(card, order);
-            this.CheckTransaction(purchase);
+            this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendRecurringUpdate()
@@ -187,7 +182,7 @@
             var purchaseResult = this.DoPurchase("5.00", new RecurringBilling());
             var updateInfo = new RecurringUpdateInfo(purchaseResult.Item1);
             var recurUpdate = new RecurUpdate(updateInfo);
-            this.CheckTransaction(recurUpdate);
+            this.CheckTransactionTxnNumber(recurUpdate);
         }
         [Test]
         public void CanSendPurchaseBasicWithStatusCheck()
@@ -217,12 +212,5 @@
 
         // TODO: UpdateRecur: Add tests for EmptyCard, Variuos filds in RecurringUpdateInfo
         // TODO: Purchase, PreAuth: Add tests for Cvd & Avs Verification 
-
-        protected void CheckTransaction(Transaction txn)
-        {
-            var response = this.Send(txn);
-            Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreNotEqual("null", response.TxnNumber);
-        }
     }
 }

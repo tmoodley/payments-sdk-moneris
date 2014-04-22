@@ -15,12 +15,11 @@
 
         public override global::Moneris.Transaction GetInnerTransaction()
         {
-            var res = new global::Moneris.PreAuth(
-                this.Order.OrderId, 
-                this.Order.Amount, 
-                this.CreditCard.Pan, 
-                this.CreditCard.ExpDate, 
-                CONST_Crypt);
+            var customerId = this.GetCustomerId(this.Order);
+
+            var res = string.IsNullOrEmpty(customerId) ?
+                    new global::Moneris.PreAuth(this.Order.OrderId, this.Order.Amount, this.CreditCard.Pan, this.CreditCard.ExpDate, CONST_Crypt) :
+                    new global::Moneris.PreAuth(this.Order.OrderId, customerId, this.Order.Amount, this.CreditCard.Pan, this.CreditCard.ExpDate, CONST_Crypt);
 
             if (this.CreditCard.AddressVerification != null)
             {
