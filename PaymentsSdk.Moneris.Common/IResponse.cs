@@ -1,6 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
     using System.Collections.Generic;
+    using Common;
 
     public interface IResponse
     {
@@ -42,7 +43,10 @@
         string AvsStreetName { get; }
         string AvsZipCode { get; }
 
-
+        // ResLookupFull
+        string GetFullPan();
+        
         IList<ITerminalTotal> GetOpenTotals();
+        IList<IProfileInfo> GetExpiringProfiles();
     }
 }

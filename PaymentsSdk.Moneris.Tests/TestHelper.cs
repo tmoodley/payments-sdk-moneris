@@ -93,5 +93,27 @@
             return sb.ToString();
         }
 
+        public static string DumpExpiringProfiles(IResponse r)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var ep in r.GetExpiringProfiles())
+            {
+                sb.AppendFormat("==== Expiting profile for DataKey={0} ====\n", ep.DataKey);
+                sb.AppendFormat("AvsStreeetName={0}\n", ep.AvsStreeetName);
+                sb.AppendFormat("AvsStreetNumber={0}\n", ep.AvsStreetNumber);
+                sb.AppendFormat("AvsZipCode={0}\n", ep.AvsZipCode);
+                sb.AppendFormat("CryptType={0}\n", ep.CryptType);
+                sb.AppendFormat("CustomerId={0}\n", ep.CustomerId);
+                sb.AppendFormat("Email={0}\n", ep.Email);
+                sb.AppendFormat("ExpDate={0}\n", ep.ExpDate);
+                sb.AppendFormat("MaskedPan={0}\n", ep.MaskedPan);
+                sb.AppendFormat("Note={0}\n", ep.Note);
+                sb.AppendFormat("PaymentType={0}\n", ep.PaymentType);
+                sb.AppendFormat("Phone={0}\n", ep.Phone);
+            }
+
+            return sb.ToString();
+        }
     }
 }

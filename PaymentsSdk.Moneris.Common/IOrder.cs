@@ -1,7 +1,5 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
-    using System.Collections.Generic;
-
     public interface IOrder
     {
         string OrderId { get; }

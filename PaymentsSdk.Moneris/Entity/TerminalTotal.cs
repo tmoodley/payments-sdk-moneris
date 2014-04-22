@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.OpenTotals
+﻿namespace Rootzid.PaymentsSdk.Moneris
 {
     using System.Collections.Generic;
     using System.Linq;

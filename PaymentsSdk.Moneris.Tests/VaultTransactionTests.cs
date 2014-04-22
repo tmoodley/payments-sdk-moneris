@@ -43,6 +43,36 @@
             this.CheckTransaction(resUpdate);
         }
 
+        [Test]
+        public void CanLookupMasked()
+        {
+            var dataKey = this.CreateProfile();
+            var lookup = new ResLookupMasked(dataKey);
+            this.CheckTransaction(lookup);
+        }
+
+        [Test]
+        public void CanLookupFull()
+        {
+            var dataKey = this.CreateProfile();
+            var lookup = new ResLookupFull(dataKey);
+            var response = this.Send(lookup);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            Assert.AreEqual("true", response.ResSuccsess);
+            Console.WriteLine("Full PAN={0}", response.GetFullPan());
+        }
+
+        [Test]
+        public void CanGetExpiringProfiles()
+        {
+            var exp = new ResGetExpiring();
+            var response = this.Send(exp);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            Assert.AreEqual("true", response.ResSuccsess);
+            Console.WriteLine("===== Expiring profiles =====");
+            Console.WriteLine(TestHelper.DumpExpiringProfiles(response));
+        }
+
 
         protected void CheckTransaction(Transaction txn)
         {

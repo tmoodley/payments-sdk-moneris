@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using global::USMoneris;
     using Moneris;
+    using Moneris.Common;
 
     internal class USResponse : IResponse
     {
@@ -45,6 +46,16 @@
         public string AvsZipCode { get; private set; }
 
         public IList<ITerminalTotal> GetOpenTotals()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetFullPan()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IList<IProfileInfo> GetExpiringProfiles()
         {
             throw new System.NotImplementedException();
         }

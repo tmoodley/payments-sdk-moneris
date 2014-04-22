@@ -3,14 +3,15 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Common;
     using global::Moneris;
-    using OpenTotals;
 
     internal class Response : IResponse
     {
         private const string CONST_ErrorReceiptId = "Global Error Receipt";
 
         private IList<ITerminalTotal> openTotals = null;
+        private IList<IProfileInfo> expiringProfiles = null;
         private readonly Receipt receipt;
 
         public string ReceiptId { get; private set; }
@@ -57,6 +58,12 @@
             {
                 return string.Compare(this.ReceiptId, CONST_ErrorReceiptId, StringComparison.InvariantCultureIgnoreCase) == 0;
             }
+        }
+
+        // For ResLookupFull only
+        public string GetFullPan()
+        {
+            return this.receipt.GetResDataPan();
         }
 
         public Response(Receipt receipt)
@@ -111,6 +118,10 @@
         {
             return this.openTotals ?? (this.openTotals = this.InitOpenTotals(this.receipt));
         }
+        public IList<IProfileInfo> GetExpiringProfiles()
+        {
+            return this.expiringProfiles ?? (this.expiringProfiles = this.InitExpiringProfiles(this.receipt));
+        }
 
         private IList<ITerminalTotal> InitOpenTotals(Receipt rc)
         {
@@ -122,6 +133,20 @@
             }
 
             res.AddRange(rc.GetTerminalIDs().Select(terminalId => new TerminalTotal(rc, terminalId)).Cast<ITerminalTotal>());
+
+            return res;
+        }
+
+        private IList<IProfileInfo> InitExpiringProfiles(Receipt rc)
+        {
+            var res = new List<IProfileInfo>();
+
+            if (this.HasErrorReceiptId)
+            {
+                return res;
+            }
+
+            res.AddRange(rc.GetDataKeys().Select(dataKey => new ProfileInfo(rc, dataKey)));
 
             return res;
         }
