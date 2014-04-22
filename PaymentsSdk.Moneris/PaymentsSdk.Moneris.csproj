@@ -57,6 +57,7 @@
     <Compile Include="Transactions\Vault\Financial\ResPreAuth.cs" />
     <Compile Include="Transactions\Vault\Financial\ResPurchase.cs" />
     <Compile Include="Transactions\Vault\ResAddCreditCard.cs" />
+    <Compile Include="Transactions\Vault\ResAddToken.cs" />
     <Compile Include="Transactions\Vault\ResDeleteCreditCard.cs" />
     <Compile Include="Transactions\Vault\ResGetExpiring.cs" />
     <Compile Include="Transactions\Vault\ResLookupFull.cs" />

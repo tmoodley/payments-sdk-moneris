@@ -69,5 +69,17 @@
             Console.WriteLine("===== Expiring profiles =====");
             Console.WriteLine(TestHelper.DumpExpiringProfiles(response));
         }
+        [Test]
+        public void CanAddToken()
+        {
+            var avs = new AddressVerification();
+            var cust = new Customer(new BillingInfo(), null, null);
+            var tempDataKey = this.CreateProfile();
+            var expDate = (new CreditCard()).ExpDate;
+            var profile = new ResAddToken(tempDataKey, expDate, cust, avs);
+            var response = this.Send(profile);
+            Console.WriteLine(TestHelper.DumpResponse(response));
+            Assert.AreEqual("Data error: data_key", response.Message);
+        }
     }
 }
