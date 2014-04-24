@@ -1,6 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class ResTokenizeCreditCard : Transaction
+    using Common;
+
+    public class ResTokenizeCreditCard : TransactionBase
     {
         protected string OrderId { get; private set; }
         protected string TransactionNumber { get; private set; }
@@ -14,8 +16,8 @@
             this.CustomerInfo = customerInfo;
             this.AddressVerification = addressVerification;
         }
-        
-        public override global::Moneris.Transaction GetInnerTransaction()
+
+        public override object GetInnerTransaction()
         {
             var res = new global::Moneris.ResTokenizeCC(this.OrderId, this.TransactionNumber);
 

@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
+    using Common;
+
     internal class CvdCheck : ICvdVerification
     {
         public string Indicator { get; set; }

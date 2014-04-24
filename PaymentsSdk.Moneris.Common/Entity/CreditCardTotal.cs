@@ -1,7 +1,5 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris
+﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
-    using global::Moneris;
-
     internal class CreditCardTotal : ICreditCardTotal
     {
         public string TerminalId { get; private set; }
@@ -13,7 +11,7 @@
         public string CorrectionCount { get; private set; }
         public string CorrectionAmount { get; private set; }
 
-        public CreditCardTotal(Receipt receipt, string ecrNo, string cardType)
+        public CreditCardTotal(IReceipt receipt, string ecrNo, string cardType)
         {
             this.TerminalId = ecrNo;
             this.CardType = cardType;

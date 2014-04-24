@@ -1,6 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class ResAddCreditCard : Transaction
+    using Common;
+
+    public class ResAddCreditCard : TransactionBase
     {
         private const string CONST_Crypt = "7";
 
@@ -17,7 +19,7 @@
         {
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             var res = new global::Moneris.ResAddCC(
                 this.CreditCard.Pan,

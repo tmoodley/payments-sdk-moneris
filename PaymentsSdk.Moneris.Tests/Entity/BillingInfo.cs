@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
+    using Common;
+
     internal class BillingInfo : IBillingInfo
     {
         public string FirstName { get;  set; }

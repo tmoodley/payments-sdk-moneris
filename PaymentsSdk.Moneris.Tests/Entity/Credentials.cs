@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
+    using Common;
+
     internal class Credentials : ICredentials
     {
         public string Host

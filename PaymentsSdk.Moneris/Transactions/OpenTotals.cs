@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class OpenTotals : Transaction
+    public class OpenTotals : TransactionBase
     {
         private readonly string terminalId;
 
@@ -9,7 +9,7 @@
             this.terminalId = terminalId;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             return new global::Moneris.OpenTotals(terminalId);
         }

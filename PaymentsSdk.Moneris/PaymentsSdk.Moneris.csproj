@@ -36,12 +36,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\CreditCardTotal.cs" />
-    <Compile Include="Entity\ProfileInfo.cs" />
-    <Compile Include="Entity\TerminalTotal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receipt.cs" />
     <Compile Include="Request.cs" />
-    <Compile Include="Response.cs" />
     <Compile Include="Transactions\BatchClose.cs" />
     <Compile Include="Transactions\Capture.cs" />
     <Compile Include="Transactions\CardVerification.cs" />
@@ -52,7 +49,7 @@
     <Compile Include="Transactions\ReAuth.cs" />
     <Compile Include="Transactions\RecurUpdate.cs" />
     <Compile Include="Transactions\Refund.cs" />
-    <Compile Include="Transactions\Transaction.cs" />
+    <Compile Include="Transactions\TransactionBase.cs" />
     <Compile Include="Transactions\Vault\Financial\ResIndependedRefund.cs" />
     <Compile Include="Transactions\Vault\Financial\ResPreAuth.cs" />
     <Compile Include="Transactions\Vault\Financial\ResPurchase.cs" />
@@ -64,7 +61,7 @@
     <Compile Include="Transactions\Vault\ResLookupMasked.cs" />
     <Compile Include="Transactions\Vault\ResTokenizeCreditCard.cs" />
     <Compile Include="Transactions\Vault\ResUpdateCreditCard.cs" />
-    <Compile Include="Transactions\VoidTransaction.cs" />
+    <Compile Include="Transactions\VoidTransactionBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">

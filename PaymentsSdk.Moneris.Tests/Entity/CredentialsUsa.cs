@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
-    using Moneris;
+    using Common;
 
     internal class CredentialsUsa : ICredentials
     {

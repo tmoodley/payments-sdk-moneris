@@ -1,8 +1,8 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris
+﻿namespace Rootzid.PaymentsSdk.USMoneris
 {
     using System;
-    using Common;
-    using global::Moneris;
+    using global::USMoneris;
+    using Moneris.Common;
 
     public class Request : IRequest
     {
@@ -16,12 +16,12 @@
         public IResponse Send(ITransaction transaction, bool statusCheck = false)
         {
             var txn = transaction.GetInnerTransaction() as Transaction;
-            
+
             if (txn == null)
             {
                 throw new ArgumentException("transaction");
             }
-            
+
             var status = statusCheck.ToString().ToLower();
             var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, status, txn);
             var receipt = new Receipt(request.GetReceipt());

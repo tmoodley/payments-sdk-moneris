@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using global::Moneris;
+    using Common;
 
     internal class TerminalTotal : ITerminalTotal
     {
@@ -10,13 +10,13 @@
 
         public string TerminalId { get; private set; }
 
-        public TerminalTotal(Receipt receipt, string terminalId)
+        public TerminalTotal(IReceipt receipt, string terminalId)
         {
             this.TerminalId = terminalId;
             this.CardTotals = this.InitCardTotals(receipt, terminalId);
         }
 
-        internal IList<ICreditCardTotal> InitCardTotals(Receipt receipt, string terminalId)
+        internal IList<ICreditCardTotal> InitCardTotals(IReceipt receipt, string terminalId)
         {
             return receipt.GetCreditCards(terminalId).Select(cardType => new CreditCardTotal(receipt, terminalId, cardType)).Cast<ICreditCardTotal>().ToList();
         }

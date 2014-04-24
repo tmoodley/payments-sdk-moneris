@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
+    using Common;
+
     internal class AddressVerification : IAddressVerification
     {
         public string StreetNumber { get; set; }

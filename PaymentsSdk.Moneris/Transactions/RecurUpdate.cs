@@ -1,6 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class RecurUpdate : Transaction
+    using Common;
+
+    public class RecurUpdate : TransactionBase
     {
         protected IRecurringUpdateInfo RecurringUpdateInfo { get; private set; }
 
@@ -9,7 +11,7 @@
             this.RecurringUpdateInfo = recurringUpdateInfo;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             var ru = this.RecurringUpdateInfo;
             var res = new global::Moneris.RecurUpdate(ru.OrderId);

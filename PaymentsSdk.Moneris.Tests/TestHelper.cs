@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Text;
+    using Common;
 
     internal static class TestHelper
     {
@@ -29,13 +30,14 @@
         }
 
 
-        public static string DumpResponse(IResponse r)
+        public static string DumpResponse(IResponse response)
         {
             var sb = new StringBuilder();
+            var r = response.Receipt;
             sb.AppendFormat("ReceiptId={0}\n", r.ReceiptId);
             sb.AppendFormat("ReferenceNum={0}\n", r.ReferenceNum);
             sb.AppendFormat("ResponseCode={0}\n", r.ResponseCode);
-            sb.AppendFormat("Iso={0}\n", r.Iso);
+            sb.AppendFormat("Iso={0}\n", r.ISO);
             sb.AppendFormat("AuthCode={0}\n", r.AuthCode);
             sb.AppendFormat("TransTime={0}\n", r.TransTime);
             sb.AppendFormat("TransDate={0}\n", r.TransDate);
@@ -46,7 +48,7 @@
             sb.AppendFormat("CardType={0}\n", r.CardType);
             sb.AppendFormat("TxnNumber={0}\n", r.TxnNumber);
             sb.AppendFormat("TimedOut={0}\n", r.TimedOut);
-            sb.AppendFormat("RecurSucess={0}\n", r.RecurSucess);
+            sb.AppendFormat("RecurSucess={0}\n", r.RecurSuccess);
             sb.AppendFormat("AvsResultCode={0}\n", r.AvsResultCode);
             sb.AppendFormat("CvdResultCode={0}\n", r.CvdResultCode);
             sb.AppendFormat("CavvResultCode={0}\n", r.CavvResultCode);
@@ -54,7 +56,7 @@
             sb.AppendFormat("StatusMessage={0}\n", r.StatusMessage);
             sb.AppendFormat("====== Vault ======\n");
             sb.AppendFormat("DataKey={0}\n", r.DataKey);
-            sb.AppendFormat("ResSuccsess={0}\n", r.ResSuccsess);
+            sb.AppendFormat("ResSuccsess={0}\n", r.ResSuccess);
             sb.AppendFormat("PaymentType={0}\n", r.PaymentType);
             sb.AppendFormat("====== ResolveData ======\n");
             sb.AppendFormat("CustomerId={0}\n", r.CustomerId);

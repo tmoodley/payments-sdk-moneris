@@ -1,6 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class ResAddToken : Transaction
+    using Common;
+
+    public class ResAddToken : TransactionBase
     {
         private const string CONST_Crypt = "7";
 
@@ -18,7 +20,7 @@
             this.AddressVerification = addressVerification;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             var res = new global::Moneris.ResAddToken(this.DataKey, CONST_Crypt);
 

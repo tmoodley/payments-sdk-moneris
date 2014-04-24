@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class Refund : Transaction
+    public class Refund : TransactionBase
     {
         private const string CONST_Crypt = "7";
 
@@ -15,9 +15,9 @@
             this.Amount = amount;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
-            return new global::Moneris.Refund(
+            return new global::Moneris.Refund( 
                 this.OriginalOrderId,
                 this.Amount,
                 this.TransactionNumber,

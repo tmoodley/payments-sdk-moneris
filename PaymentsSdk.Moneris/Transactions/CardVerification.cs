@@ -1,6 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class CardVerification : Transaction
+    using Common;
+
+    public class CardVerification : TransactionBase
     {
         private const string CONST_Crypt = "7";
 
@@ -13,7 +15,7 @@
             this.Order = order;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             var res = new global::Moneris.CardVerification(
                 this.Order.OrderId,

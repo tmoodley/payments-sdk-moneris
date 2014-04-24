@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Common.Entity
+﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
     public class EmptyBillingInfo : IBillingInfo
     {

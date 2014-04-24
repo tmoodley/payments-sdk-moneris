@@ -33,7 +33,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\CreditCardTotal.cs" />
     <Compile Include="Entity\EmptyBillingInfo.cs" />
+    <Compile Include="Entity\ProfileInfo.cs" />
+    <Compile Include="Entity\Response.cs" />
+    <Compile Include="Entity\TerminalTotal.cs" />
     <Compile Include="IAddressVerification.cs" />
     <Compile Include="ICreditCard.cs" />
     <Compile Include="ICredentials.cs" />
@@ -49,6 +53,9 @@
     <Compile Include="OpenTotals\ICreditCardTotal.cs" />
     <Compile Include="OpenTotals\ITerminalTotal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IReceipt.cs" />
+    <Compile Include="IRequest.cs" />
+    <Compile Include="ITransaction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

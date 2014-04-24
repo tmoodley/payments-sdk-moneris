@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Entity
 {
+    using Common;
+
     internal class RecurringBilling : IRecurringBilling
     {
         public string RecurUnit { get; set; }

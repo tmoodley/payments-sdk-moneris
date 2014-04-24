@@ -1,10 +1,11 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
+    using Common;
     using global::Moneris;
 
-    public abstract class Transaction
+    public abstract class TransactionBase : ITransaction
     {
-        public abstract global::Moneris.Transaction GetInnerTransaction();
+        public abstract object GetInnerTransaction();
 
         protected AvsInfo CreateAvsInfo(IAddressVerification address)
         {
@@ -93,7 +94,6 @@
         {
             return new Recur(rb.RecurUnit, rb.StartNow, rb.StartDate, rb.NumRecurs, rb.Period, rb.RecurAmount);
         }
-
         protected string GetCustomerId(IOrder order)
         {
             if (order == null)

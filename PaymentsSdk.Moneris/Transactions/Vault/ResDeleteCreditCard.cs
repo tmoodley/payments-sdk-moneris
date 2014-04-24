@@ -2,7 +2,7 @@
 {
     using global::Moneris;
 
-    public class ResDeleteCreditCard : Transaction
+    public class ResDeleteCreditCard : TransactionBase
     {
         protected string DataKey { get; private set; }
 
@@ -11,7 +11,7 @@
             this.DataKey = dataKey;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             return new ResDelete(this.DataKey);
         }

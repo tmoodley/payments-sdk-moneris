@@ -1,8 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class ResGetExpiring : Transaction
+    public class ResGetExpiring : TransactionBase
     {
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             return new global::Moneris.ResGetExpiring();
         }

@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class ResLookupMasked : Transaction
+    public class ResLookupMasked : TransactionBase
     {
         protected string DataKey { get; private set; }
 
@@ -9,7 +9,7 @@
             this.DataKey = dataKey;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             return new global::Moneris.ResLookupMasked(this.DataKey);
         }

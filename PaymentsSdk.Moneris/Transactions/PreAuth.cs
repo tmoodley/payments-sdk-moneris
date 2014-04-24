@@ -1,6 +1,8 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class PreAuth : Transaction
+    using Common;
+
+    public class PreAuth : TransactionBase
     {
         private const string CONST_Crypt = "7";
 
@@ -13,7 +15,7 @@
             this.Order = order;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             var customerId = this.GetCustomerId(this.Order);
 

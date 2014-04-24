@@ -1,8 +1,5 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris
+﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
-    using Common;
-    using global::Moneris;
-
     internal class ProfileInfo : IProfileInfo
     {
         public string DataKey { get; private set; }
@@ -18,7 +15,7 @@
         public string AvsStreetNumber { get; private set; }
         public string AvsZipCode { get; private set; }
 
-        public ProfileInfo(Receipt receipt, string dataKey)
+        public ProfileInfo(IReceipt receipt, string dataKey)
         {
             this.DataKey = dataKey;
             this.PaymentType = receipt.GetExpPaymentType(dataKey);

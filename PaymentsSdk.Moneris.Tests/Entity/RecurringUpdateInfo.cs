@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Entity
 {
+    using Common;
+
     internal class RecurringUpdateInfo : IRecurringUpdateInfo
     {
         public ICreditCard Card { get; set; }

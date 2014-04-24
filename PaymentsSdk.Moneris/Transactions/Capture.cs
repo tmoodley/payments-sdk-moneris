@@ -1,6 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Transactions
 {
-    public class Capture : Transaction
+    public class Capture : TransactionBase
     {
         private const string CONST_Crypt = "6";
 
@@ -15,7 +15,7 @@
             this.Amount = amount;
         }
 
-        public override global::Moneris.Transaction GetInnerTransaction()
+        public override object GetInnerTransaction()
         {
             return new global::Moneris.Completion(
                 this.OriginalOrderId,

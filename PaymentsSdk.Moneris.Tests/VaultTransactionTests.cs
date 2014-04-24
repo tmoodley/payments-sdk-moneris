@@ -56,8 +56,8 @@
             var lookup = new ResLookupFull(dataKey);
             var response = this.Send(lookup);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("true", response.ResSuccsess);
-            Console.WriteLine("Full PAN={0}", response.GetFullPan());
+            Assert.AreEqual("true", response.Receipt.RecurSuccess);
+            Console.WriteLine("Full PAN={0}", response.Receipt.GetFullPan());
         }
         [Test]
         public void CanGetExpiringProfiles()
@@ -65,7 +65,7 @@
             var exp = new ResGetExpiring();
             var response = this.Send(exp);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("true", response.ResSuccsess);
+            Assert.AreEqual("true", response.Receipt.ResSuccess);
             Console.WriteLine("===== Expiring profiles =====");
             Console.WriteLine(TestHelper.DumpExpiringProfiles(response));
         }
@@ -79,7 +79,7 @@
             var profile = new ResAddToken(tempDataKey, expDate, cust, avs);
             var response = this.Send(profile);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("Data error: data_key", response.Message);
+            Assert.AreEqual("Data error: data_key", response.Receipt.Message);
         }
     }
 }

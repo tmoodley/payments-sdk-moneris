@@ -1,7 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using System.Collections.Generic;
-    using Common.Entity;
+    using Common;
 
     internal class Customer : ICustomerInfo
     {
