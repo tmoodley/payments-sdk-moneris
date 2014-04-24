@@ -49,7 +49,7 @@
         public void CanVoidTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
-            var voidTxn = new VoidTransactionBase(orig.Item1, orig.Item2);
+            var voidTxn = new VoidTransaction(orig.Item1, orig.Item2);
             this.CheckTransactionTxnNumber(voidTxn);
         }
         [Test]
