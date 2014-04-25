@@ -36,21 +36,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receipt.cs" />
-    <Compile Include="Request.cs" />
     <Compile Include="TransactionFactory.cs" />
-    <Compile Include="Transactions\Vault\Financial\ResIndependedRefund.cs" />
-    <Compile Include="Transactions\Vault\Financial\ResPreAuth.cs" />
-    <Compile Include="Transactions\Vault\Financial\ResPurchase.cs" />
-    <Compile Include="Transactions\Vault\ResAddCreditCard.cs" />
-    <Compile Include="Transactions\Vault\ResAddToken.cs" />
-    <Compile Include="Transactions\Vault\ResDeleteCreditCard.cs" />
-    <Compile Include="Transactions\Vault\ResGetExpiring.cs" />
-    <Compile Include="Transactions\Vault\ResLookupFull.cs" />
-    <Compile Include="Transactions\Vault\ResLookupMasked.cs" />
-    <Compile Include="Transactions\Vault\ResTokenizeCreditCard.cs" />
-    <Compile Include="Transactions\Vault\ResUpdateCreditCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">

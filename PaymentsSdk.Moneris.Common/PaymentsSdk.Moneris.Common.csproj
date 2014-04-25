@@ -44,6 +44,7 @@
     <Compile Include="IBillingInfo.cs" />
     <Compile Include="ICustomerInfo.cs" />
     <Compile Include="ICvdVerification.cs" />
+    <Compile Include="IGateway.cs" />
     <Compile Include="IProfileInfo.cs" />
     <Compile Include="IRecurringBilling.cs" />
     <Compile Include="IRecurringUpdateInfo.cs" />

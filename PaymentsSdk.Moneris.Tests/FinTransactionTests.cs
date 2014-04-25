@@ -3,83 +3,86 @@
     using System;
     using Entity;
     using NUnit.Framework;
-    using Transactions;
 
     [TestFixture]
     public class FinTransactionTests : TransactionTestBase
     {
+        [SetUp]
+        public void Setup()
+        {
+            this.Gateway = new Gateway(new Credentials());
+        }
+
         [Test]
         public void CanSendPurchaseBasic()
         {
             var order = new Order { Customer = null };
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
-            this.CheckTransactionTxnNumber(purchase);
+            var response = this.Gateway.Purchase(card, order);
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanSendPreAuth()
         {
             var order = new Order();
             var card = new CreditCard();
-            var preAuth = new PreAuth(card, order);
-            this.CheckTransactionTxnNumber(preAuth);
+            var response = this.Gateway.PreAuth(card, order);
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanSendReAuth()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
-            var reAuth = new ReAuth(new Order(), orig.Item1, orig.Item2);
-            this.CheckTransactionTxnNumber(reAuth);
+            var response = this.Gateway.ReAuth(new Order(), orig.Item1, orig.Item2);
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanSendCapture()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
-            var capture = new Capture(orig.Item1, orig.Item2, this.OriginalAmount);
-            this.CheckTransactionTxnNumber(capture);
+            var response = this.Gateway.Capture(orig.Item1, orig.Item2, this.OriginalAmount);
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanReverseAmount()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
-            var capture = new Capture(orig.Item1, orig.Item2, "0.00");
-            this.CheckTransactionTxnNumber(capture);
+            var response = this.Gateway.Capture(orig.Item1, orig.Item2, "0.00");
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanVoidTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
-            var voidTxn = new VoidTransaction(orig.Item1, orig.Item2);
-            this.CheckTransactionTxnNumber(voidTxn);
+            var response = this.Gateway.Void(orig.Item1, orig.Item2);
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanPartialRefundTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
-            var voidTxn = new Refund(orig.Item1, orig.Item2, "20.00");
-            this.CheckTransactionTxnNumber(voidTxn);
+            var response = this.Gateway.Refund(orig.Item1, orig.Item2, "20.00");
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanFullRefundTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
-            var voidTxn = new Refund(orig.Item1, orig.Item2, this.OriginalAmount);
-            this.CheckTransactionTxnNumber(voidTxn);
+            var response = this.Gateway.Refund(orig.Item1, orig.Item2, this.OriginalAmount);
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanDoIndependedRefund()
         {
             var order = new Order();
             var card = new CreditCard();
-            var indepRefund = new IndependedRefund(card, order);
-            this.CheckTransactionTxnNumber(indepRefund);
+            var response = this.Gateway.IndependedRefund(card, order);
+            this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanGetOpenTotals()
         {
-            var openTotals = new OpenTotals("66005372");
-            var request = new Request(new Credentials());
-            var response = request.Send(openTotals);
+            var response = this.Gateway.OpenTotals("66005372");
             Console.WriteLine(TestHelper.DumpResponse(response));
             Console.WriteLine("Open Totals: ");
             Console.WriteLine(TestHelper.DumpOpenTotals(response));
@@ -87,9 +90,7 @@
         [Test]
         public void CanCloseBatch()
         {
-            var batchClose = new BatchClose("66005372");
-            var request = new Request(new Credentials());
-            var response = request.Send(batchClose);
+            var response = this.Gateway.BatchClose("66005372");
             Console.WriteLine(TestHelper.DumpResponse(response));
             Console.WriteLine("Open Totals: ");
             Console.WriteLine(TestHelper.DumpOpenTotals(response));
@@ -99,7 +100,7 @@
         {
             var order = new Order();
             var card = new CreditCard();
-            var verify = new CardVerification(card, order);
+            var verify = this.Gateway.CardVerification(card, order);
             this.CheckTransactionTxnNumber(verify);
         }
         [Test]
@@ -108,7 +109,7 @@
             var order = new Order();
             var avsInfo = new AddressVerification();
             var card = new CreditCard(avsInfo);
-            var verify = new CardVerification(card, order);
+            var verify = this.Gateway.CardVerification(card, order);
             this.CheckTransactionTxnNumber(verify);
         }
         [Test]
@@ -118,7 +119,7 @@
             var avsInfo = new AddressVerification();
             var cvd = new CvdCheck();
             var card = new CreditCard(avsInfo, cvd);
-            var verify = new CardVerification(card, order);
+            var verify = this.Gateway.CardVerification(card, order);
             this.CheckTransactionTxnNumber(verify);
         }
         [Test]
@@ -127,7 +128,7 @@
             var customer = new Customer(new BillingInfo(), new BillingInfo(), TestHelper.PopulateSalesItems());
             var order = new Order(customer);
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
+            var purchase = this.Gateway.Purchase(card, order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
@@ -136,7 +137,7 @@
             var customer = new Customer(new BillingInfo(), new BillingInfo(), null);
             var order = new Order(customer) ;
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
+            var purchase = this.Gateway.Purchase(card, order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
@@ -145,7 +146,7 @@
             var customer = new Customer(new BillingInfo(), null, null);
             var order = new Order(customer);
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
+            var purchase = this.Gateway.Purchase(card, order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
@@ -154,7 +155,7 @@
             var customer = new Customer(null, null, null);
             var order = new Order(customer);
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
+            var purchase = this.Gateway.Purchase(card, order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
@@ -163,7 +164,7 @@
             var rb = new RecurringBilling();
             var order = new Order(null, rb);
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
+            var purchase = this.Gateway.Purchase(card, order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
@@ -173,7 +174,7 @@
             var rb = new RecurringBilling();
             var order = new Order(customer, rb);
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
+            var purchase = this.Gateway.Purchase(card, order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
@@ -181,7 +182,7 @@
         {
             var purchaseResult = this.DoPurchase("5.00", new RecurringBilling());
             var updateInfo = new RecurringUpdateInfo(purchaseResult.Item1);
-            var recurUpdate = new RecurUpdate(updateInfo);
+            var recurUpdate = this.Gateway.RecurUpdate(updateInfo);
             this.CheckTransactionTxnNumber(recurUpdate);
         }
         [Test]
@@ -189,12 +190,11 @@
         {
             var order = new Order { Customer = null };
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
-            var request = new Request(new Credentials());
-            
-            var response = request.Send(purchase);
+            var response = this.Gateway.Purchase(card, order);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            var statusResponse = request.Send(purchase, true);
+
+            this.Gateway.StatusCheck = true;
+            var statusResponse = this.Gateway.Purchase(card, order);
             Console.WriteLine("=== STATUS CHECK ====");
             Console.WriteLine(TestHelper.DumpResponse(statusResponse));
         }
@@ -203,9 +203,10 @@
         {
             var order = new Order { Customer = null };
             var card = new CreditCard();
-            var purchase = new Purchase(card, order);
-            var request = new Request(new Credentials());
-            var statusResponse = request.Send(purchase, true);
+            var purchase = this.Gateway.Purchase(card, order);
+
+            this.Gateway.StatusCheck = true;
+            var statusResponse = this.Gateway.Purchase(card, order);
             Console.WriteLine("=== STATUS CHECK ====");
             Console.WriteLine(TestHelper.DumpResponse(statusResponse));
         }

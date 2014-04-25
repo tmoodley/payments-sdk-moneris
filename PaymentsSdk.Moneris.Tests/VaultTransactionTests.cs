@@ -2,18 +2,23 @@
 {
     using System;
     using NUnit.Framework;
-    using Transactions;
 
     [TestFixture]
     public class VaultTransactionTests : TransactionTestBase
     {
+        [SetUp]
+        public void Setup()
+        {
+            this.Gateway = new Gateway(new Credentials());
+        }
+
         [Test]
         public void CanAddCreditCard()
         {
             var avs = new AddressVerification();
             var card = new CreditCard(avs);
             var cust = new Customer(new BillingInfo(), null, null);
-            var profile = new ResAddCreditCard(card, cust);
+            var profile = this.Gateway.ResAddCreditCard(card, cust);
             this.CheckTransactionResSuccsess(profile);
         }
         [Test]
@@ -22,14 +27,14 @@
             var res = this.DoPurchase(this.OriginalAmount, null);
             var avs = new AddressVerification();
             var cust = new Customer(new BillingInfo(), null, null);
-            var profile = new ResTokenizeCreditCard(res.Item1, res.Item2, cust, avs);
+            var profile = this.Gateway.ResTokenizeCreditCard(res.Item1, res.Item2, cust, avs);
             this.CheckTransactionResSuccsess(profile);
         }
         [Test]
         public void CanDeleteCreditCard()
         {
             var dataKey = this.CreateProfile();
-            var resDelete = new ResDeleteCreditCard(dataKey);
+            var resDelete = this.Gateway.ResDeleteCreditCard(dataKey);
             this.CheckTransactionResSuccsess(resDelete);
         }
         [Test]
@@ -39,22 +44,21 @@
             var avs = new AddressVerification();
             var card = new CreditCard(avs);
             var cust = new Customer(new BillingInfo(), null, null);
-            var resUpdate = new ResUpdateCreditCard(dataKey, card, cust);
+            var resUpdate = this.Gateway.ResUpdateCreditCard(dataKey, card, cust);
             this.CheckTransactionResSuccsess(resUpdate);
         }
         [Test]
         public void CanLookupMasked()
         {
             var dataKey = this.CreateProfile();
-            var lookup = new ResLookupMasked(dataKey);
+            var lookup = this.Gateway.ResLookupMasked(dataKey);
             this.CheckTransactionResSuccsess(lookup);
         }
         [Test]
         public void CanLookupFull()
         {
             var dataKey = this.CreateProfile();
-            var lookup = new ResLookupFull(dataKey);
-            var response = this.Send(lookup);
+            var response = this.Gateway.ResLookupFull(dataKey);
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreEqual("true", response.Receipt.RecurSuccess);
             Console.WriteLine("Full PAN={0}", response.Receipt.GetFullPan());
@@ -62,8 +66,7 @@
         [Test]
         public void CanGetExpiringProfiles()
         {
-            var exp = new ResGetExpiring();
-            var response = this.Send(exp);
+            var response = this.Gateway.ResGetExpiring();
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreEqual("true", response.Receipt.ResSuccess);
             Console.WriteLine("===== Expiring profiles =====");
@@ -76,8 +79,7 @@
             var cust = new Customer(new BillingInfo(), null, null);
             var tempDataKey = this.CreateProfile();
             var expDate = (new CreditCard()).ExpDate;
-            var profile = new ResAddToken(tempDataKey, expDate, cust, avs);
-            var response = this.Send(profile);
+            var response = this.Gateway.ResAddToken(tempDataKey, expDate, cust, avs);
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.AreEqual("Data error: data_key", response.Receipt.Message);
         }

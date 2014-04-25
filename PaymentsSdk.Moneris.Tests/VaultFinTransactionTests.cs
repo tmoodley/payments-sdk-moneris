@@ -1,18 +1,23 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using NUnit.Framework;
-    using Transactions;
 
     [TestFixture]
     public class VaultFinTransactionTests : TransactionTestBase
     {
+        [SetUp]
+        public void Setup()
+        {
+            this.Gateway = new Gateway(new Credentials());
+        }
+
         [Test]
         public void CanSendPreAuth()
         {
             var order = new Order();
             var dataKey = this.CreateProfile();
-            var preAuth = new ResPreAuth(dataKey, order);
-            this.CheckTransactionTxnNumber(preAuth);
+            var response = this.Gateway.ResPreAuth(dataKey, order);
+            this.CheckTransactionTxnNumber(response);
         }
 
         [Test]
@@ -20,8 +25,8 @@
         {
             var order = new Order();
             var dataKey = this.CreateProfile();
-            var purchase = new ResPurchase(dataKey, order);
-            this.CheckTransactionTxnNumber(purchase);
+            var response = this.Gateway.ResPurchase(dataKey, order);
+            this.CheckTransactionTxnNumber(response);
         }
 
         [Test]
@@ -29,8 +34,8 @@
         {
             var order = new Order();
             var dataKey = this.CreateProfile();
-            var indepRefund = new ResIndependedRefund(dataKey, order);
-            this.CheckTransactionTxnNumber(indepRefund);
+            var response = this.Gateway.ResIndependedRefund(dataKey, order);
+            this.CheckTransactionTxnNumber(response);
         }
     }
 }

@@ -3,7 +3,6 @@
     using System;
     using Common;
     using NUnit.Framework;
-    using Transactions;
 
     public class TransactionTestBase
     {
@@ -15,31 +14,20 @@
             }
         }
 
-        protected IResponse Send(TransactionBase txn)
-        {
-            var request = new Request(new Credentials());
-            return request.Send(txn);
-        }
+        protected IGateway Gateway { get; set; }
+
         protected Tuple<string, string> DoPreAuth(string amount)
         {
             var order = new Order { Amount = amount };
             var card = new CreditCard();
-            var request = new Request(new Credentials());
-
-            var purchase = new PreAuth(card, order);
-            var response = request.Send(purchase);
-
+            var response = this.Gateway.PreAuth(card, order);
             return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
         }
         protected Tuple<string, string> DoPurchase(string amount, IRecurringBilling rb = null)
         {
             var order = new Order(null, rb) { Amount = amount };
             var card = new CreditCard();
-            var request = new Request(new Credentials());
-
-            var purchase = new Purchase(card, order);
-            var response = request.Send(purchase);
-
+            var response = this.Gateway.Purchase(card, order);
             return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
         }
 
@@ -48,23 +36,19 @@
             var avs = new AddressVerification();
             var card = new CreditCard(avs);
             var cust = new Customer(new BillingInfo(), null, null);
-            var profile = new ResAddCreditCard(card, cust);
-            var response = this.Send(profile);
+            var response = this.Gateway.ResAddCreditCard(card, cust);
             return response.Receipt.DataKey;
         }
 
-        protected void CheckTransactionTxnNumber(TransactionBase txn)
+        protected void CheckTransactionTxnNumber(IResponse res)
         {
-            var response = this.Send(txn);
-            Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreNotEqual("null", response.Receipt.TxnNumber);
+            Console.WriteLine(TestHelper.DumpResponse(res));
+            Assert.AreNotEqual("null", res.Receipt.TxnNumber);
         }
-
-        protected void CheckTransactionResSuccsess(TransactionBase txn)
+        protected void CheckTransactionResSuccsess(IResponse res)
         {
-            var response = this.Send(txn);
-            Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("true", response.Receipt.ResSuccess);
+            Console.WriteLine(TestHelper.DumpResponse(res));
+            Assert.AreEqual("true", res.Receipt.ResSuccess);
         }
     }
 }
