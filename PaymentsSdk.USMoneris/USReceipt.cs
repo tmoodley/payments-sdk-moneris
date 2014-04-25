@@ -2,7 +2,7 @@
 {
     using Moneris.Common;
 
-    internal class Receipt : IReceipt
+    internal class USReceipt : IReceipt
     {
         private readonly global::USMoneris.Receipt innerReceipt;
 
@@ -250,7 +250,7 @@
             return this.innerReceipt.GetResDataPan();
         }
 
-        internal Receipt(global::USMoneris.Receipt innerReceipt)
+        internal USReceipt(global::USMoneris.Receipt innerReceipt)
         {
             this.innerReceipt = innerReceipt;
         }

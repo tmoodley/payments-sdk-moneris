@@ -37,7 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Receipt.cs" />
+    <Compile Include="USReceipt.cs" />
+    <Compile Include="USTransactionFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">
