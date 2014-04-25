@@ -4,7 +4,7 @@
     using Common;
     using NUnit.Framework;
 
-    public class TransactionTestBase
+    public abstract class TestBase
     {
         protected string OriginalAmount
         {
@@ -15,6 +15,8 @@
         }
 
         protected IGateway Gateway { get; set; }
+
+        protected abstract void InitGateway();
 
         protected Tuple<string, string> DoPreAuth(string amount)
         {

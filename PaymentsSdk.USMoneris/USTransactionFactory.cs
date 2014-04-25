@@ -86,7 +86,8 @@
         }
         public Transaction CardVerification(ICreditCard creditCard, IOrder order)
         {
-            var res = new USCardVerification(order.OrderId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7");
+            var customerId = this.GetCustomerId(order);
+            var res = new USCardVerification(order.OrderId, customerId, creditCard.Pan, creditCard.ExpDate);
 
             if (creditCard.AddressVerification != null)
             {
@@ -102,7 +103,7 @@
         }
         public Transaction Capture(string originalOrderId, string transactionNumber, string amount)
         {
-            return new USCompletion(originalOrderId, amount, transactionNumber, "6");
+            return new USCompletion(originalOrderId, amount, transactionNumber, "6", string.Empty, string.Empty);
         }
         public Transaction BatchClose(string terminalId)
         {
@@ -117,8 +118,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new USPurchase(order.OrderId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7") :
-                    new USPurchase(order.OrderId, customerId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7");
+                    new USPurchase(order.OrderId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7", string.Empty, string.Empty) :
+                    new USPurchase(order.OrderId, customerId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7", string.Empty, string.Empty);
 
             if (creditCard.AddressVerification != null)
             {
@@ -182,12 +183,11 @@
 
             return res;
         }
-        /*
         public Transaction ResAddToken(string dataKey, string expDate, ICustomerInfo customerInfo, IAddressVerification addressVerification)
         {
-            var res = new ResAddToken(dataKey, "7");
+            var res = new USResAddToken(dataKey, "7");
 
-            res.SetExpDate(expDate);
+            // res.SetExpDate(expDate);
 
             if (addressVerification != null)
             {
@@ -222,7 +222,6 @@
 
             return res;
         }
-        */
         public Transaction ResDeleteCreditCard(string dataKey)
         {
             return new USResDelete(dataKey);

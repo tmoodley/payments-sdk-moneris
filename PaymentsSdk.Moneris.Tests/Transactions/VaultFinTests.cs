@@ -3,12 +3,17 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class VaultFinTransactionTests : TransactionTestBase
+    public class VaultFinTests : TestBase
     {
+        protected override void InitGateway()
+        {
+            this.Gateway = new Gateway(new Credentials());
+        }
+
         [SetUp]
         public void Setup()
         {
-            this.Gateway = new Gateway(new Credentials());
+            this.InitGateway();
         }
 
         [Test]

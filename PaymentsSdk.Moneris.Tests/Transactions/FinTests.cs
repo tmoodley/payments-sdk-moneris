@@ -5,12 +5,17 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class FinTransactionTests : TransactionTestBase
+    public class FinTests : TestBase
     {
+        protected override void InitGateway()
+        {
+            this.Gateway = new Gateway(new Credentials());
+        }
+
         [SetUp]
         public void Setup()
         {
-            this.Gateway = new Gateway(new Credentials());
+            this.InitGateway();
         }
 
         [Test]
@@ -87,7 +92,9 @@
             Console.WriteLine("Open Totals: ");
             Console.WriteLine(TestHelper.DumpOpenTotals(response));
         }
+
         [Test]
+        [Ignore]
         public void CanCloseBatch()
         {
             var response = this.Gateway.BatchClose("66005372");

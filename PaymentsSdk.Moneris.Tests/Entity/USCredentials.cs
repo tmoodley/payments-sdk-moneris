@@ -2,7 +2,7 @@
 {
     using Common;
 
-    internal class CredentialsUsa : ICredentials
+    internal class USCredentials : ICredentials
     {
         public string Host
         {

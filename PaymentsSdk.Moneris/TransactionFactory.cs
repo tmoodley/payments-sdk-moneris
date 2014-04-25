@@ -86,7 +86,9 @@
         }
         public Transaction CardVerification(ICreditCard creditCard, IOrder order)
         {
-            var res = new CardVerification(order.OrderId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7");
+            var customerId = this.GetCustomerId(order);
+
+            var res = new CardVerification(order.OrderId, customerId, creditCard.Pan, creditCard.ExpDate, "7");
 
             if (creditCard.AddressVerification != null)
             {
