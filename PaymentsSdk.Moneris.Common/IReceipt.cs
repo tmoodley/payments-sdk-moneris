@@ -12,7 +12,7 @@
         string TransType { get; }
         string Complete { get; }
         string Message { get; }
-        string TransAmount { get; }
+        decimal TransAmount { get; }
         string CardType { get; }
         string TxnNumber { get; }
         string TimedOut { get; }

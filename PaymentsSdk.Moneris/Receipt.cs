@@ -1,6 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
     using Common;
+    using Common.Helpers;
 
     internal class Receipt : IReceipt
     {
@@ -139,11 +140,11 @@
                 return this.innerReceipt.GetTimedOut();
             }
         }
-        public string TransAmount
+        public decimal TransAmount
         {
             get
             {
-                return this.innerReceipt.GetTransAmount();
+                return this.innerReceipt.GetTransAmount().GetDecimal();
             }
         }
         public string TransDate

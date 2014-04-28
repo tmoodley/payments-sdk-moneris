@@ -7,6 +7,6 @@
         public string ProductCode { get; set; }
         public string Description { get; set; }
         public string Quantity { get; set; }
-        public string ExtendedAmount { get; set; }
+        public decimal ExtendedAmount { get; set; }
     }
 }

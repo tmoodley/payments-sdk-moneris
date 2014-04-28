@@ -5,10 +5,10 @@
         string TerminalId { get; }
         string CardType { get; }
         string PurchaseCount { get; }
-        string PurchaseAmount { get; }
+        decimal PurchaseAmount { get; }
         string RefundCount { get; }
-        string RefundAmount { get; }
+        decimal RefundAmount { get; }
         string CorrectionCount { get; }
-        string CorrectionAmount { get; }
+        decimal CorrectionAmount { get; }
     }
 }

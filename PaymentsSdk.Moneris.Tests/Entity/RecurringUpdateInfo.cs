@@ -7,7 +7,7 @@
         public ICreditCard Card { get; set; }
         public string OrderId { get; set; }
         public string CustomerId { get; set; }
-        public string RecurAmount { get; set; }
+        public decimal RecurAmount { get; set; }
         public string AddNumRecurs { get; set; }
         public string TotalNumRecurs { get; set; }
         public string Hold { get; set; }
@@ -19,7 +19,7 @@
 
             this.Card = new CreditCard();
             this.CustomerId = "antonio";
-            this.RecurAmount = "1.50";
+            this.RecurAmount = 1.50m;
             this.AddNumRecurs = string.Empty;
             this.TotalNumRecurs = string.Empty;
             this.Hold = string.Empty;

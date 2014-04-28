@@ -28,7 +28,7 @@
             res.setAddNumRecurs(ru.AddNumRecurs);
             res.setCustId(ru.CustomerId);
             res.setHold(ru.Hold);
-            res.setRecurAmount(ru.RecurAmount);
+            res.setRecurAmount(ru.RecurAmount.AmountToString());
             res.setTerminate(ru.Terminate);
             res.setTotalNumRecurs(ru.TotalNumRecurs);
 
@@ -378,7 +378,7 @@
             {
                 foreach (var item in cinfo.OrderDetails)
                 {
-                    res.SetItem(item.Description, item.Quantity, item.ProductCode, item.ExtendedAmount);
+                    res.SetItem(item.Description, item.Quantity, item.ProductCode, item.ExtendedAmount.AmountToString());
                 }
             }
 
@@ -455,7 +455,7 @@
         }
         private Recur CreateRecurringBilling(IRecurringBilling rb)
         {
-            return new Recur(rb.RecurUnit, rb.StartNow, rb.StartDate, rb.NumRecurs, rb.Period, rb.RecurAmount);
+            return new Recur(rb.RecurUnit, rb.StartNow, rb.StartDate, rb.NumRecurs, rb.Period, rb.RecurAmount.AmountToString());
         }
         private string GetCustomerId(IOrder order)
         {

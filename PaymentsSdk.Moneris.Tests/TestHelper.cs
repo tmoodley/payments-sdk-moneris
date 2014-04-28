@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Text;
     using Common;
+    using Common.Helpers;
 
     internal static class TestHelper
     {
@@ -15,14 +16,14 @@
                     Description = "Chicago Bears Helmet",
                     ProductCode = "CB3450",
                     Quantity = "1",
-                    ExtendedAmount = "150.00"
+                    ExtendedAmount = 150.00m
                 },
                 new SalesItem()
                 {
                     Description = "Soldier Field Poster",
                     ProductCode = "SF998S",
                     Quantity = "1",
-                    ExtendedAmount = "19.79"
+                    ExtendedAmount = 19.79m
                 }
             };
 
@@ -44,7 +45,7 @@
             sb.AppendFormat("TransType={0}\n", r.TransType);
             sb.AppendFormat("Complete={0}\n", r.Complete);
             sb.AppendFormat("Message={0}\n", r.Message);
-            sb.AppendFormat("TransAmount={0}\n", r.TransAmount);
+            sb.AppendFormat("TransAmount={0}\n", r.TransAmount.AmountToString());
             sb.AppendFormat("CardType={0}\n", r.CardType);
             sb.AppendFormat("TxnNumber={0}\n", r.TxnNumber);
             sb.AppendFormat("TimedOut={0}\n", r.TimedOut);
@@ -87,11 +88,11 @@
                 {
                     sb.AppendFormat("=== CardType={0}\n", ct.CardType);
                     sb.AppendFormat("PurchaseCount={0}\n", ct.PurchaseCount);
-                    sb.AppendFormat("PurchaseAmount={0}\n", ct.PurchaseAmount);
+                    sb.AppendFormat("PurchaseAmount={0}\n", ct.PurchaseAmount.AmountToString());
                     sb.AppendFormat("RefundCount={0}\n", ct.RefundCount);
-                    sb.AppendFormat("RefundAmount={0}\n", ct.RefundAmount);
+                    sb.AppendFormat("RefundAmount={0}\n", ct.RefundAmount.AmountToString());
                     sb.AppendFormat("CorrectionCount={0}\n", ct.CorrectionCount);
-                    sb.AppendFormat("CorrectionAmount={0}\n\n", ct.CorrectionAmount);
+                    sb.AppendFormat("CorrectionAmount={0}\n\n", ct.CorrectionAmount.AmountToString());
                 }
             }
 

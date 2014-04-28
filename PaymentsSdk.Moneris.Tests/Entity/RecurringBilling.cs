@@ -9,7 +9,7 @@
         public string StartNow { get; set; }
         public string StartDate { get; set; }
         public string NumRecurs { get; set; }
-        public string RecurAmount { get; set; }
+        public decimal RecurAmount { get; set; }
 
         public RecurringBilling()
         {
@@ -18,7 +18,7 @@
             this.StartDate = "2014/05/20";
             this.NumRecurs = "12";
             this.Period = "1";
-            this.RecurAmount = "30.00";
+            this.RecurAmount = 30.00m;
         }
     }
 }

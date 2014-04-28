@@ -5,6 +5,6 @@
         string ProductCode { get; }
         string Description { get; }
         string Quantity { get; }
-        string ExtendedAmount { get; }
+        decimal ExtendedAmount { get; }
     }
 }

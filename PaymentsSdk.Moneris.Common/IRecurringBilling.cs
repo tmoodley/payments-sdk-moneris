@@ -7,6 +7,6 @@
         string StartNow { get; }
         string StartDate { get; }
         string NumRecurs { get; }
-        string RecurAmount { get; }
+        decimal RecurAmount { get; }
     }
 }
