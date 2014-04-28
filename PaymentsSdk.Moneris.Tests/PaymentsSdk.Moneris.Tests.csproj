@@ -55,6 +55,7 @@
     <Compile Include="Entity\USCredentials.cs" />
     <Compile Include="Transactions\FinTestsUS.cs" />
     <Compile Include="Transactions\VaultFinTests.cs" />
+    <Compile Include="Transactions\VaultFinTestsUs.cs" />
     <Compile Include="Transactions\VaultTests.cs" />
     <Compile Include="Transactions\VaultTestsUs.cs" />
   </ItemGroup>
