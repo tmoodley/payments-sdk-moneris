@@ -3,7 +3,7 @@
     public interface IOrder
     {
         string OrderId { get; }
-        string Amount { get; }
+        decimal Amount { get; }
         ICustomerInfo Customer { get; }
         IRecurringBilling RecurringBilling { get; }
     }

@@ -52,7 +52,7 @@
         public void CanReverseAmount()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
-            var response = this.Gateway.Capture(orig.Item1, orig.Item2, "0.00");
+            var response = this.Gateway.Capture(orig.Item1, orig.Item2, decimal.Zero);
             this.CheckTransactionTxnNumber(response);
         }
         [Test]
@@ -66,7 +66,7 @@
         public void CanPartialRefundTransaction()
         {
             var orig = this.DoPurchase(this.OriginalAmount);
-            var response = this.Gateway.Refund(orig.Item1, orig.Item2, "20.00");
+            var response = this.Gateway.Refund(orig.Item1, orig.Item2, 20.00m);
             this.CheckTransactionTxnNumber(response);
         }
         [Test]
@@ -187,7 +187,7 @@
         [Test]
         public void CanSendRecurringUpdate()
         {
-            var purchaseResult = this.DoPurchase("5.00", new RecurringBilling());
+            var purchaseResult = this.DoPurchase(5.00m, new RecurringBilling());
             var updateInfo = new RecurringUpdateInfo(purchaseResult.Item1);
             var recurUpdate = this.Gateway.RecurUpdate(updateInfo);
             Console.WriteLine(TestHelper.DumpResponse(recurUpdate));

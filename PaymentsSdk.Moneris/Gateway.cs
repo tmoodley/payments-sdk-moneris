@@ -23,7 +23,7 @@
             var txn = factory.Void(originalOrderId, transactionNumber);
             return this.Send(txn);
         }
-        public IResponse Refund(string originalOrderId, string transactionNumber, string amount)
+        public IResponse Refund(string originalOrderId, string transactionNumber, decimal amount)
         {
             var txn = factory.Refund(originalOrderId, transactionNumber, amount);
             return this.Send(txn);
@@ -53,7 +53,7 @@
             var txn = factory.CardVerification(creditCard, order);
             return this.Send(txn);
         }
-        public IResponse Capture(string originalOrderId, string transactionNumber, string amount)
+        public IResponse Capture(string originalOrderId, string transactionNumber, decimal amount)
         {
             var txn = factory.Capture(originalOrderId, transactionNumber, amount);
             return this.Send(txn);

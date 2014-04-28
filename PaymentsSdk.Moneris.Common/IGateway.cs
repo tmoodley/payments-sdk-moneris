@@ -5,13 +5,13 @@
         bool StatusCheck { get; set; }
 
         IResponse Void(string originalOrderId, string transactionNumber);
-        IResponse Refund(string originalOrderId, string transactionNumber, string amount);
+        IResponse Refund(string originalOrderId, string transactionNumber, decimal amount);
         IResponse RecurUpdate(IRecurringUpdateInfo recurringUpdateInfo);
         IResponse ReAuth(IOrder order, string originalOrderId, string transactionNumber);
         IResponse PreAuth(ICreditCard creditCard, IOrder order);
         IResponse IndependedRefund(ICreditCard creditCard, IOrder order);
         IResponse CardVerification(ICreditCard creditCard, IOrder order);
-        IResponse Capture(string originalOrderId, string transactionNumber, string amount);
+        IResponse Capture(string originalOrderId, string transactionNumber, decimal amount);
         IResponse BatchClose(string terminalId);
         IResponse OpenTotals(string terminalId);
         IResponse Purchase(ICreditCard creditCard, IOrder order);

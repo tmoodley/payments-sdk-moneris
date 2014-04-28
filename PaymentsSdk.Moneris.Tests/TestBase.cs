@@ -6,11 +6,11 @@
 
     public abstract class TestBase
     {
-        protected string OriginalAmount
+        protected decimal OriginalAmount
         {
             get
             {
-                return "100.00";
+                return 100.00m;
             }
         }
 
@@ -18,14 +18,14 @@
 
         protected abstract void InitGateway();
 
-        protected Tuple<string, string> DoPreAuth(string amount)
+        protected Tuple<string, string> DoPreAuth(decimal amount)
         {
             var order = new Order { Amount = amount };
             var card = new CreditCard();
             var response = this.Gateway.PreAuth(card, order);
             return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
         }
-        protected Tuple<string, string> DoPurchase(string amount, IRecurringBilling rb = null)
+        protected Tuple<string, string> DoPurchase(decimal amount, IRecurringBilling rb = null)
         {
             var order = new Order(null, rb) { Amount = amount };
             var card = new CreditCard();

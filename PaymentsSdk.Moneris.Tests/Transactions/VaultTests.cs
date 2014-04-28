@@ -86,7 +86,7 @@
             var expDate = (new CreditCard()).ExpDate;
             var response = this.Gateway.ResAddToken(tempDataKey, expDate, cust, avs);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("Data error:", response.Receipt.Message);
+            Assert.IsTrue(response.Receipt.Message.Contains("Data error:"));
         }
     }
 }

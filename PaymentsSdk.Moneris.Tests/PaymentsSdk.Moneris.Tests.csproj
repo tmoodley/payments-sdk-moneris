@@ -58,6 +58,7 @@
     <Compile Include="Transactions\VaultFinTestsUs.cs" />
     <Compile Include="Transactions\VaultTests.cs" />
     <Compile Include="Transactions\VaultTestsUs.cs" />
+    <Compile Include="Validation\TypeConvertorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj">

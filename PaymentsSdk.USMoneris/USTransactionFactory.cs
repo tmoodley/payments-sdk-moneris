@@ -2,6 +2,7 @@
 {
     using global::USMoneris;
     using Moneris.Common;
+    using Moneris.Common.Helpers;
 
     internal class USTransactionFactory
     {
@@ -9,9 +10,9 @@
         {
             return new USPurchaseCorrection(originalOrderId, transactionNumber, "6");
         }
-        public Transaction Refund(string originalOrderId, string transactionNumber, string amount)
+        public Transaction Refund(string originalOrderId, string transactionNumber, decimal amount)
         {
-            return new USRefund(originalOrderId, amount, transactionNumber, "7");
+            return new USRefund(originalOrderId, amount.AmountToString(), transactionNumber, "7");
         }
         public Transaction RecurUpdate(IRecurringUpdateInfo recurringUpdateInfo)
         {
@@ -35,7 +36,7 @@
         }
         public Transaction ReAuth(IOrder order, string originalOrderId, string transactionNumber)
         {
-            var res = new USReAuth(order.OrderId, originalOrderId, transactionNumber, order.Amount, "7");
+            var res = new USReAuth(order.OrderId, originalOrderId, transactionNumber, order.Amount.AmountToString(), "7");
 
             if (order.Customer != null)
             {
@@ -49,8 +50,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new USPreAuth(order.OrderId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7") :
-                    new USPreAuth(order.OrderId, customerId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7");
+                    new USPreAuth(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7") :
+                    new USPreAuth(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7");
 
             if (creditCard.AddressVerification != null)
             {
@@ -79,8 +80,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new USIndependentRefund(order.OrderId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7") :
-                    new USIndependentRefund(order.OrderId, customerId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7");
+                    new USIndependentRefund(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7") :
+                    new USIndependentRefund(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7");
 
             return res;
         }
@@ -101,9 +102,9 @@
 
             return res;
         }
-        public Transaction Capture(string originalOrderId, string transactionNumber, string amount)
+        public Transaction Capture(string originalOrderId, string transactionNumber, decimal amount)
         {
-            return new USCompletion(originalOrderId, amount, transactionNumber, "6", string.Empty, string.Empty);
+            return new USCompletion(originalOrderId, amount.AmountToString(), transactionNumber, "6", string.Empty, string.Empty);
         }
         public Transaction BatchClose(string terminalId)
         {
@@ -118,8 +119,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new USPurchase(order.OrderId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7", string.Empty, string.Empty) :
-                    new USPurchase(order.OrderId, customerId, order.Amount, creditCard.Pan, creditCard.ExpDate, "7", string.Empty, string.Empty);
+                    new USPurchase(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7", string.Empty, string.Empty) :
+                    new USPurchase(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7", string.Empty, string.Empty);
 
             if (creditCard.AddressVerification != null)
             {
@@ -322,8 +323,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new USResPurchaseCC(dataKey, order.OrderId, order.Amount, "1") :
-                    new USResPurchaseCC(dataKey, order.OrderId, customerId, order.Amount, "1");
+                    new USResPurchaseCC(dataKey, order.OrderId, order.Amount.AmountToString(), "1") :
+                    new USResPurchaseCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), "1");
 
             if (order.Customer != null)
             {
@@ -342,8 +343,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                new USResPreauthCC(dataKey, order.OrderId, order.Amount, "1") :
-                new USResPreauthCC(dataKey, order.OrderId, customerId, order.Amount, "1");
+                new USResPreauthCC(dataKey, order.OrderId, order.Amount.AmountToString(), "1") :
+                new USResPreauthCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), "1");
 
             if (order.Customer != null)
             {
@@ -362,8 +363,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new USResIndRefundCC(dataKey, order.OrderId, order.Amount, "1") :
-                    new USResIndRefundCC(dataKey, order.OrderId, customerId, order.Amount, "1");
+                    new USResIndRefundCC(dataKey, order.OrderId, order.Amount.AmountToString(), "1") :
+                    new USResIndRefundCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), "1");
 
             return res;
         }

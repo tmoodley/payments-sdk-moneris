@@ -38,6 +38,7 @@
     <Compile Include="Entity\ProfileInfo.cs" />
     <Compile Include="Entity\Response.cs" />
     <Compile Include="Entity\TerminalTotal.cs" />
+    <Compile Include="Helpers\TypeConvertor.cs" />
     <Compile Include="IAddressVerification.cs" />
     <Compile Include="ICreditCard.cs" />
     <Compile Include="ICredentials.cs" />
