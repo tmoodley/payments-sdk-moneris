@@ -38,6 +38,10 @@
         string AvsStreetName { get; }
         string AvsZipCode { get; }
 
+        string RecurUpdateSuccess { get; }
+        string NextRecurDate { get; }
+        string RecurEndDate { get; }
+
         string[] GetTerminalIDs();
         string[] GetDataKeys();
         string[] GetCreditCards(string terminalId);

@@ -48,12 +48,15 @@
             sb.AppendFormat("CardType={0}\n", r.CardType);
             sb.AppendFormat("TxnNumber={0}\n", r.TxnNumber);
             sb.AppendFormat("TimedOut={0}\n", r.TimedOut);
-            sb.AppendFormat("RecurSucess={0}\n", r.RecurSuccess);
             sb.AppendFormat("AvsResultCode={0}\n", r.AvsResultCode);
             sb.AppendFormat("CvdResultCode={0}\n", r.CvdResultCode);
             sb.AppendFormat("CavvResultCode={0}\n", r.CavvResultCode);
             sb.AppendFormat("StatusCode={0}\n", r.StatusCode);
             sb.AppendFormat("StatusMessage={0}\n", r.StatusMessage);
+            sb.AppendFormat("RecurSucess={0}\n", r.RecurSuccess);
+            sb.AppendFormat("RecurUpdateSuccess={0}\n", r.RecurUpdateSuccess);
+            sb.AppendFormat("NextRecurDate={0}\n", r.NextRecurDate);
+            sb.AppendFormat("RecurEndDate={0}\n", r.RecurEndDate);
             sb.AppendFormat("====== Vault ======\n");
             sb.AppendFormat("DataKey={0}\n", r.DataKey);
             sb.AppendFormat("ResSuccsess={0}\n", r.ResSuccess);

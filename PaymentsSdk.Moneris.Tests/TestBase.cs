@@ -52,5 +52,10 @@
             Console.WriteLine(TestHelper.DumpResponse(res));
             Assert.AreEqual("true", res.Receipt.ResSuccess);
         }
+        protected void CheckTransactionComplete(IResponse res)
+        {
+            Console.WriteLine(TestHelper.DumpResponse(res));
+            Assert.AreEqual("true", res.Receipt.Complete);
+        }
     }
 }

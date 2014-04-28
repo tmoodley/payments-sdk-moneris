@@ -15,7 +15,7 @@
         {
             this.RecurUnit = "month";
             this.StartNow = "true";
-            this.StartDate = "2014/04/20";
+            this.StartDate = "2014/05/20";
             this.NumRecurs = "12";
             this.Period = "1";
             this.RecurAmount = "30.00";

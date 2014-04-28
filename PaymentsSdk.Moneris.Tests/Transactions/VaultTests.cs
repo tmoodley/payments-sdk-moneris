@@ -65,7 +65,7 @@
             var dataKey = this.CreateProfile();
             var response = this.Gateway.ResLookupFull(dataKey);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("true", response.Receipt.RecurSuccess);
+            Assert.AreEqual("true", response.Receipt.ResSuccess);
             Console.WriteLine("Full PAN={0}", response.Receipt.GetFullPan());
         }
         [Test]
@@ -86,7 +86,7 @@
             var expDate = (new CreditCard()).ExpDate;
             var response = this.Gateway.ResAddToken(tempDataKey, expDate, cust, avs);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("Data error: data_key", response.Receipt.Message);
+            Assert.AreEqual("Data error:", response.Receipt.Message);
         }
     }
 }

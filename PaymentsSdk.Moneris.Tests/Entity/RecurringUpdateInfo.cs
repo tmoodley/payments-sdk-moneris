@@ -20,6 +20,10 @@
             this.Card = new CreditCard();
             this.CustomerId = "antonio";
             this.RecurAmount = "1.50";
+            this.AddNumRecurs = string.Empty;
+            this.TotalNumRecurs = string.Empty;
+            this.Hold = string.Empty;
+            this.Terminate = string.Empty;
         }
     }
 }

@@ -244,6 +244,27 @@
                 return this.innerReceipt.GetResDataPhone();
             }
         }
+        public string RecurUpdateSuccess
+        {
+            get
+            {
+                return this.innerReceipt.GetRecurUpdateSuccess();
+            }
+        }
+        public string NextRecurDate
+        {
+            get
+            {
+                return this.innerReceipt.GetNextRecurDate();
+            }
+        }
+        public string RecurEndDate
+        {
+            get
+            {
+                return this.innerReceipt.GetRecurEndDate();
+            }
+        }
 
         public string GetFullPan()
         {
