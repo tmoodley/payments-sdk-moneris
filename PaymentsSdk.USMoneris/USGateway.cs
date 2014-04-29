@@ -3,6 +3,7 @@
     using System;
     using global::USMoneris;
     using Moneris.Common;
+    using Moneris.Common.Helpers;
 
     public class USGateway : IGateway
     {
@@ -80,7 +81,7 @@
             var txn = factory.ResAddCreditCard(creditCard, customerInfo);
             return this.Send(txn);
         }
-        public IResponse ResAddToken(string dataKey, string expDate, ICustomerInfo customerInfo, IAddressVerification addressVerification)
+        public IResponse ResAddToken(string dataKey, DateTime expDate, ICustomerInfo customerInfo, IAddressVerification addressVerification)
         {
             var txn = factory.ResAddToken(dataKey, expDate, customerInfo, addressVerification);
             return this.Send(txn);
@@ -140,8 +141,7 @@
                 throw new ArgumentException("transaction");
             }
 
-            var status = this.StatusCheck.ToString().ToLower();
-            var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, status, transaction);
+            var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, this.StatusCheck.ToLowerString(), transaction);
             var receipt = new USReceipt(request.GetReceipt());
             return new Response(receipt);
         }

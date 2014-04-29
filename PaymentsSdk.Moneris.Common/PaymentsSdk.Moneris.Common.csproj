@@ -34,11 +34,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\CreditCardTotal.cs" />
+    <Compile Include="Entity\CryptType.cs" />
     <Compile Include="Entity\EmptyBillingInfo.cs" />
     <Compile Include="Entity\ProfileInfo.cs" />
     <Compile Include="Entity\Response.cs" />
     <Compile Include="Entity\TerminalTotal.cs" />
-    <Compile Include="Helpers\TypeConvertor.cs" />
+    <Compile Include="Helpers\TypeConverter.cs" />
     <Compile Include="IAddressVerification.cs" />
     <Compile Include="ICreditCard.cs" />
     <Compile Include="ICredentials.cs" />

@@ -1,5 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris
 {
+    using System;
     using Common;
     using Common.Helpers;
     using global::Moneris;
@@ -8,11 +9,11 @@
     {
         public Transaction Void(string originalOrderId, string transactionNumber)
         {
-            return new PurchaseCorrection(originalOrderId, transactionNumber, "6");
+            return new PurchaseCorrection(originalOrderId, transactionNumber, CryptType.NonAuthECommerce.ToCryptString());
         }
         public Transaction Refund(string originalOrderId, string transactionNumber, decimal amount)
         {
-            return new Refund(originalOrderId, amount.AmountToString(), transactionNumber, "7");
+            return new Refund(originalOrderId, amount.AmountToString(), transactionNumber, CryptType.SslEnabled.ToCryptString());
         }
         public Transaction RecurUpdate(IRecurringUpdateInfo recurringUpdateInfo)
         {
@@ -22,7 +23,7 @@
             if (ru.Card != null)
             {
                 res.setPan(ru.Card.Pan);
-                res.setExpiryDate(ru.Card.ExpDate);
+                res.setExpiryDate(ru.Card.ExpDate.ToExpDateString());
             }
 
             res.setAddNumRecurs(ru.AddNumRecurs);
@@ -36,7 +37,7 @@
         }
         public Transaction ReAuth(IOrder order, string originalOrderId, string transactionNumber)
         {
-            var res = new ReAuth(order.OrderId, originalOrderId, transactionNumber, order.Amount.AmountToString(), "7");
+            var res = new ReAuth(order.OrderId, originalOrderId, transactionNumber, order.Amount.AmountToString(), CryptType.SslEnabled.ToCryptString());
 
             if (order.Customer != null)
             {
@@ -50,8 +51,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new PreAuth(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7") :
-                    new PreAuth(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7");
+                    new PreAuth(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString()) :
+                    new PreAuth(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString());
 
             if (creditCard.AddressVerification != null)
             {
@@ -80,8 +81,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new IndependentRefund(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7") :
-                    new IndependentRefund(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7");
+                    new IndependentRefund(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString()) :
+                    new IndependentRefund(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString());
 
             return res;
         }
@@ -89,7 +90,7 @@
         {
             var customerId = this.GetCustomerId(order);
 
-            var res = new CardVerification(order.OrderId, customerId, creditCard.Pan, creditCard.ExpDate, "7");
+            var res = new CardVerification(order.OrderId, customerId, creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString());
 
             if (creditCard.AddressVerification != null)
             {
@@ -105,7 +106,7 @@
         }
         public Transaction Capture(string originalOrderId, string transactionNumber, decimal amount)
         {
-            return new Completion(originalOrderId, amount.AmountToString(), transactionNumber, "6");
+            return new Completion(originalOrderId, amount.AmountToString(), transactionNumber, CryptType.NonAuthECommerce.ToCryptString());
         }
         public Transaction BatchClose(string terminalId)
         {
@@ -120,8 +121,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new Purchase(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7") :
-                    new Purchase(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate, "7");
+                    new Purchase(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString()) :
+                    new Purchase(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString());
 
             if (creditCard.AddressVerification != null)
             {
@@ -149,7 +150,7 @@
         // Vault
         public Transaction ResAddCreditCard(ICreditCard creditCard, ICustomerInfo customerInfo = null)
         {
-            var res = new ResAddCC(creditCard.Pan, creditCard.ExpDate, "7");
+            var res = new ResAddCC(creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString());
 
             if (creditCard.AddressVerification != null)
             {
@@ -185,11 +186,11 @@
 
             return res;
         }
-        public Transaction ResAddToken(string dataKey, string expDate, ICustomerInfo customerInfo, IAddressVerification addressVerification)
+        public Transaction ResAddToken(string dataKey, DateTime expDate, ICustomerInfo customerInfo, IAddressVerification addressVerification)
         {
-            var res = new ResAddToken(dataKey, "7");
+            var res = new ResAddToken(dataKey, CryptType.SslEnabled.ToCryptString());
 
-            res.SetExpDate(expDate);
+            res.SetExpDate(expDate.ToExpDateString());
 
             if (addressVerification != null)
             {
@@ -282,8 +283,8 @@
             var res = new ResUpdateCC(dataKey);
 
             res.SetPan(creditCard.Pan);
-            res.SetExpdate(creditCard.ExpDate);
-            res.SetCryptType("7");
+            res.SetExpdate(creditCard.ExpDate.ToExpDateString());
+            res.SetCryptType(CryptType.SslEnabled.ToCryptString());
 
             if (creditCard.AddressVerification != null)
             {
@@ -324,8 +325,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new ResPurchaseCC(dataKey, order.OrderId, order.Amount.AmountToString(), "1") :
-                    new ResPurchaseCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), "1");
+                    new ResPurchaseCC(dataKey, order.OrderId, order.Amount.AmountToString(), CryptType.OrderSingle.ToCryptString()) :
+                    new ResPurchaseCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), CryptType.OrderSingle.ToCryptString());
 
             if (order.Customer != null)
             {
@@ -344,8 +345,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                new ResPreauthCC(dataKey, order.OrderId, order.Amount.AmountToString(), "1") :
-                new ResPreauthCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), "1");
+                new ResPreauthCC(dataKey, order.OrderId, order.Amount.AmountToString(), CryptType.OrderSingle.ToCryptString()) :
+                new ResPreauthCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), CryptType.OrderSingle.ToCryptString());
 
             if (order.Customer != null)
             {
@@ -364,8 +365,8 @@
             var customerId = this.GetCustomerId(order);
 
             var res = string.IsNullOrEmpty(customerId) ?
-                    new ResIndRefundCC(dataKey, order.OrderId, order.Amount.AmountToString(), "1") :
-                    new ResIndRefundCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), "1");
+                    new ResIndRefundCC(dataKey, order.OrderId, order.Amount.AmountToString(), CryptType.OrderSingle.ToCryptString()) :
+                    new ResIndRefundCC(dataKey, order.OrderId, customerId, order.Amount.AmountToString(), CryptType.OrderSingle.ToCryptString());
 
             return res;
         }
@@ -448,9 +449,8 @@
         private CvdInfo CreateCvdInfo(ICvdVerification cvd)
         {
             var cvdCheck = new CvdInfo();
-            cvdCheck.SetCvdIndicator(cvd.Indicator);
+            cvdCheck.SetCvdIndicator(cvd.Indicator.ToNumberString());
             cvdCheck.SetCvdValue(cvd.Value);
-
             return cvdCheck;
         }
         private Recur CreateRecurringBilling(IRecurringBilling rb)

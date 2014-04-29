@@ -2,10 +2,12 @@
 {
     using System;
     using System.Globalization;
+    using System.Text;
 
-    public static class TypeConvertor
+    public static class TypeConverter
     {
         public static readonly string CONST_AmountFormat = "#0.00";
+        public static readonly string CONST_ExpDateFormat = "yyMM";
 
         public static decimal RoundedAmount(this decimal amount)
         {
@@ -39,5 +41,25 @@
             return defaultValue;
         }
 
+        public static string ToExpDateString(this DateTime date)
+        {
+            return date.ToString(CONST_ExpDateFormat);
+        }
+
+        public static string ToCryptString(this CryptType crypt)
+        {
+            return ((int) crypt).ToString(CultureInfo.InvariantCulture);
+        }
+
+        public static string ToNumberString(this int value)
+        {
+            var res = value.ToString(CultureInfo.InvariantCulture);
+            return string.IsNullOrEmpty(res) ? string.Empty : res;
+        }
+
+        public static string ToLowerString(this bool value)
+        {
+            return value.ToString().ToLower();
+        }
     }
 }

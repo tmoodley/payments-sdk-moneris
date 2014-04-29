@@ -2,7 +2,7 @@
 {
     public interface ICvdVerification
     {
-        string Indicator { get; }
+        int Indicator { get; }  // Typically = 1 
         string Value { get; }
     }
 }

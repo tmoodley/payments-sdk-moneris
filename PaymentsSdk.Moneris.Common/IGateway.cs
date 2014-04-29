@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
+    using System;
+
     public interface IGateway
     {
         bool StatusCheck { get; set; }
@@ -18,7 +20,7 @@
 
         // Vault
         IResponse ResAddCreditCard(ICreditCard creditCard, ICustomerInfo customerInfo = null);
-        IResponse ResAddToken(string dataKey, string expDate, ICustomerInfo customerInfo, IAddressVerification addressVerification);
+        IResponse ResAddToken(string dataKey, DateTime expDate, ICustomerInfo customerInfo, IAddressVerification addressVerification);
         IResponse ResDeleteCreditCard(string dataKey);
         IResponse ResGetExpiring();
         IResponse ResLookupFull(string dataKey);
