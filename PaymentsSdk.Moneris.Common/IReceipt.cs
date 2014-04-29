@@ -1,22 +1,23 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
+    using System;
+
     public interface IReceipt
     {
         string ReceiptId { get; }
         string ReferenceNum { get; }
-        string ResponseCode { get; }
-        string ISO { get; }
+        int ResponseCode { get; }
+        int ISO { get; }
         string AuthCode { get; }
-        string TransTime { get; }
-        string TransDate { get; }
+        DateTime TransDate { get; }
         string TransType { get; }
-        string Complete { get; }
+        bool Complete { get; }
         string Message { get; }
         decimal TransAmount { get; }
         string CardType { get; }
         string TxnNumber { get; }
-        string TimedOut { get; }
-        string RecurSuccess { get; }
+        bool TimedOut { get; }
+        bool RecurSuccess { get; }
         string AvsResultCode { get; }
         string CvdResultCode { get; }
         string CavvResultCode { get; }
@@ -48,12 +49,14 @@
 
         string GetFullPan();
 
-        string GetPurchaseCount(string ecrNo, string cardType);
-        string GetPurchaseAmount(string ecrNo, string cardType);
-        string GetRefundCount(string ecrNo, string cardType);
-        string GetRefundAmount(string ecrNo, string cardType);
-        string GetCorrectionCount(string ecrNo, string cardType);
-        string GetCorrectionAmount(string ecrNo, string cardType);
+        int GetPurchaseCount(string ecrNo, string cardType);
+        decimal GetPurchaseAmount(string ecrNo, string cardType);
+        
+        int GetRefundCount(string ecrNo, string cardType);
+        decimal GetRefundAmount(string ecrNo, string cardType);
+        
+        int GetCorrectionCount(string ecrNo, string cardType);
+        decimal GetCorrectionAmount(string ecrNo, string cardType);
 
         string GetExpPaymentType(string dataKey);
         string GetExpCustId(string dataKey);

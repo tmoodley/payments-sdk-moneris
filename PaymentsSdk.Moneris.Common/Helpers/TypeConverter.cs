@@ -2,12 +2,12 @@
 {
     using System;
     using System.Globalization;
-    using System.Text;
 
     public static class TypeConverter
     {
         public static readonly string CONST_AmountFormat = "#0.00";
         public static readonly string CONST_ExpDateFormat = "yyMM";
+        public static readonly string CONST_TransDateFormat = "yyyy-MM-dd ##:##:##";
 
         public static decimal RoundedAmount(this decimal amount)
         {
@@ -46,9 +46,36 @@
             return date.ToString(CONST_ExpDateFormat);
         }
 
+        public static DateTime GetExpDate(this string dateString)
+        {
+            return GetDate(dateString, CONST_ExpDateFormat, DateTime.MinValue);
+        }
+        public static DateTime GetTransDate(string dateString, string timeString)
+        {
+            var stringValue = string.Format("{0} {1}", dateString, timeString);
+            return GetDate(stringValue, CONST_TransDateFormat, DateTime.MinValue);
+        }
+
         public static string ToCryptString(this CryptType crypt)
         {
             return ((int) crypt).ToString(CultureInfo.InvariantCulture);
+        }
+
+        public static CryptType GetCrypt(this string crypt)
+        {
+            return (CryptType)GetInt(crypt);
+        }
+
+        public static int GetInt(this string value, int defaultValue = 0)
+        {
+            int res;
+            return int.TryParse(value, out res) ? res : defaultValue;
+        }
+
+        public static bool GetBool(this string value, bool defaultValue = false)
+        {
+            bool res;
+            return bool.TryParse(value, out res) ? res : defaultValue;
         }
 
         public static string ToNumberString(this int value)
@@ -60,6 +87,17 @@
         public static string ToLowerString(this bool value)
         {
             return value.ToString().ToLower();
+        }
+
+        private static DateTime GetDate(this string dateString, string format, DateTime defaultValue)
+        {
+            if (string.IsNullOrEmpty(dateString))
+            {
+                return defaultValue;
+            }
+
+            DateTime res;
+            return DateTime.TryParseExact(dateString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out res) ? res : defaultValue;
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
+    using System;
+
     public interface IRecurringBilling
     {
         string RecurUnit { get; }
-        string Period { get; }
-        string StartNow { get; }
-        string StartDate { get; }
-        string NumRecurs { get; }
+        int Period { get; }
+        bool StartNow { get; }
+        DateTime StartDate { get; }
+        int NumRecurs { get; }
         decimal RecurAmount { get; }
     }
 }

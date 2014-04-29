@@ -4,7 +4,7 @@
     {
         string ProductCode { get; }
         string Description { get; }
-        string Quantity { get; }
+        int Quantity { get; }
         decimal ExtendedAmount { get; }
     }
 }

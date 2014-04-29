@@ -1,5 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.USMoneris
 {
+    using System;
     using Moneris.Common;
     using Moneris.Common.Helpers;
 
@@ -35,11 +36,11 @@
                 return this.innerReceipt.GetCavvResultCode();
             }
         }
-        public string Complete
+        public bool Complete
         {
             get
             {
-                return this.innerReceipt.GetComplete();
+                return this.innerReceipt.GetComplete().GetBool();
             }
         }
         public string CvdResultCode
@@ -56,11 +57,11 @@
                 return this.innerReceipt.GetDataKey();
             }
         }
-        public string ISO
+        public int ISO
         {
             get
             {
-                return this.innerReceipt.GetISO();
+                return this.innerReceipt.GetISO().GetInt();
             }
         }
         public string Message
@@ -84,11 +85,11 @@
                 return this.innerReceipt.GetReceiptId();
             }
         }
-        public string RecurSuccess
+        public bool RecurSuccess
         {
             get
             {
-                return this.innerReceipt.GetRecurSuccess();
+                return this.innerReceipt.GetRecurSuccess().GetBool();
             }
         }
         public string ReferenceNum
@@ -105,11 +106,11 @@
                 return this.innerReceipt.GetResDataPan();
             }
         }
-        public string ResponseCode
+        public int ResponseCode
         {
             get
             {
-                return this.innerReceipt.GetResponseCode();
+                return this.innerReceipt.GetResponseCode().GetInt();
             }
         }
         public string ResSuccess
@@ -133,11 +134,11 @@
                 return this.innerReceipt.GetStatusMessage();
             }
         }
-        public string TimedOut
+        public bool TimedOut
         {
             get
             {
-                return this.innerReceipt.GetTimedOut();
+                return this.innerReceipt.GetTimedOut().GetBool();
             }
         }
         public decimal TransAmount
@@ -147,18 +148,11 @@
                 return this.innerReceipt.GetTransAmount().GetDecimal();
             }
         }
-        public string TransDate
+        public DateTime TransDate
         {
             get
             {
-                return this.innerReceipt.GetTransDate();
-            }
-        }
-        public string TransTime
-        {
-            get
-            {
-                return this.innerReceipt.GetTransTime();
+                return TypeConverter.GetTransDate(this.innerReceipt.GetTransDate(), this.innerReceipt.GetTransTime());
             }
         }
         public string TransType
@@ -277,29 +271,29 @@
             this.innerReceipt = innerReceipt;
         }
 
-        public string GetCorrectionAmount(string ecrNo, string cardType)
+        public decimal GetCorrectionAmount(string ecrNo, string cardType)
         {
-            return this.innerReceipt.GetCorrectionAmount(ecrNo, cardType);
+            return this.innerReceipt.GetCorrectionAmount(ecrNo, cardType).GetDecimal();
         }
-        public string GetCorrectionCount(string ecrNo, string cardType)
+        public int GetCorrectionCount(string ecrNo, string cardType)
         {
-            return this.innerReceipt.GetCorrectionCount(ecrNo, cardType);
+            return this.innerReceipt.GetCorrectionCount(ecrNo, cardType).GetInt();
         }
-        public string GetPurchaseAmount(string ecrNo, string cardType)
+        public decimal GetPurchaseAmount(string ecrNo, string cardType)
         {
-            return this.innerReceipt.GetPurchaseAmount(ecrNo, cardType);
+            return this.innerReceipt.GetPurchaseAmount(ecrNo, cardType).GetDecimal();
         }
-        public string GetPurchaseCount(string ecrNo, string cardType)
+        public int GetPurchaseCount(string ecrNo, string cardType)
         {
-            return this.innerReceipt.GetPurchaseCount(ecrNo, cardType);
+            return this.innerReceipt.GetPurchaseCount(ecrNo, cardType).GetInt();
         }
-        public string GetRefundAmount(string ecrNo, string cardType)
+        public decimal GetRefundAmount(string ecrNo, string cardType)
         {
-            return this.innerReceipt.GetRefundAmount(ecrNo, cardType);
+            return this.innerReceipt.GetRefundAmount(ecrNo, cardType).GetDecimal();
         }
-        public string GetRefundCount(string ecrNo, string cardType)
+        public int GetRefundCount(string ecrNo, string cardType)
         {
-            return this.innerReceipt.GetRefundCount(ecrNo, cardType);
+            return this.innerReceipt.GetRefundCount(ecrNo, cardType).GetInt();
         }
 
         public string[] GetTerminalIDs()

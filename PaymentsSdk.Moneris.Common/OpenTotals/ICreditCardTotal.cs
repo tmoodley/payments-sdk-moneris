@@ -4,11 +4,14 @@
     {
         string TerminalId { get; }
         string CardType { get; }
-        string PurchaseCount { get; }
+        
+        int PurchaseCount { get; }
         decimal PurchaseAmount { get; }
-        string RefundCount { get; }
+        
+        int RefundCount { get; }
         decimal RefundAmount { get; }
-        string CorrectionCount { get; }
+
+        int CorrectionCount { get; }
         decimal CorrectionAmount { get; }
     }
 }

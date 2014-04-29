@@ -6,9 +6,9 @@
         string OrderId { get; }
         string CustomerId { get; }
         decimal RecurAmount { get; }
-        string AddNumRecurs { get; }
-        string TotalNumRecurs { get; }
-        string Hold { get; }
-        string Terminate { get; }
+        int AddNumRecurs { get; }
+        int TotalNumRecurs { get; }
+        bool Hold { get; }
+        bool Terminate { get; }
     }
 }

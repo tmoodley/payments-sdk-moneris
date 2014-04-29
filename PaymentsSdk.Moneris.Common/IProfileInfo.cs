@@ -1,5 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
+    using System;
+
     public interface IProfileInfo
     {
         string DataKey { get; }
@@ -9,8 +11,8 @@
         string Email { get; }
         string Note { get; }
         string MaskedPan { get; }
-        string ExpDate { get; }
-        string CryptType { get; }
+        DateTime ExpDate { get; }
+        CryptType CryptType { get; }
         string AvsStreetNumber { get; }
         string AvsStreeetName { get; }
         string AvsZipCode { get; }
