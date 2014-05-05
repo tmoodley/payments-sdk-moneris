@@ -113,18 +113,18 @@
                 return this.innerReceipt.GetResponseCode().GetInt();
             }
         }
-        public string ResSuccess
+        public bool ResSuccess
         {
             get
             {
-                return this.innerReceipt.GetResSuccess();
+                return this.innerReceipt.GetResSuccess().GetBool();
             }
         }
-        public string StatusCode
+        public int StatusCode
         {
             get
             {
-                return this.innerReceipt.GetStatusCode();
+                return this.innerReceipt.GetStatusCode().GetInt();
             }
         }
         public string StatusMessage
@@ -148,7 +148,7 @@
                 return this.innerReceipt.GetTransAmount().GetDecimal();
             }
         }
-        public DateTime TransDate
+        public DateTime? TransDate
         {
             get
             {
@@ -190,11 +190,11 @@
                 return this.innerReceipt.GetResDataAvsZipcode();
             }
         }
-        public string CryptType
+        public CryptType CryptType
         {
             get
             {
-                return this.innerReceipt.GetResDataCryptType();
+                return this.innerReceipt.GetResDataCryptType().GetCrypt();
             }
         }
         public string CustomerId
@@ -239,25 +239,25 @@
                 return this.innerReceipt.GetResDataPhone();
             }
         }
-        public string RecurUpdateSuccess
+        public bool RecurUpdateSuccess
         {
             get
             {
-                return this.innerReceipt.GetRecurUpdateSuccess();
+                return this.innerReceipt.GetRecurUpdateSuccess().GetBool();
             }
         }
-        public string NextRecurDate
+        public DateTime? NextRecurDate
         {
             get
             {
-                return this.innerReceipt.GetNextRecurDate();
+                return this.innerReceipt.GetNextRecurDate().GetRecurDate();
             }
         }
-        public string RecurEndDate
+        public DateTime? RecurEndDate
         {
             get
             {
-                return this.innerReceipt.GetRecurEndDate();
+                return this.innerReceipt.GetRecurEndDate().GetRecurDate();
             }
         }
 

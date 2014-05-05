@@ -15,14 +15,14 @@
                 {
                     Description = "Chicago Bears Helmet",
                     ProductCode = "CB3450",
-                    Quantity = "1",
+                    Quantity = 1,
                     ExtendedAmount = 150.00m
                 },
                 new SalesItem()
                 {
                     Description = "Soldier Field Poster",
                     ProductCode = "SF998S",
-                    Quantity = "1",
+                    Quantity = 1,
                     ExtendedAmount = 19.79m
                 }
             };
@@ -40,7 +40,6 @@
             sb.AppendFormat("ResponseCode={0}\n", r.ResponseCode);
             sb.AppendFormat("Iso={0}\n", r.ISO);
             sb.AppendFormat("AuthCode={0}\n", r.AuthCode);
-            sb.AppendFormat("TransTime={0}\n", r.TransTime);
             sb.AppendFormat("TransDate={0}\n", r.TransDate);
             sb.AppendFormat("TransType={0}\n", r.TransType);
             sb.AppendFormat("Complete={0}\n", r.Complete);

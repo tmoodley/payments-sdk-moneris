@@ -9,7 +9,7 @@
         int ResponseCode { get; }
         int ISO { get; }
         string AuthCode { get; }
-        DateTime TransDate { get; }
+        DateTime? TransDate { get; }
         string TransType { get; }
         bool Complete { get; }
         string Message { get; }
@@ -21,10 +21,10 @@
         string AvsResultCode { get; }
         string CvdResultCode { get; }
         string CavvResultCode { get; }
-        string StatusCode { get; }
+        int StatusCode { get; }
         string StatusMessage { get; }
         string DataKey { get; }
-        string ResSuccess { get; }
+        bool ResSuccess { get; }
         string PaymentType { get; }
         string ResDataPan { get; }
 
@@ -34,14 +34,14 @@
         string Note { get; }
         string MaskedPan { get; }
         string ExpDate { get; }
-        string CryptType { get; }
+        CryptType CryptType { get; }
         string AvsStreetNumber { get; }
         string AvsStreetName { get; }
         string AvsZipCode { get; }
 
-        string RecurUpdateSuccess { get; }
-        string NextRecurDate { get; }
-        string RecurEndDate { get; }
+        bool RecurUpdateSuccess { get; }
+        DateTime? NextRecurDate { get; }
+        DateTime? RecurEndDate { get; }
 
         string[] GetTerminalIDs();
         string[] GetDataKeys();

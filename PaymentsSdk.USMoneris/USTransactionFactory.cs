@@ -25,13 +25,25 @@
                 res.setPan(ru.Card.Pan);
                 res.setExpiryDate(ru.Card.ExpDate.ToExpDateString());
             }
+            if (ru.AddNumRecurs > 0)
+            {
+                res.setAddNumRecurs(ru.AddNumRecurs.ToNumberString());
+            }
+            if (ru.TotalNumRecurs > 0)
+            {
+                res.setTotalNumRecurs(ru.TotalNumRecurs.ToNumberString());
+            }
+            if (!string.IsNullOrEmpty(ru.CustomerId))
+            {
+                res.setCustId(ru.CustomerId);
+            }
+            if (ru.RecurAmount > decimal.Zero)
+            {
+                res.setRecurAmount(ru.RecurAmount.AmountToString());
+            }
 
-            res.setAddNumRecurs(ru.AddNumRecurs.ToNumberString());
-            res.setCustId(ru.CustomerId);
-            res.setHold(ru.Hold.ToLowerString());
-            res.setRecurAmount(ru.RecurAmount.AmountToString());
-            res.setTerminate(ru.Terminate.ToLowerString());
-            res.setTotalNumRecurs(ru.TotalNumRecurs.ToNumberString());
+            res.setHold(ru.Hold.ToBoolString());
+            res.setTerminate(ru.Terminate.ToBoolString());
 
             return res;
         }
@@ -454,7 +466,7 @@
         }
         private Recur CreateRecurringBilling(IRecurringBilling rb)
         {
-            return new Recur(rb.RecurUnit, rb.StartNow.ToLowerString(), rb.StartDate, rb.NumRecurs, rb.Period, rb.RecurAmount.AmountToString());
+            return new Recur(rb.RecurUnit, rb.StartNow.ToBoolString(), rb.StartDate.ToStartDateString(), rb.NumRecurs.ToNumberString(), rb.Period.ToNumberString(), rb.RecurAmount.AmountToString());
         }
         private string GetCustomerId(IOrder order)
         {

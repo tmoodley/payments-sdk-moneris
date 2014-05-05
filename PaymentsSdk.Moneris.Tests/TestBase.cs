@@ -50,12 +50,12 @@
         protected void CheckTransactionResSuccsess(IResponse res)
         {
             Console.WriteLine(TestHelper.DumpResponse(res));
-            Assert.AreEqual("true", res.Receipt.ResSuccess);
+            Assert.IsTrue(res.Receipt.ResSuccess);
         }
         protected void CheckTransactionComplete(IResponse res)
         {
             Console.WriteLine(TestHelper.DumpResponse(res));
-            Assert.AreEqual("true", res.Receipt.Complete);
+            Assert.IsTrue(res.Receipt.Complete);
         }
     }
 }

@@ -65,7 +65,7 @@
             var dataKey = this.CreateProfile();
             var response = this.Gateway.ResLookupFull(dataKey);
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("true", response.Receipt.ResSuccess);
+            Assert.IsTrue(response.Receipt.ResSuccess);
             Console.WriteLine("Full PAN={0}", response.Receipt.GetFullPan());
         }
         [Test]
@@ -73,7 +73,7 @@
         {
             var response = this.Gateway.ResGetExpiring();
             Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.AreEqual("true", response.Receipt.ResSuccess);
+            Assert.IsTrue(response.Receipt.ResSuccess);
             Console.WriteLine("===== Expiring profiles =====");
             Console.WriteLine(TestHelper.DumpExpiringProfiles(response));
         }

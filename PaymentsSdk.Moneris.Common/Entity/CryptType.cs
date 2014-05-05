@@ -2,6 +2,7 @@
 {
     public enum CryptType
     {
+        Undefined = 0,
         OrderSingle = 1,
         OrderRecurring = 2,
         OrderInstallment = 3,

@@ -141,7 +141,7 @@
                 throw new ArgumentException("transaction");
             }
 
-            var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, this.StatusCheck.ToLowerString(), transaction);
+            var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, this.StatusCheck.ToBoolString(), transaction);
             var receipt = new Receipt(request.GetReceipt());
             return new Response(receipt);
         }

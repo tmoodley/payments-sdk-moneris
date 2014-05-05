@@ -9,13 +9,6 @@
     public class TypeConverterTests
     {
         [Test]
-        public void CanRoundAmount()
-        {
-            Assert.AreEqual(78.50m, 78.4999m.RoundedAmount());
-            Assert.AreEqual(78.50m, 78.5011m.RoundedAmount());
-        }
-
-        [Test]
         public void CanConvertAmountToString()
         {
             Assert.AreEqual("78.50", 78.4999m.AmountToString());
@@ -55,6 +48,33 @@
             Assert.AreEqual("909", 909.ToNumberString());
             Assert.AreEqual("9", 9.ToNumberString());
             Assert.AreEqual("7", 0007.ToNumberString());
+        }
+
+        [Test]
+        public void CanConvertStartDate()
+        {
+            Assert.AreEqual("2014/05/15", new DateTime(2014, 5, 15).ToStartDateString());
+            Assert.AreEqual("2014/02/28", new DateTime(2014, 2, 28).ToStartDateString());
+            Assert.AreEqual("2014/12/31", new DateTime(2014, 12, 31).ToStartDateString());
+        }
+
+        [Test]
+        public void CanConvertReceiptDate()
+        {
+            var res = TypeConverter.GetTransDate("2014-05-05", "09:16:27");
+            var exp = new DateTime(2014, 5, 5, 9, 16, 27);
+            Assert.AreEqual(exp, res);
+
+            var res2 = TypeConverter.GetTransDate(string.Empty, string.Empty);
+            Assert.AreEqual(null, res2);
+        }
+
+        [Test]
+        public void CanConvertRecurDate()
+        {
+            var res = "2015-04-06".GetRecurDate();
+            var exp = new DateTime(2015, 4, 6);
+            Assert.AreEqual(exp, res);
         }
     }
 }

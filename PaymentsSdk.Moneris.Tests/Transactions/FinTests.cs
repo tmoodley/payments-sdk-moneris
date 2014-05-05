@@ -191,7 +191,7 @@
             var updateInfo = new RecurringUpdateInfo(purchaseResult.Item1);
             var recurUpdate = this.Gateway.RecurUpdate(updateInfo);
             Console.WriteLine(TestHelper.DumpResponse(recurUpdate));
-            Assert.AreEqual("true", recurUpdate.Receipt.RecurUpdateSuccess);
+            Assert.IsTrue(recurUpdate.Receipt.RecurUpdateSuccess);
         }
         [Test]
         public void CanSendPurchaseBasicWithStatusCheck()
