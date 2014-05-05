@@ -59,6 +59,7 @@
     <Compile Include="Transactions\VaultTests.cs" />
     <Compile Include="Transactions\VaultTestsUs.cs" />
     <Compile Include="Validation\CustomerInfoTests.cs" />
+    <Compile Include="Validation\InvalidCharactersTests.cs" />
     <Compile Include="Validation\TypeConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
