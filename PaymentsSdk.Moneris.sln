@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.USMoneris", "Pa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.Moneris.Common", "PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj", "{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.Moneris.NuGetPackage", "PaymentsSdk.Moneris.NuGetPackage\PaymentsSdk.Moneris.NuGetPackage.csproj", "{A7A44E86-77F0-41FD-9815-39777B782572}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
