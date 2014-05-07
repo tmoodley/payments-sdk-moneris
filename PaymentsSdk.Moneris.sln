@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.Moneris", "PaymentsSdk.Moneris\PaymentsSdk.Moneris.csproj", "{9803CA1E-74F8-4E25-8DB0-7E7E2ADB3A7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.Moneris.Tests", "PaymentsSdk.Moneris.Tests\PaymentsSdk.Moneris.Tests.csproj", "{DF17A4FE-EB39-4D01-A794-14ABDE844C41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DF41828F-6219-433D-BDDE-6291EF4860B1}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.USMoneris", "PaymentsSdk.USMoneris\PaymentsSdk.USMoneris.csproj", "{373EFD44-A7D5-41FB-85A6-A955BAA7882F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.Moneris.Common", "PaymentsSdk.Moneris.Common\PaymentsSdk.Moneris.Common.csproj", "{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentsSdk.Moneris.NuGetPackage", "PaymentsSdk.Moneris.NuGetPackage\PaymentsSdk.Moneris.NuGetPackage.csproj", "{A7A44E86-77F0-41FD-9815-39777B782572}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9803CA1E-74F8-4E25-8DB0-7E7E2ADB3A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9803CA1E-74F8-4E25-8DB0-7E7E2ADB3A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9803CA1E-74F8-4E25-8DB0-7E7E2ADB3A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9803CA1E-74F8-4E25-8DB0-7E7E2ADB3A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF17A4FE-EB39-4D01-A794-14ABDE844C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF17A4FE-EB39-4D01-A794-14ABDE844C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF17A4FE-EB39-4D01-A794-14ABDE844C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF17A4FE-EB39-4D01-A794-14ABDE844C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373EFD44-A7D5-41FB-85A6-A955BAA7882F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373EFD44-A7D5-41FB-85A6-A955BAA7882F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373EFD44-A7D5-41FB-85A6-A955BAA7882F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373EFD44-A7D5-41FB-85A6-A955BAA7882F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8305B1E-809E-4F64-AE7D-FE3C3EFAE985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A44E86-77F0-41FD-9815-39777B782572}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
