@@ -2,6 +2,7 @@
 {
     using System;
     using Common;
+    using Common.Entity;
     using Common.Helpers;
     using global::Moneris;
 

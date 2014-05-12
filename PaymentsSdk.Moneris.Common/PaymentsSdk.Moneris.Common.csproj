@@ -33,11 +33,20 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\AddressVerification.cs" />
+    <Compile Include="Entity\Credentials.cs" />
+    <Compile Include="Entity\CreditCard.cs" />
     <Compile Include="Entity\CreditCardTotal.cs" />
     <Compile Include="Entity\CryptType.cs" />
-    <Compile Include="Entity\EmptyBillingInfo.cs" />
+    <Compile Include="Entity\Customer.cs" />
+    <Compile Include="Entity\CvdVerification.cs" />
+    <Compile Include="Entity\BillingInfo.cs" />
+    <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\ProfileInfo.cs" />
+    <Compile Include="Entity\RecurringBilling.cs" />
+    <Compile Include="Entity\RecurringUpdateInfo.cs" />
     <Compile Include="Entity\Response.cs" />
+    <Compile Include="Entity\SalesItem.cs" />
     <Compile Include="Entity\TerminalTotal.cs" />
     <Compile Include="Helpers\TypeConverter.cs" />
     <Compile Include="IAddressVerification.cs" />

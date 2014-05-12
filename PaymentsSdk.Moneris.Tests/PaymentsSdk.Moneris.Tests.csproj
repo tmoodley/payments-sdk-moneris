@@ -38,21 +38,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\AddressVerification.cs" />
-    <Compile Include="Entity\BillingInfo.cs" />
-    <Compile Include="Entity\CreditCard.cs" />
-    <Compile Include="Entity\Customer.cs" />
-    <Compile Include="Entity\CvdCheck.cs" />
-    <Compile Include="Entity\Order.cs" />
-    <Compile Include="Entity\RecurringBilling.cs" />
-    <Compile Include="Entity\RecurringUpdateInfo.cs" />
-    <Compile Include="Entity\SalesItem.cs" />
+    <Compile Include="Mother.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="Transactions\FinTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entity\Credentials.cs" />
     <Compile Include="TestHelper.cs" />
-    <Compile Include="Entity\USCredentials.cs" />
     <Compile Include="Transactions\FinTestsUS.cs" />
     <Compile Include="Transactions\VaultFinTests.cs" />
     <Compile Include="Transactions\VaultFinTestsUs.cs" />

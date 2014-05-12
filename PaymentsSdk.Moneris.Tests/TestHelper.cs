@@ -1,36 +1,11 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
-    using System.Collections.Generic;
     using System.Text;
     using Common;
     using Common.Helpers;
 
     internal static class TestHelper
     {
-        public static IList<ISalesItem> PopulateSalesItems()
-        {
-            var res = new List<ISalesItem>
-            {
-                new SalesItem()
-                {
-                    Description = "Chicago Bears Helmet",
-                    ProductCode = "CB3450",
-                    Quantity = 1,
-                    ExtendedAmount = 150.00m
-                },
-                new SalesItem()
-                {
-                    Description = "Soldier Field Poster",
-                    ProductCode = "SF998S",
-                    Quantity = 1,
-                    ExtendedAmount = 19.79m
-                }
-            };
-
-            return res;
-        }
-
-
         public static string DumpResponse(IResponse response)
         {
             var sb = new StringBuilder();

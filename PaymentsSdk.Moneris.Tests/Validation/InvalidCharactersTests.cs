@@ -1,5 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Validation
 {
+    using Common.Entity;
     using NUnit.Framework;
 
     [TestFixture]
@@ -7,7 +8,7 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new Gateway(new Credentials());
+            this.Gateway = new Gateway(Mother.CaCredentials);
         }
 
         [SetUp]
@@ -19,10 +20,13 @@
         [Test]
         public void CannotSendBasicPurchaseWithInvalidCharacters()
         {
-            var order = new Order { Customer = null };
-            var card = new CreditCard();
-            order.OrderId = "some str&ange str&ing";
-            var response = this.Gateway.Purchase(card, order);
+            var order = new Order
+                {
+                    Customer = null,
+                    OrderId = "some str&ange str&ing"
+                };
+
+            var response = this.Gateway.Purchase(Mother.CreditCard, order);
             Assert.IsFalse(response.Receipt.Complete);
         }
     }

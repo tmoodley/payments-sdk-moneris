@@ -8,7 +8,7 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new Gateway(new Credentials());
+            this.Gateway = new Gateway(Mother.CaCredentials);
         }
 
         [SetUp]
@@ -20,19 +20,14 @@
         [Test]
         public void CanAddCreditCard()
         {
-            var avs = new AddressVerification();
-            var card = new CreditCard(avs);
-            var cust = new Customer(new BillingInfo(), null, null);
-            var profile = this.Gateway.ResAddCreditCard(card, cust);
+            var profile = this.Gateway.ResAddCreditCard(Mother.CreditCard, Mother.CustomerNoOrderDetails);
             this.CheckTransactionResSuccsess(profile);
         }
         [Test]
         public void CanTokenizeCreditCard()
         {
-            var res = this.DoPurchase(this.OriginalAmount, null);
-            var avs = new AddressVerification();
-            var cust = new Customer(new BillingInfo(), null, null);
-            var profile = this.Gateway.ResTokenizeCreditCard(res.Item1, res.Item2, cust, avs);
+            var res = this.DoPurchase(this.OriginalAmount);
+            var profile = this.Gateway.ResTokenizeCreditCard(res.Item1, res.Item2, Mother.CustomerNoOrderDetails, Mother.AddressVerification);
             this.CheckTransactionResSuccsess(profile);
         }
         [Test]
@@ -46,10 +41,7 @@
         public void CanUpdateCreditCard()
         {
             var dataKey = this.CreateProfile();
-            var avs = new AddressVerification();
-            var card = new CreditCard(avs);
-            var cust = new Customer(new BillingInfo(), null, null);
-            var resUpdate = this.Gateway.ResUpdateCreditCard(dataKey, card, cust);
+            var resUpdate = this.Gateway.ResUpdateCreditCard(dataKey, Mother.CreditCard, Mother.CustomerNoOrderDetails);
             this.CheckTransactionResSuccsess(resUpdate);
         }
         [Test]
@@ -80,11 +72,8 @@
         [Test]
         public void CanAddToken()
         {
-            var avs = new AddressVerification();
-            var cust = new Customer(new BillingInfo(), null, null);
             var tempDataKey = this.CreateProfile();
-            var expDate = (new CreditCard()).ExpDate;
-            var response = this.Gateway.ResAddToken(tempDataKey, expDate, cust, avs);
+            var response = this.Gateway.ResAddToken(tempDataKey, Mother.CreditCard.ExpDate, Mother.CustomerNoOrderDetails, Mother.AddressVerification);
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.IsTrue(response.Receipt.Message.Contains("Data error:"));
         }

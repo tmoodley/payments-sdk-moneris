@@ -1,7 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using System;
-    using Entity;
+    using Common.Entity;
     using NUnit.Framework;
 
     [TestFixture]
@@ -9,7 +9,7 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new Gateway(new Credentials());
+            this.Gateway = new Gateway(Mother.CaCredentials);
         }
 
         [SetUp]
@@ -21,24 +21,20 @@
         [Test]
         public void CanSendPurchaseBasic()
         {
-            var order = new Order { Customer = null };
-            var card = new CreditCard();
-            var response = this.Gateway.Purchase(card, order);
+            var response = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanSendPreAuth()
         {
-            var order = new Order();
-            var card = new CreditCard();
-            var response = this.Gateway.PreAuth(card, order);
+            var response = this.Gateway.PreAuth(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
         [Test]
         public void CanSendReAuth()
         {
             var orig = this.DoPreAuth(this.OriginalAmount);
-            var response = this.Gateway.ReAuth(new Order(), orig.Item1, orig.Item2);
+            var response = this.Gateway.ReAuth(Mother.Order, orig.Item1, orig.Item2);
             this.CheckTransactionTxnNumber(response);
         }
         [Test]
@@ -79,9 +75,7 @@
         [Test]
         public void CanDoIndependedRefund()
         {
-            var order = new Order();
-            var card = new CreditCard();
-            var response = this.Gateway.IndependedRefund(card, order);
+            var response = this.Gateway.IndependedRefund(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
         [Test]
@@ -105,83 +99,60 @@
         [Test]
         public void CanVerifyCardNoAvsNoCvd()
         {
-            var order = new Order();
-            var card = new CreditCard();
-            var verify = this.Gateway.CardVerification(card, order);
+            var cc = Mother.CreditCard;
+            cc.AddressVerification = null;
+            cc.CvdVerification = null;
+            var verify = this.Gateway.CardVerification(cc, Mother.Order);
             this.CheckTransactionTxnNumber(verify);
         }
         [Test]
         public void CanVerifyCardAvsNoCvd()
         {
-            var order = new Order();
-            var avsInfo = new AddressVerification();
-            var card = new CreditCard(avsInfo);
-            var verify = this.Gateway.CardVerification(card, order);
+            var cc = Mother.CreditCard;
+            cc.CvdVerification = null;
+            var verify = this.Gateway.CardVerification(cc, Mother.Order);
             this.CheckTransactionTxnNumber(verify);
         }
         [Test]
         public void CanVerifyCardAvsCvd()
         {
-            var order = new Order();
-            var avsInfo = new AddressVerification();
-            var cvd = new CvdCheck();
-            var card = new CreditCard(avsInfo, cvd);
-            var verify = this.Gateway.CardVerification(card, order);
+            var verify = this.Gateway.CardVerification(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(verify);
         }
         [Test]
         public void CanSendPurchaseWithCustomer()
         {
-            var customer = new Customer(new BillingInfo(), new BillingInfo(), TestHelper.PopulateSalesItems());
-            var order = new Order(customer);
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithCustomerNoOrderDetails()
         {
-            var customer = new Customer(new BillingInfo(), new BillingInfo(), null);
-            var order = new Order(customer) ;
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithEmptyShipping()
         {
-            var customer = new Customer(new BillingInfo(), null, null);
-            var order = new Order(customer);
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithEmptyCustomer()
         {
-            var customer = new Customer(null, null, null);
-            var order = new Order(customer);
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithRecurringNoCustomer()
         {
-            var rb = new RecurringBilling();
-            var order = new Order(null, rb);
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.RecurringOrder);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
         public void CanSendPurchaseWithRecurringWithCustomer()
         {
-            var customer = new Customer(new BillingInfo(), new BillingInfo(), TestHelper.PopulateSalesItems());
-            var rb = new RecurringBilling();
-            var order = new Order(customer, rb);
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.RecurringOrder);
             this.CheckTransactionTxnNumber(purchase);
         }
         [Test]
@@ -196,25 +167,21 @@
         [Test]
         public void CanSendPurchaseBasicWithStatusCheck()
         {
-            var order = new Order { Customer = null };
-            var card = new CreditCard();
-            var response = this.Gateway.Purchase(card, order);
+            var response = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             Console.WriteLine(TestHelper.DumpResponse(response));
 
             this.Gateway.StatusCheck = true;
-            var statusResponse = this.Gateway.Purchase(card, order);
+            var statusResponse = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             Console.WriteLine("=== STATUS CHECK ====");
             Console.WriteLine(TestHelper.DumpResponse(statusResponse));
         }
         [Test]
         public void CanSendStatusCheckWithoutPurchase()
         {
-            var order = new Order { Customer = null };
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
 
             this.Gateway.StatusCheck = true;
-            var statusResponse = this.Gateway.Purchase(card, order);
+            var statusResponse = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             Console.WriteLine("=== STATUS CHECK ====");
             Console.WriteLine(TestHelper.DumpResponse(statusResponse));
         }

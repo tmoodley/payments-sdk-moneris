@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris
+﻿namespace Rootzid.PaymentsSdk.Moneris.Common.Entity
 {
     using System.Collections.Generic;
     using System.Linq;

@@ -1,8 +1,6 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
+﻿namespace Rootzid.PaymentsSdk.Moneris.Common.Entity
 {
-    using Common;
-
-    internal class SalesItem : ISalesItem
+    public class SalesItem : ISalesItem
     {
         public string ProductCode { get; set; }
         public string Description { get; set; }

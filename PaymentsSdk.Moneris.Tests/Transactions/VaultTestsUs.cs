@@ -8,7 +8,7 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new USGateway(new USCredentials());
+            this.Gateway = new USGateway(Mother.UsCredentials);
         }
     }
 }

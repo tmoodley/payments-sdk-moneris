@@ -3,6 +3,7 @@
     using System;
     using global::USMoneris;
     using Moneris.Common;
+    using Moneris.Common.Entity;
     using Moneris.Common.Helpers;
 
     internal class USTransactionFactory

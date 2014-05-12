@@ -7,7 +7,7 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new Gateway(new Credentials());
+            this.Gateway = new Gateway(Mother.CaCredentials);
         }
 
         [SetUp]
@@ -19,27 +19,24 @@
         [Test]
         public void CanSendPreAuth()
         {
-            var order = new Order();
             var dataKey = this.CreateProfile();
-            var response = this.Gateway.ResPreAuth(dataKey, order);
+            var response = this.Gateway.ResPreAuth(dataKey, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
 
         [Test]
         public void CanSendPurchase()
         {
-            var order = new Order();
             var dataKey = this.CreateProfile();
-            var response = this.Gateway.ResPurchase(dataKey, order);
+            var response = this.Gateway.ResPurchase(dataKey, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
 
         [Test]
         public void CanDoIndependedRefund()
         {
-            var order = new Order();
             var dataKey = this.CreateProfile();
-            var response = this.Gateway.ResIndependedRefund(dataKey, order);
+            var response = this.Gateway.ResIndependedRefund(dataKey, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
     }

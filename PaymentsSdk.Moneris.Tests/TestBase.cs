@@ -2,6 +2,7 @@
 {
     using System;
     using Common;
+    using Common.Entity;
     using NUnit.Framework;
 
     public abstract class TestBase
@@ -21,24 +22,19 @@
         protected Tuple<string, string> DoPreAuth(decimal amount)
         {
             var order = new Order { Amount = amount };
-            var card = new CreditCard();
-            var response = this.Gateway.PreAuth(card, order);
+            var response = this.Gateway.PreAuth(Mother.CreditCard, order);
             return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
         }
         protected Tuple<string, string> DoPurchase(decimal amount, IRecurringBilling rb = null)
         {
             var order = new Order(null, rb) { Amount = amount };
-            var card = new CreditCard();
-            var response = this.Gateway.Purchase(card, order);
+            var response = this.Gateway.Purchase(Mother.CreditCard, order);
             return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
         }
 
         protected string CreateProfile()
         {
-            var avs = new AddressVerification();
-            var card = new CreditCard(avs);
-            var cust = new Customer(new BillingInfo(), null, null);
-            var response = this.Gateway.ResAddCreditCard(card, cust);
+            var response = this.Gateway.ResAddCreditCard(Mother.CreditCard, Mother.CustomerNoOrderDetails);
             return response.Receipt.DataKey;
         }
 
