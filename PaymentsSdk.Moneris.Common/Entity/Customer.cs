@@ -12,23 +12,11 @@
         public IBillingInfo ShippingInfo { get; set; }
         public IList<ISalesItem> OrderDetails { get; set; }
 
-        public CustomerInfo(IBillingInfo billingInfo, IBillingInfo shippingInfo, IList<ISalesItem> orderDetails)
+        public CustomerInfo(IBillingInfo billingInfo = null, IBillingInfo shippingInfo = null, IList<ISalesItem> orderDetails = null)
         {
             this.BillingInfo = billingInfo;
             this.ShippingInfo = shippingInfo;
             this.OrderDetails = orderDetails;
-        }
-
-        public CustomerInfo(IBillingInfo billingInfo, IBillingInfo shippingInfo) : this(billingInfo, shippingInfo, new List<ISalesItem>())
-        {
-        }
-
-        public CustomerInfo(IBillingInfo billingInfo) : this(billingInfo, new BillingInfo())
-        {
-        }
-
-        public CustomerInfo() : this(new BillingInfo())
-        {
         }
     }
 }

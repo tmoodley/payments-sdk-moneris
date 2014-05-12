@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="eSELECTplus_dotNet_API, Version=2.5.3.0, Culture=neutral, PublicKeyToken=8cb9cd598f87e276, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\EselectPlus\eSELECTplus_dotNet_API.dll</HintPath>
+    </Reference>
+    <Reference Include="eSELECTplus_dotNet_API-US, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8cb9cd598f87e276, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\EselectPlus\eSELECTplus_dotNet_API-US.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>

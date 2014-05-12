@@ -13,7 +13,7 @@
         {
             get
             {
-                var cc = new CreditCard(AddressVerification, CvdVerification)
+                var cc = new CreditCard()
                     {
                         Pan = "4242424242424242", 
                         ExpDate = new DateTime(2018, 12, 10)
@@ -106,58 +106,16 @@
             }
         }
 
-        public static ICustomerInfo CustomerFull
+        public static ICustomerInfo Customer
         {
             get
             {
-                var ci = new CustomerInfo(BillingInfo, BillingInfo, SalesItems)
+                var ci = new CustomerInfo()
                 {
                     Id = "customer1",
                     Email = "rootzid@gmail.com",
                     Note = "Make it fast!"
                 };
-
-                return ci;
-            }
-        }
-        public static ICustomerInfo CustomerNoOrderDetails
-        {
-            get
-            {
-                var ci = new CustomerInfo(BillingInfo, BillingInfo)
-                    {
-                        Id = "customer1", 
-                        Email = "rootzid@gmail.com", 
-                        Note = "Make it fast!"
-                    };
-
-                return ci;
-            }
-        }
-        public static ICustomerInfo CustomerNoShipping
-        {
-            get
-            {
-                var ci = new CustomerInfo(BillingInfo)
-                    {
-                        Id = "customer1", 
-                        Email = "rootzid@gmail.com", 
-                        Note = "Make it fast!"
-                    };
-
-                return ci;
-            }
-        }
-        public static ICustomerInfo CustomerNoBilling
-        {
-            get
-            {
-                var ci = new CustomerInfo()
-                    {
-                        Id = "customer1", 
-                        Email = "rootzid@gmail.com", 
-                        Note = "Make it fast!"
-                    };
 
                 return ci;
             }
@@ -193,7 +151,7 @@
         {
             get
             {
-                var or = new Order(CustomerFull)
+                var or = new Order()
                     {
                         OrderId = string.Format("Test_P_{0}", rnd.Next()),
                         Amount = 5.00m
@@ -206,7 +164,7 @@
         {
             get
             {
-                var ro = new Order(CustomerFull, RecurringBilling)
+                var ro = new Order(null, RecurringBilling)
                 {
                     OrderId = string.Format("Test_P_{0}", rnd.Next()),
                     Amount = 5.00m

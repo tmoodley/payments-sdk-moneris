@@ -142,6 +142,10 @@
                 throw new ArgumentException("transaction");
             }
 
+            Console.WriteLine("Gateway.Send TransactionXml={0}", transaction.toXML());
+            Console.WriteLine("Gateway.Send Credentials Host={0}, StoreId={1}, APiToken={2}", this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken);
+            Console.WriteLine("Gateway.Send StatusCheck={0}", this.StatusCheck.ToBoolString());
+
             var request = new HttpsPostRequest(this.Credentials.Host, this.Credentials.StoreId, this.Credentials.ApiToken, this.StatusCheck.ToBoolString(), transaction);
             var receipt = new Receipt(request.GetReceipt());
             return new Response(receipt);

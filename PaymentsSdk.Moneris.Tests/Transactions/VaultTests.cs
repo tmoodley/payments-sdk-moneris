@@ -20,14 +20,14 @@
         [Test]
         public void CanAddCreditCard()
         {
-            var profile = this.Gateway.ResAddCreditCard(Mother.CreditCard, Mother.CustomerNoOrderDetails);
+            var profile = this.Gateway.ResAddCreditCard(Mother.CreditCard, Mother.Customer);
             this.CheckTransactionResSuccsess(profile);
         }
         [Test]
         public void CanTokenizeCreditCard()
         {
             var res = this.DoPurchase(this.OriginalAmount);
-            var profile = this.Gateway.ResTokenizeCreditCard(res.Item1, res.Item2, Mother.CustomerNoOrderDetails, Mother.AddressVerification);
+            var profile = this.Gateway.ResTokenizeCreditCard(res.Item1, res.Item2, Mother.Customer, Mother.AddressVerification);
             this.CheckTransactionResSuccsess(profile);
         }
         [Test]
@@ -41,7 +41,7 @@
         public void CanUpdateCreditCard()
         {
             var dataKey = this.CreateProfile();
-            var resUpdate = this.Gateway.ResUpdateCreditCard(dataKey, Mother.CreditCard, Mother.CustomerNoOrderDetails);
+            var resUpdate = this.Gateway.ResUpdateCreditCard(dataKey, Mother.CreditCard, Mother.Customer);
             this.CheckTransactionResSuccsess(resUpdate);
         }
         [Test]
@@ -73,7 +73,7 @@
         public void CanAddToken()
         {
             var tempDataKey = this.CreateProfile();
-            var response = this.Gateway.ResAddToken(tempDataKey, Mother.CreditCard.ExpDate, Mother.CustomerNoOrderDetails, Mother.AddressVerification);
+            var response = this.Gateway.ResAddToken(tempDataKey, Mother.CreditCard.ExpDate, Mother.Customer, Mother.AddressVerification);
             Console.WriteLine(TestHelper.DumpResponse(response));
             Assert.IsTrue(response.Receipt.Message.Contains("Data error:"));
         }

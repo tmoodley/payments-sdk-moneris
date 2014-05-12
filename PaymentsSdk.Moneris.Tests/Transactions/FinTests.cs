@@ -2,6 +2,7 @@
 {
     using System;
     using Common.Entity;
+    using global::Moneris;
     using NUnit.Framework;
 
     [TestFixture]
@@ -24,6 +25,41 @@
             var response = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
+
+        [Test]
+        public void BasicTest()
+        {
+            var host = "esqa.moneris.com"; 
+            var store_id = "store5"; 
+            var api_token = "yesguy"; 
+            var order_id = "Test_P_0333"; 
+            var amount = "5.00"; 
+            var pan = "4242424242424242"; 
+            var expdate = "0812"; 
+            var crypt = "7";
+            var purchase = new Purchase(order_id, amount, pan, expdate, crypt);
+            var mpgReq = new HttpsPostRequest(host, store_id, api_token, purchase);
+            var receipt = mpgReq.GetReceipt();
+
+            Console.WriteLine("CardType = " + receipt.GetCardType()); 
+            Console.WriteLine("TransAmount = " + receipt.GetTransAmount()); 
+            Console.WriteLine("TxnNumber = " + receipt.GetTxnNumber()); 
+            Console.WriteLine("ReceiptId = " + receipt.GetReceiptId()); 
+            Console.WriteLine("TransType = " + receipt.GetTransType()); 
+            Console.WriteLine("ReferenceNum = " + receipt.GetReferenceNum()); 
+            Console.WriteLine("ResponseCode = " + receipt.GetResponseCode()); 
+            Console.WriteLine("ISO = " + receipt.GetISO()); 
+            Console.WriteLine("BankTotals = " + receipt.GetBankTotals()); 
+            Console.WriteLine("Message = " + receipt.GetMessage()); 
+            Console.WriteLine("AuthCode = " + receipt.GetAuthCode()); 
+            Console.WriteLine("Complete = " + receipt.GetComplete()); 
+            Console.WriteLine("TransDate = " + receipt.GetTransDate()); 
+            Console.WriteLine("TransTime = " + receipt.GetTransTime()); 
+            Console.WriteLine("Ticket = " + receipt.GetTicket()); 
+            Console.WriteLine("TimedOut = " + receipt.GetTimedOut()); 
+            Console.WriteLine("IsVisaDebit = " + receipt.GetIsVisaDebit()); 
+        }
+
         [Test]
         public void CanSendPreAuth()
         {

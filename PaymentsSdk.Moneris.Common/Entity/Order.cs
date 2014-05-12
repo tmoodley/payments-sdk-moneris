@@ -8,18 +8,10 @@
         public ICustomerInfo Customer { get; set; }
         public IRecurringBilling RecurringBilling { get; set; }
         
-        public Order(ICustomerInfo customer, IRecurringBilling recurringBilling)
+        public Order(ICustomerInfo customer = null, IRecurringBilling recurringBilling = null)
         {
             this.Customer = customer;
             this.RecurringBilling = recurringBilling;
-        }
-
-        public Order(ICustomerInfo customer) : this(customer, new RecurringBilling())
-        {
-        }
-
-        public Order() : this(new CustomerInfo())
-        {
         }
     }
 }

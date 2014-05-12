@@ -34,7 +34,7 @@
 
         protected string CreateProfile()
         {
-            var response = this.Gateway.ResAddCreditCard(Mother.CreditCard, Mother.CustomerNoOrderDetails);
+            var response = this.Gateway.ResAddCreditCard(Mother.CreditCard, Mother.Customer);
             return response.Receipt.DataKey;
         }
 

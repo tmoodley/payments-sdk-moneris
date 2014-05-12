@@ -9,16 +9,10 @@
         public IAddressVerification AddressVerification { get; set; }
         public ICvdVerification CvdVerification { get; set; }
 
-        public CreditCard(IAddressVerification addressVerification, ICvdVerification cvdVerification)
+        public CreditCard(ICvdVerification cvdVerification = null, IAddressVerification addressVerification = null)
         {
             this.AddressVerification = addressVerification;
             this.CvdVerification = cvdVerification;
-        }
-        public CreditCard(IAddressVerification addressVerification) : this(addressVerification, new CvdVerification())
-        {
-        }
-        public CreditCard() : this(new AddressVerification())
-        {
         }
     }
 }
