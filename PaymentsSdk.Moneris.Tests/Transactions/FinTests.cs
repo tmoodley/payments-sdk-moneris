@@ -255,7 +255,6 @@
         public void CanSendStatusCheckWithoutPurchase()
         {
             var purchase = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
-
             this.Gateway.StatusCheck = true;
             var statusResponse = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             Console.WriteLine("=== STATUS CHECK ====");

@@ -51,7 +51,7 @@
             }
         }
 
-        public static ICredentials CaCredentials
+        public static Credentials CaCredentials
         {
             get
             {
@@ -65,7 +65,7 @@
                 return cr;
             }
         }
-        public static ICredentials UsCredentials
+        public static Credentials UsCredentials
         {
             get
             {
