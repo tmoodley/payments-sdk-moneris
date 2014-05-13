@@ -7,11 +7,11 @@
     <authors>Rootzid</authors>
     <owners>Rootzid</owners>
     <description>Payments SDK for Moneris eSelectPlus API.</description>
-    <releaseNotes>First release.</releaseNotes>
+    <releaseNotes>This release supports Canadian and USA merchant accounts.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <language>en-US</language>
     <projectUrl>https://github.com/rootzid/payments-sdk-moneris</projectUrl>
-    <tags>PaymentsSdk Moneris</tags>
+    <tags>Payments API Moneris</tags>
   </metadata>
   <files>
     <file src="bin\Rootzid.PaymentsSdk.Moneris.Common.dll" target="lib\net45" />
