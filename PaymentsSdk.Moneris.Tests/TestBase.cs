@@ -24,7 +24,7 @@
             var order = Mother.Order;
             order.Amount = amount;
             var response = this.Gateway.PreAuth(Mother.CreditCard, order);
-            return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
+            return new Tuple<string, string>(order.OrderId, response.TxnNumber);
         }
         protected Tuple<string, string> DoPurchase(decimal amount, IRecurringBilling rb = null)
         {
@@ -32,29 +32,29 @@
             order.Amount = amount;
             order.RecurringBilling = rb;
             var response = this.Gateway.Purchase(Mother.CreditCard, order);
-            return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
+            return new Tuple<string, string>(order.OrderId, response.TxnNumber);
         }
 
         protected string CreateProfile()
         {
             var response = this.Gateway.ResAddCreditCard(Mother.CreditCard, Mother.Customer);
-            return response.Receipt.DataKey;
+            return response.DataKey;
         }
 
-        protected void CheckTransactionTxnNumber(IResponse res)
+        protected void CheckTransactionTxnNumber(IReceipt res)
         {
-            Console.WriteLine(TestHelper.DumpResponse(res));
-            Assert.AreNotEqual("null", res.Receipt.TxnNumber);
+            Console.WriteLine(TestHelper.DumpReceipt(res));
+            Assert.AreNotEqual("null", res.TxnNumber);
         }
-        protected void CheckTransactionResSuccsess(IResponse res)
+        protected void CheckTransactionResSuccsess(IReceipt res)
         {
-            Console.WriteLine(TestHelper.DumpResponse(res));
-            Assert.IsTrue(res.Receipt.ResSuccess);
+            Console.WriteLine(TestHelper.DumpReceipt(res));
+            Assert.IsTrue(res.ResSuccess);
         }
-        protected void CheckTransactionComplete(IResponse res)
+        protected void CheckTransactionComplete(IReceipt res)
         {
-            Console.WriteLine(TestHelper.DumpResponse(res));
-            Assert.IsTrue(res.Receipt.Complete);
+            Console.WriteLine(TestHelper.DumpReceipt(res));
+            Assert.IsTrue(res.Complete);
         }
     }
 }

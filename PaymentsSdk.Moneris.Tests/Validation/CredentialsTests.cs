@@ -16,8 +16,8 @@
             var gateway = new Gateway(goodCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode > 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode > 0);
         }
         
         [Test]
@@ -27,8 +27,8 @@
             var gateway = new USGateway(goodCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode > 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode > 0);
         }
 
         [Test]
@@ -40,8 +40,8 @@
             var gateway = new USGateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
 
         [Test]
@@ -53,8 +53,8 @@
             var gateway = new USGateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
 
         [Test]
@@ -66,8 +66,8 @@
             var gateway = new USGateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
 
         [Test]
@@ -79,8 +79,8 @@
             var gateway = new USGateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
 
         [Test]
@@ -92,8 +92,8 @@
             var gateway = new Gateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
 
         [Test]
@@ -105,8 +105,8 @@
             var gateway = new Gateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
 
         [Test]
@@ -118,8 +118,8 @@
             var gateway = new Gateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
 
         [Test]
@@ -131,8 +131,8 @@
             var gateway = new Gateway(badCred);
             gateway.StatusCheck = true;
             var statusResponse = gateway.Void(number, number);
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
-            Assert.IsTrue(statusResponse.Receipt.StatusCode == 0);
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
+            Assert.IsTrue(statusResponse.StatusCode == 0);
         }
     }
 }

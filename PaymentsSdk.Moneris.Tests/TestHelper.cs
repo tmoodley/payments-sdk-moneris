@@ -1,15 +1,15 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
+    using System.Collections.Generic;
     using System.Text;
     using Common;
     using Common.Helpers;
 
     internal static class TestHelper
     {
-        public static string DumpResponse(IResponse response)
+        public static string DumpReceipt(IReceipt r)
         {
             var sb = new StringBuilder();
-            var r = response.Receipt;
             sb.AppendFormat("ReceiptId={0}\n", r.ReceiptId);
             sb.AppendFormat("ReferenceNum={0}\n", r.ReferenceNum);
             sb.AppendFormat("ResponseCode={0}\n", r.ResponseCode);
@@ -50,11 +50,11 @@
 
             return sb.ToString();
         }
-        public static string DumpOpenTotals(IResponse r)
+        public static string DumpOpenTotals(IList<ITerminalTotal> items)
         {
             var sb = new StringBuilder();
 
-            foreach (var tt in r.GetOpenTotals())
+            foreach (var tt in items)
             {
                 sb.AppendFormat("====== Terminal={0}\n", tt.TerminalId);
 
@@ -73,11 +73,11 @@
             return sb.ToString();
         }
 
-        public static string DumpExpiringProfiles(IResponse r)
+        public static string DumpExpiringProfiles(IList<IProfileInfo> items)
         {
             var sb = new StringBuilder();
 
-            foreach (var ep in r.GetExpiringProfiles())
+            foreach (var ep in items)
             {
                 sb.AppendFormat("==== Expiting profile for DataKey={0} ====\n", ep.DataKey);
                 sb.AppendFormat("AvsStreeetName={0}\n", ep.AvsStreeetName);

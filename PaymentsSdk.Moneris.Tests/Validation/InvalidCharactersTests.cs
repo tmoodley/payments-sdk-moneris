@@ -27,7 +27,7 @@
                 };
 
             var response = this.Gateway.Purchase(Mother.CreditCard, order);
-            Assert.IsFalse(response.Receipt.Complete);
+            Assert.IsFalse(response.Complete);
         }
     }
 }

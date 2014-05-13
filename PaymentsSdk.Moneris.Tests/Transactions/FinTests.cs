@@ -118,20 +118,20 @@
         [Test]
         public void CanGetOpenTotals()
         {
-            var response = this.Gateway.OpenTotals("66005372");
-            Console.WriteLine(TestHelper.DumpResponse(response));
+            var tuple = this.Gateway.OpenTotals("66005372");
+            Console.WriteLine(TestHelper.DumpReceipt(tuple.Item1));
             Console.WriteLine("Open Totals: ");
-            Console.WriteLine(TestHelper.DumpOpenTotals(response));
+            Console.WriteLine(TestHelper.DumpOpenTotals(tuple.Item2));
         }
 
         [Test]
         [Ignore]
         public void CanCloseBatch()
         {
-            var response = this.Gateway.BatchClose("66005372");
-            Console.WriteLine(TestHelper.DumpResponse(response));
+            var tuple = this.Gateway.BatchClose("66005372");
+            Console.WriteLine(TestHelper.DumpReceipt(tuple.Item1));
             Console.WriteLine("Open Totals: ");
-            Console.WriteLine(TestHelper.DumpOpenTotals(response));
+            Console.WriteLine(TestHelper.DumpOpenTotals(tuple.Item2));
         }
         [Test]
         public void CanVerifyCardNoAvsNoCvd()
@@ -237,19 +237,19 @@
             var purchaseResult = this.DoPurchase(5.00m, Mother.RecurringBilling);
             var updateInfo = Mother.GetRecurringUpdateInfo(purchaseResult.Item1);
             var recurUpdate = this.Gateway.RecurUpdate(updateInfo);
-            Console.WriteLine(TestHelper.DumpResponse(recurUpdate));
-            Assert.IsTrue(recurUpdate.Receipt.RecurUpdateSuccess);
+            Console.WriteLine(TestHelper.DumpReceipt(recurUpdate));
+            Assert.IsTrue(recurUpdate.RecurUpdateSuccess);
         }
         [Test]
         public void CanSendPurchaseBasicWithStatusCheck()
         {
             var response = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
-            Console.WriteLine(TestHelper.DumpResponse(response));
+            Console.WriteLine(TestHelper.DumpReceipt(response));
 
             this.Gateway.StatusCheck = true;
             var statusResponse = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             Console.WriteLine("=== STATUS CHECK ====");
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
         }
         [Test]
         public void CanSendStatusCheckWithoutPurchase()
@@ -258,7 +258,7 @@
             this.Gateway.StatusCheck = true;
             var statusResponse = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             Console.WriteLine("=== STATUS CHECK ====");
-            Console.WriteLine(TestHelper.DumpResponse(statusResponse));
+            Console.WriteLine(TestHelper.DumpReceipt(statusResponse));
         }
 
         // TODO: UpdateRecur: Add tests for EmptyCard, Variuos filds in RecurringUpdateInfo

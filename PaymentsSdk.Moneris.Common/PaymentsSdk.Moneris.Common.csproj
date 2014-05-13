@@ -45,9 +45,9 @@
     <Compile Include="Entity\ProfileInfo.cs" />
     <Compile Include="Entity\RecurringBilling.cs" />
     <Compile Include="Entity\RecurringUpdateInfo.cs" />
-    <Compile Include="Entity\Response.cs" />
     <Compile Include="Entity\SalesItem.cs" />
     <Compile Include="Entity\TerminalTotal.cs" />
+    <Compile Include="Helpers\ResponseHelper.cs" />
     <Compile Include="Helpers\TypeConverter.cs" />
     <Compile Include="IAddressVerification.cs" />
     <Compile Include="ICreditCard.cs" />
@@ -59,7 +59,6 @@
     <Compile Include="IProfileInfo.cs" />
     <Compile Include="IRecurringBilling.cs" />
     <Compile Include="IRecurringUpdateInfo.cs" />
-    <Compile Include="IResponse.cs" />
     <Compile Include="IOrder.cs" />
     <Compile Include="ISalesItem.cs" />
     <Compile Include="OpenTotals\ICreditCardTotal.cs" />

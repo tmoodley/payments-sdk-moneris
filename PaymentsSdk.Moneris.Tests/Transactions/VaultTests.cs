@@ -56,26 +56,26 @@
         {
             var dataKey = this.CreateProfile();
             var response = this.Gateway.ResLookupFull(dataKey);
-            Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.IsTrue(response.Receipt.ResSuccess);
-            Console.WriteLine("Full PAN={0}", response.Receipt.GetFullPan());
+            Console.WriteLine(TestHelper.DumpReceipt(response));
+            Assert.IsTrue(response.ResSuccess);
+            Console.WriteLine("Full PAN={0}", response.GetFullPan());
         }
         [Test]
         public void CanGetExpiringProfiles()
         {
-            var response = this.Gateway.ResGetExpiring();
-            Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.IsTrue(response.Receipt.ResSuccess);
+            var tuple = this.Gateway.ResGetExpiring();
+            Console.WriteLine(TestHelper.DumpReceipt(tuple.Item1));
+            Assert.IsTrue(tuple.Item1.ResSuccess);
             Console.WriteLine("===== Expiring profiles =====");
-            Console.WriteLine(TestHelper.DumpExpiringProfiles(response));
+            Console.WriteLine(TestHelper.DumpExpiringProfiles(tuple.Item2));
         }
         [Test]
         public void CanAddToken()
         {
             var tempDataKey = this.CreateProfile();
             var response = this.Gateway.ResAddToken(tempDataKey, Mother.CreditCard.ExpDate, Mother.Customer, Mother.AddressVerification);
-            Console.WriteLine(TestHelper.DumpResponse(response));
-            Assert.IsTrue(response.Receipt.Message.Contains("Data error:"));
+            Console.WriteLine(TestHelper.DumpReceipt(response));
+            Assert.IsTrue(response.Message.Contains("Data error:"));
         }
     }
 }
