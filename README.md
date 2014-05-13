@@ -1,4 +1,4 @@
-# Payments .Net SDK for Moneris eSelectPlus API
+#.Net SDK for Moneris eSelectPlus API
 
 `PM> Install-Package PaymentsSdk.Moneris`
 
