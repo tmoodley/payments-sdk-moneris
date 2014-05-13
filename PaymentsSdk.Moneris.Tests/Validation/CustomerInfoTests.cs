@@ -20,10 +20,9 @@
         [Test]
         public void CanSendTax1AsAlpha()
         {
-            var testBilling = new BillingInfo();
-            testBilling.Tax1 = "abcde1234567890";
-            var customer = new CustomerInfo(testBilling, testBilling, Mother.SalesItems);
-            var order = new Order(customer);
+            var testBilling = new BillingInfo { Tax1 = "abcde1234567890" };
+            var order = Mother.Order;
+            order.Customer = new CustomerInfo(testBilling, testBilling, Mother.SalesItems);
             var purchase = this.Gateway.Purchase(Mother.CreditCard, order);
             this.CheckTransactionTxnNumber(purchase);
         }

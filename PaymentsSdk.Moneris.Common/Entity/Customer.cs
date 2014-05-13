@@ -14,8 +14,8 @@
 
         public CustomerInfo(IBillingInfo billingInfo = null, IBillingInfo shippingInfo = null, IList<ISalesItem> orderDetails = null)
         {
-            this.BillingInfo = billingInfo;
-            this.ShippingInfo = shippingInfo;
+            this.BillingInfo = billingInfo ?? new BillingInfo();
+            this.ShippingInfo = shippingInfo ?? new BillingInfo();
             this.OrderDetails = orderDetails;
         }
     }

@@ -133,41 +133,29 @@
         {
             var customerId = this.GetCustomerId(order);
 
-            Console.WriteLine("TransactionFactory.Purchase Is CustomerId defined = {0}", !string.IsNullOrEmpty(customerId));
-
-            Console.WriteLine("TransactionFactory.Purchase Order Id={0}, Amount={1}", order.OrderId, order.Amount.AmountToString());
-            Console.WriteLine("TransactionFactory.Purchase Card Pan={0}, ExpDate={1}", creditCard.Pan, creditCard.ExpDate.ToExpDateString());
-            Console.WriteLine("TransactionFactory.Purchase Crypt ={0}", CryptType.SslEnabled.ToCryptString());
-
             var res = string.IsNullOrEmpty(customerId) ?
                     new Purchase(order.OrderId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString()) :
                     new Purchase(order.OrderId, customerId, order.Amount.AmountToString(), creditCard.Pan, creditCard.ExpDate.ToExpDateString(), CryptType.SslEnabled.ToCryptString());
 
             if (creditCard.AddressVerification != null)
             {
-                Console.WriteLine("TransactionFactory.Purchase Set Avs Info");
                 res.SetAvsInfo(this.CreateAvsInfo(creditCard.AddressVerification));
             }
 
             if (creditCard.CvdVerification != null)
             {
-                Console.WriteLine("TransactionFactory.Purchase Set Cvd Info");
                 res.SetCvdInfo(this.CreateCvdInfo(creditCard.CvdVerification));
             }
 
             if (order.Customer != null)
             {
-                Console.WriteLine("TransactionFactory.Purchase Set Customer Info");
                 res.SetCustInfo(this.CreateCustomerInfo(order.Customer));
             }
 
             if (order.RecurringBilling != null)
             {
-                Console.WriteLine("TransactionFactory.Purchase Set Recurring Billing");
                 res.SetRecur(this.CreateRecurringBilling(order.RecurringBilling));
             }
-
-            Console.WriteLine("TransactionFactory.Purchase ResXml={0}", res.toXML());
 
             return res;
         }

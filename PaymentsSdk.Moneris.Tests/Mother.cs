@@ -106,7 +106,7 @@
             }
         }
 
-        public static ICustomerInfo Customer
+        public static CustomerInfo Customer
         {
             get
             {
@@ -147,7 +147,7 @@
             }
         }
 
-        public static IOrder Order
+        public static Order Order
         {
             get
             {
@@ -158,19 +158,6 @@
                     };
 
                 return or;
-            }
-        }
-        public static IOrder RecurringOrder
-        {
-            get
-            {
-                var ro = new Order(null, RecurringBilling)
-                {
-                    OrderId = string.Format("Test_P_{0}", rnd.Next()),
-                    Amount = 5.00m
-                };
-
-                return ro;
             }
         }
         public static IRecurringBilling RecurringBilling

@@ -21,13 +21,16 @@
 
         protected Tuple<string, string> DoPreAuth(decimal amount)
         {
-            var order = new Order { Amount = amount };
+            var order = Mother.Order;
+            order.Amount = amount;
             var response = this.Gateway.PreAuth(Mother.CreditCard, order);
             return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
         }
         protected Tuple<string, string> DoPurchase(decimal amount, IRecurringBilling rb = null)
         {
-            var order = new Order(null, rb) { Amount = amount };
+            var order = Mother.Order;
+            order.Amount = amount;
+            order.RecurringBilling = rb;
             var response = this.Gateway.Purchase(Mother.CreditCard, order);
             return new Tuple<string, string>(order.OrderId, response.Receipt.TxnNumber);
         }

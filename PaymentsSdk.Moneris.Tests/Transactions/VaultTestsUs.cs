@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Transactions
+﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using NUnit.Framework;
     using USMoneris;
