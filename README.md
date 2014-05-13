@@ -30,16 +30,18 @@ To install PaymentsSdk.Moneris, run the following command in the Package Manager
 
             var order = new Order()
             {
-                OrderId = "Test_Order_123456",
+                OrderId = "Test_P_123456",
                 Amount = 5.00m
             };
+
+            Console.WriteLine("Sending purchase transaction...");
 
             var gateway = new Gateway(credentials);
             var receipt = gateway.Purchase(creditCard, order);
 
-            Console.WriteLine("Transaction result: ResponseCode={0}, Message={1}, TxnNumber={2}", 
-                receipt.ResponseCode, 
-                receipt.Message, 
+            Console.WriteLine("Transaction result:\n ResponseCode={0}\n Message={1}\n TxnNumber={2}\n",
+                receipt.ResponseCode,
+                receipt.Message,
                 receipt.TxnNumber);
 
 ````
