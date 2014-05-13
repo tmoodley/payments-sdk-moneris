@@ -6,7 +6,7 @@
     <version>1.0.0</version>
     <authors>Rootzid</authors>
     <owners>Rootzid</owners>
-    <description>Payments SDK for Moneris eSelectPlus API.</description>
+    <description>Payments SDK for Moneris eSelectPlus API</description>
     <releaseNotes>This release supports Canadian and USA merchant accounts.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <language>en-US</language>
