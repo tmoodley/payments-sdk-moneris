@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Transactions
+﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using NUnit.Framework;
     using USMoneris;
@@ -8,7 +8,7 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new USGateway(new USCredentials());
+            this.Gateway = new USGateway(Mother.UsCredentials);
         }
     }
 }

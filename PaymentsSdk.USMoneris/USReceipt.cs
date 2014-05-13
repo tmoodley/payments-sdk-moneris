@@ -2,6 +2,7 @@
 {
     using System;
     using Moneris.Common;
+    using Moneris.Common.Entity;
     using Moneris.Common.Helpers;
 
     internal class USReceipt : IReceipt

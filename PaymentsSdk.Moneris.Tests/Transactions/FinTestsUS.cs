@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Transactions
+﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
 {
     using NUnit.Framework;
     using USMoneris;
@@ -8,15 +8,13 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new USGateway(new USCredentials());
+            this.Gateway = new USGateway(Mother.UsCredentials);
         }
 
         [Test]
         public void CanSendPurchaseBasicUs()
         {
-            var order = new Order { Customer = null };
-            var card = new CreditCard();
-            var response = this.Gateway.Purchase(card, order);
+            var response = this.Gateway.Purchase(Mother.CreditCard, Mother.Order);
             this.CheckTransactionTxnNumber(response);
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Common
+﻿namespace Rootzid.PaymentsSdk.Moneris.Common.Entity
 {
     using System;
     using Helpers;

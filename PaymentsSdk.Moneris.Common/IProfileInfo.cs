@@ -1,6 +1,7 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Common
 {
     using System;
+    using Entity;
 
     public interface IProfileInfo
     {

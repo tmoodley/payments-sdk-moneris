@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+    using Entity;
 
     public static class TypeConverter
     {

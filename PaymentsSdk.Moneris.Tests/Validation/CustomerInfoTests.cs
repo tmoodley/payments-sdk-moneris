@@ -1,5 +1,6 @@
 ﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Validation
 {
+    using Common.Entity;
     using NUnit.Framework;
 
     [TestFixture]
@@ -7,7 +8,7 @@
     {
         protected override void InitGateway()
         {
-            this.Gateway = new Gateway(new Credentials());
+            this.Gateway = new Gateway(Mother.CaCredentials);
         }
 
         [SetUp]
@@ -19,12 +20,10 @@
         [Test]
         public void CanSendTax1AsAlpha()
         {
-            var testBilling = new BillingInfo();
-            testBilling.Tax1 = "abcde1234567890";
-            var customer = new Customer(testBilling, testBilling, TestHelper.PopulateSalesItems());
-            var order = new Order(customer);
-            var card = new CreditCard();
-            var purchase = this.Gateway.Purchase(card, order);
+            var testBilling = new BillingInfo { Tax1 = "abcde1234567890" };
+            var order = Mother.Order;
+            order.Customer = new CustomerInfo(testBilling, testBilling, Mother.SalesItems);
+            var purchase = this.Gateway.Purchase(Mother.CreditCard, order);
             this.CheckTransactionTxnNumber(purchase);
         }
     }
