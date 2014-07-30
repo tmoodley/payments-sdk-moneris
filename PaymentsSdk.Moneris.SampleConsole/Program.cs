@@ -1,9 +1,9 @@
 ﻿namespace PaymentsSdk.Moneris.SampleConsole
 {
     using System;
-    using Rootzid.PaymentsSdk.Moneris;
-    using Rootzid.PaymentsSdk.Moneris.Common.Entity;
-    using Rootzid.PaymentsSdk.USMoneris;
+    using PaymentsSdk.Moneris;
+    using PaymentsSdk.Moneris.Common.Entity;
+    using PaymentsSdk.USMoneris;
 
     class Program
     {

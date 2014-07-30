@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Common
+﻿namespace PaymentsSdk.Moneris.Common
 {
     using System;
 

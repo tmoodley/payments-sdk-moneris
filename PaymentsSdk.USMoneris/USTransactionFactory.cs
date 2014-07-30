@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.USMoneris
+﻿namespace PaymentsSdk.USMoneris
 {
     using System;
     using global::USMoneris;

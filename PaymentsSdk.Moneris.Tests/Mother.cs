@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Tests
+﻿namespace PaymentsSdk.Moneris.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -113,7 +113,7 @@
                 var ci = new CustomerInfo()
                 {
                     Id = "customer1",
-                    Email = "rootzid@gmail.com",
+                    Email = "@gmail.com",
                     Note = "Make it fast!"
                 };
 

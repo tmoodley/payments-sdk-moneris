@@ -7,8 +7,8 @@
     <ProjectGuid>{9803CA1E-74F8-4E25-8DB0-7E7E2ADB3A7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rootzid.PaymentsSdk.Moneris</RootNamespace>
-    <AssemblyName>Rootzid.PaymentsSdk.Moneris</AssemblyName>
+    <RootNamespace>PaymentsSdk.Moneris</RootNamespace>
+    <AssemblyName>PaymentsSdk.Moneris</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{DF17A4FE-EB39-4D01-A794-14ABDE844C41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rootzid.PaymentsSdk.Moneris.Tests</RootNamespace>
-    <AssemblyName>Rootzid.PaymentsSdk.Moneris.Tests</AssemblyName>
+    <RootNamespace>PaymentsSdk.Moneris.Tests</RootNamespace>
+    <AssemblyName>PaymentsSdk.Moneris.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
