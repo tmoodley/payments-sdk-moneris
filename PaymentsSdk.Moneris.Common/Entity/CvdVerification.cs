@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Common.Entity
+﻿namespace PaymentsSdk.Moneris.Common.Entity
 {
     public class CvdVerification : ICvdVerification
     {

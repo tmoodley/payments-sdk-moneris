@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Tests.Validation
+﻿namespace PaymentsSdk.Moneris.Tests.Validation
 {
     using Common.Entity;
     using NUnit.Framework;

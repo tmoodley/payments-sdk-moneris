@@ -1,4 +1,4 @@
-﻿namespace Rootzid.PaymentsSdk.Moneris.Common.Helpers
+﻿namespace PaymentsSdk.Moneris.Common.Helpers
 {
     using System;
     using System.Globalization;

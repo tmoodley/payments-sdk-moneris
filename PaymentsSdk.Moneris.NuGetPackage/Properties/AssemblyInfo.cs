@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Rootzid.PaymentsSdk.Moneris.NuGetPackage")]
+[assembly: AssemblyTitle("PaymentsSdk.Moneris.NuGetPackage")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Rootzid")]
-[assembly: AssemblyProduct("Rootzid.PaymentsSdk.Moneris.NuGetPackage")]
-[assembly: AssemblyCopyright("Copyright © Rootzid 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("PaymentsSdk.Moneris.NuGetPackage")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

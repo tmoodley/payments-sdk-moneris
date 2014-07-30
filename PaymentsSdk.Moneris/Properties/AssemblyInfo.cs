@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Rootzid.PaymentsSdk.Moneris")]
+[assembly: AssemblyTitle("PaymentsSdk.Moneris")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Rootzid")]
-[assembly: AssemblyProduct("Rootzid.PaymentsSdk.Moneris")]
-[assembly: AssemblyCopyright("Copyright © Rootzid 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("PaymentsSdk.Moneris")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

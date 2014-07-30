@@ -3,7 +3,7 @@
   <metadata>
     <id>PaymentsSdk.Moneris</id>
     <title>Payments SDK for Moneris eSelectPlus API</title>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>Rootzid</authors>
     <owners>Rootzid</owners>
     <description>Payments SDK for Moneris eSelectPlus API</description>
@@ -14,9 +14,9 @@
     <tags>Payments API Moneris</tags>
   </metadata>
   <files>
-    <file src="bin\Rootzid.PaymentsSdk.Moneris.Common.dll" target="lib\net45" />
-    <file src="bin\Rootzid.PaymentsSdk.Moneris.dll" target="lib\net45" />
-    <file src="bin\Rootzid.PaymentsSdk.USMoneris.dll" target="lib\net45" />
+    <file src="bin\PaymentsSdk.Moneris.Common.dll" target="lib\net45" />
+    <file src="bin\PaymentsSdk.Moneris.dll" target="lib\net45" />
+    <file src="bin\PaymentsSdk.USMoneris.dll" target="lib\net45" />
     <file src="bin\eSELECTplus_dotNet_API.dll" target="lib\net45" />
     <file src="bin\eSELECTplus_dotNet_API-US.dll" target="lib\net45" />
   </files>
