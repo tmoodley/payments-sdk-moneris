@@ -34,20 +34,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="eSELECTplus_dotNet_API">
-      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.0\lib\net45\eSELECTplus_dotNet_API.dll</HintPath>
+    <Reference Include="eSELECTplus_dotNet_API, Version=2.5.3.0, Culture=neutral, PublicKeyToken=8cb9cd598f87e276, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.1\lib\net45\eSELECTplus_dotNet_API.dll</HintPath>
     </Reference>
-    <Reference Include="eSELECTplus_dotNet_API-US">
-      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.0\lib\net45\eSELECTplus_dotNet_API-US.dll</HintPath>
+    <Reference Include="eSELECTplus_dotNet_API-US, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8cb9cd598f87e276, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.1\lib\net45\eSELECTplus_dotNet_API-US.dll</HintPath>
     </Reference>
-    <Reference Include="Rootzid.PaymentsSdk.Moneris">
-      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.0\lib\net45\Rootzid.PaymentsSdk.Moneris.dll</HintPath>
+    <Reference Include="PaymentsSdk.Moneris">
+      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.1\lib\net45\PaymentsSdk.Moneris.dll</HintPath>
     </Reference>
-    <Reference Include="Rootzid.PaymentsSdk.Moneris.Common">
-      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.0\lib\net45\Rootzid.PaymentsSdk.Moneris.Common.dll</HintPath>
+    <Reference Include="PaymentsSdk.Moneris.Common">
+      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.1\lib\net45\PaymentsSdk.Moneris.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Rootzid.PaymentsSdk.USMoneris">
-      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.0\lib\net45\Rootzid.PaymentsSdk.USMoneris.dll</HintPath>
+    <Reference Include="PaymentsSdk.USMoneris">
+      <HintPath>..\packages\PaymentsSdk.Moneris.1.0.1\lib\net45\PaymentsSdk.USMoneris.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
